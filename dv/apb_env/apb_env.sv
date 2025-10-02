@@ -16,24 +16,38 @@
     class apb_env extends uvm_env;
     `uvm_component_utils(apb_env)
 
+    apb_agent agt;
+
+    uvm_analysis_port#(apb_sequence_item) agt2env_;
+
+    uvm_analysis_port#(apb_sequence_item) env2scb_;
+    uvm_analysis_port#(apb_sequence_item) env2sub_;
+
     //------------------------------------------
     // Constructor for the environment component
     //------------------------------------------
-        function new(string name = "apb_env", uvm_component parent)
+        function new(string name = "apb_env", uvm_component parent);
             super.new(name, parent);
         endfunction : new
 
     //-------------------------------------------------------------
     // Build phase for component creation, initialization & Setters
     //-------------------------------------------------------------
-        function void build_phase(uvm_phase phase)
+        function void build_phase(uvm_phase phase);
             super.build_phase(phase);
-        endfunction : build_phsae
+            //Creating environment components
+            agt = apb_agent::type_id::create("agt", this);
+
+            //Creating environment TLM Connections
+            agt2env_ = new("agt2env_", this);
+            envscb_  = new("env2scb_", this);
+            env2sub_ = new("env2sub_", this);
+        endfunction : build_phase
 
     //---------------------------------------------------------
     // Connect Phase to connect the Enviornment TLM Components
     //---------------------------------------------------------
-        function void connect_phase(uvm_phase phase)
+        function void connect_phase(uvm_phase phase);
             super.connect_phase(phase);
         endfunction : connect_phase
 

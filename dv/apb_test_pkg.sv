@@ -17,13 +17,13 @@
     `include "uvm_macros.svh"
     `include "apb_env_pkg.sv"
 
-    package apb_test_pkg
+    package apb_test_pkg;
 
         import uvm_pkg::*;
         import apb_env_pkg::*;
 
-        `include "apb_base_test_pkg.sv"
-        `include "apb_test.sv"
+        `include "apb_base_test.sv"
+        // `include "apb_test.sv"
 
 
     endpackage : apb_test_pkg

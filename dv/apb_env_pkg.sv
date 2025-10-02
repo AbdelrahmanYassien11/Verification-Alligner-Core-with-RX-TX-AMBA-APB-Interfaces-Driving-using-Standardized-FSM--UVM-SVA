@@ -18,7 +18,7 @@
     package apb_env_pkg;
 
         import uvm_pkg::*;
-        `import apb_agt_pkg::*;
+        import apb_agt_pkg::*;
 
         `include "apb_env.sv"
     endpackage : apb_env_pkg

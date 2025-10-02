@@ -10,20 +10,27 @@
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
 
-`ifndef AY_APB_TB
-`define AY_APB_TB
+// Drawing a rose, a natural movement to your hand
+// You said I could speak hyrogliphs and you'd understand
+// but what if my mouth is shut, no words come around
+// a dead language that doesn't have a sound...
+
+//that night when we sang stranger's in the night
+// a feeling of serenity, glassenheit
 
 `include "uvm_macros.svh"
 `include "apb_test_pkg.sv"
 
-    module apb_tb_top
+    module apb_tb_top();
     
     import uvm_pkg::*;
+    import apb_test_pkg::*;
 
     bit clk;
-    apb_if apb_inf(.clk(clk));
 
-    always clk #5 = ~clk;
+    always #5ns clk = ~clk;
+
+    apb_if apb_inf(.clk(clk));
 
   //Instantiate the DUT
   cfs_aligner dut(
@@ -51,5 +58,3 @@
     end 
 
     endmodule : apb_tb_top
-
-`endif

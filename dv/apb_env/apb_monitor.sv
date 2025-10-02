@@ -1,5 +1,5 @@
 /******************************************************************
- * File:   apb_mon.sv
+ * File:   apb_monitor.sv
  * Author: Abdelrahman Yassien
  * Email:  Abdelrahman.Yassien11@gmail.com
  * Date:   01/10/2025
@@ -13,30 +13,35 @@
 `ifndef AY_APB_MON
 `define AY_APB_MON
 
-    class apb_mon extends uvm_monitor;
-    `uvm_component_utils(apb_mon)
+    class apb_monitor extends uvm_monitor;
+    `uvm_component_utils(apb_monitor)
+
+    uvm_analysis_port#(apb_sequence_item) mon2agt;
 
     //------------------------------------------
     // Constructor for the monironment component
     //------------------------------------------
-        function new(string name = "apb_mon", uvm_component parent)
+        function new(string name = "", uvm_component parent);
             super.new(name, parent);
         endfunction : new
 
     //-------------------------------------------------------------
     // Build phase for component creation, initialization & Setters
     //-------------------------------------------------------------
-        function void build_phase(uvm_phase phase)
+        function void build_phase(uvm_phase phase);
             super.build_phase(phase);
-        endfunction : build_phsae
+
+            //creating TLM PORTS
+            mon2agt = new("mon2agt", this);
+        endfunction : build_phase
 
     //---------------------------------------------------------
     // Connect Phase to connect the moniornment TLM Components
     //---------------------------------------------------------
-        function void connect_phase(uvm_phase phase)
+        function void connect_phase(uvm_phase phase);
             super.connect_phase(phase);
         endfunction : connect_phase
 
-    endclass : apb_mon
+    endclass : apb_monitor
 
 `endif

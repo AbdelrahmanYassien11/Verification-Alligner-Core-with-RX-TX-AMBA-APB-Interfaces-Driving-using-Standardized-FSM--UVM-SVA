@@ -19,21 +19,21 @@
     //------------------------------------------
     // Constructor for the driverironment component
     //------------------------------------------
-        function new(string name = "apb_driver", uvm_component parent)
+        function new(string name = "apb_driver", uvm_component parent);
             super.new(name, parent);
         endfunction : new
 
     //-------------------------------------------------------------
     // Build phase for component creation, initialization & Setters
     //-------------------------------------------------------------
-        function void build_phase(uvm_phase phase)
+        function void build_phase(uvm_phase phase);
             super.build_phase(phase);
-        endfunction : build_phsae
+        endfunction : build_phase
 
     //---------------------------------------------------------
     // Connect Phase to connect the driveriornment TLM Components
     //---------------------------------------------------------
-        function void connect_phase(uvm_phase phase)
+        function void connect_phase(uvm_phase phase);
             super.connect_phase(phase);
         endfunction : connect_phase
 
