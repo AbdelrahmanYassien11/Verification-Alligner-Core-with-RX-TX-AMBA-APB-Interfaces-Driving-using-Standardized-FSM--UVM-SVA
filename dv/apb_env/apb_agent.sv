@@ -10,8 +10,8 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_AGENT
-`define AY_APB_AGENT
+`ifndef AY_APB_AGT
+`define AY_APB_AGT
 
     class apb_agent extends uvm_agent;
     `uvm_component_utils(apb_agent)

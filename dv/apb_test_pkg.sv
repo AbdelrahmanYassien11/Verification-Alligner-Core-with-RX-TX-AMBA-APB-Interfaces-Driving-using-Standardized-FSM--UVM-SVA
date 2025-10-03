@@ -10,12 +10,10 @@
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
 
-
-`ifdef AY_APB_TEST_PKG
+`ifndef AY_APB_TEST_PKG
 `define AY_APB_TEST_PKG
 
     `include "uvm_macros.svh"
-    `include "apb_env_pkg.sv"
 
     package apb_test_pkg;
 
@@ -24,7 +22,6 @@
 
         `include "apb_base_test.sv"
         // `include "apb_test.sv"
-
 
     endpackage : apb_test_pkg
 `endif

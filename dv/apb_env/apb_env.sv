@@ -40,7 +40,7 @@
 
             //Creating environment TLM Connections
             agt2env_ = new("agt2env_", this);
-            envscb_  = new("env2scb_", this);
+            env2scb_ = new("env2scb_", this);
             env2sub_ = new("env2sub_", this);
         endfunction : build_phase
 

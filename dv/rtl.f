@@ -1,1 +1,1 @@
-../RTL/design.sv
+../rtl/design.sv

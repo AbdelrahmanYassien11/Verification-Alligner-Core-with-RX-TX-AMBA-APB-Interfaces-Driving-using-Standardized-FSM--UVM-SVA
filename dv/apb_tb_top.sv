@@ -19,7 +19,7 @@
 // a feeling of serenity, glassenheit
 
 `include "uvm_macros.svh"
-`include "apb_test_pkg.sv"
+// `include "apb_test_pkg.sv"
 
     module apb_tb_top();
     
@@ -32,20 +32,20 @@
 
     apb_if apb_inf(.clk(clk));
 
-  //Instantiate the DUT
-  cfs_aligner dut(
-    .clk        (clk),
-    .reset_n    (apb_if.preset_n),
-    
-    .paddr      (apb_if.paddr),
-    .pwrite     (apb_if.pwrite),
-    .psel       (apb_if.psel),
-    .penable    (apb_if.penable),
-    .pwdata     (apb_if.pwdata),
-    .pready     (apb_if.pready),
-    .prdata     (apb_if.prdata),
-    .pslverr    (apb_if.pslverr)
-  );
+    //Instantiate the DUT
+    cfs_aligner dut(
+        .clk        (clk),
+        .reset_n    (apb_inf.preset_n),
+        
+        .paddr      (apb_inf.paddr),
+        .pwrite     (apb_inf.pwrite),
+        .psel       (apb_inf.psel),
+        .penable    (apb_inf.penable),
+        .pwdata     (apb_inf.pwdata),
+        .pready     (apb_inf.pready),
+        .prdata     (apb_inf.prdata),
+        .pslverr    (apb_inf.pslverr)
+    );
 
 
     initial begin

@@ -14,7 +14,6 @@
 `ifndef AY_APB_ENV_PKG
 `define AY_APB_ENV_PKG
     `include "uvm_macros.svh"
-    `include "apb_agt_pkg.sv"
     package apb_env_pkg;
 
         import uvm_pkg::*;
