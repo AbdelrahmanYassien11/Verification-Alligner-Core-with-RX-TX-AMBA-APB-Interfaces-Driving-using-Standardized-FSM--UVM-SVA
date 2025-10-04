@@ -1,0 +1,7 @@
+# vsim -c -novopt -do "run -all; quit" work.apb_tb_top 
+# Start time: 02:00:39 on Oct 04,2025
+# ** Error (suppressible): (vsim-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 02:00:39 on Oct 04,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

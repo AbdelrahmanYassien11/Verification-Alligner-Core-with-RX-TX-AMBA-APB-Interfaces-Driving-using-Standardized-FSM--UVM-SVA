@@ -1,5 +1,5 @@
-#if [file exists "work"] {vdel -all}
-#vlib work
+if [file exists "work"] {vdel -all}
+vlib work
 
 # Use unique transcript file per run (with full path)
 transcript file "test_transcript.log"

@@ -9,14 +9,14 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-// `ifndef AY_APB_IF
-// `define AY_APB_IF
+`ifndef AY_APB_IF
+`define AY_APB_IF
     `ifndef AY_APB_MAX_DATA_WIDTH
         `define AY_APB_MAX_DATA_WIDTH 32
     `endif
 
     `ifndef AY_APB_MAX_ADDR_WIDTH
-        `define AY_APB_MAX_ADDR_WIDTH 32
+        `define AY_APB_MAX_ADDR_WIDTH 16
     `endif
 
     interface apb_if(input clk);
@@ -40,4 +40,5 @@
         logic pslverr;
 
     endinterface : apb_if
-// `endif
+    
+`endif

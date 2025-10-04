@@ -19,7 +19,6 @@
 // a feeling of serenity, glassenheit
 
 `include "uvm_macros.svh"
-// `include "apb_test_pkg.sv"
 
     module apb_tb_top();
     
@@ -32,7 +31,7 @@
 
     apb_if apb_inf(.clk(clk));
 
-    //Instantiate the DUT
+    Instantiate the DUT
     cfs_aligner dut(
         .clk        (clk),
         .reset_n    (apb_inf.preset_n),
@@ -51,7 +50,7 @@
     initial begin
         $dumpfile("dump.vcd");
         $dumpvars;
-
+        $display("Atlas : %0h", apb_inf.preset_n);
         uvm_config_db#(virtual apb_if)::set(null, "uvm_test_top", "vif", apb_inf);
 
         run_test();

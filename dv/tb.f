@@ -1,8 +1,6 @@
 +incdir+apb_sequence_item
 +incdir+apb_env
-+incdir+apb_interfaces
 +incdir+apb_tests
-+incdir+apb_interfaces
 
 apb_interfaces/apb_if.sv
 apb_agt_pkg.sv
