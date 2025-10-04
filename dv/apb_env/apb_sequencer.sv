@@ -10,8 +10,8 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_SEQR
-`define AY_APB_SEQR
+// `ifndef AY_APB_SEQR
+// `define AY_APB_SEQR
 
     class apb_sequencer extends uvm_sequencer;
     `uvm_component_utils(apb_sequencer)
@@ -39,4 +39,4 @@
 
     endclass : apb_sequencer
 
-`endif
+// `endif

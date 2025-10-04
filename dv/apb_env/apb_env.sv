@@ -10,18 +10,18 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_ENV
-`define AY_APB_ENV
+// `ifndef AY_APB_ENV
+// `define AY_APB_ENV
 
     class apb_env extends uvm_env;
     `uvm_component_utils(apb_env)
 
     apb_agent agt;
 
-    uvm_analysis_port#(apb_sequence_item) agt2env_;
+    // uvm_analysis_port#(apb_sequence_item) agt2env_;
 
-    uvm_analysis_port#(apb_sequence_item) env2scb_;
-    uvm_analysis_port#(apb_sequence_item) env2sub_;
+    // uvm_analysis_port#(apb_sequence_item) env2scb_;
+    // uvm_analysis_port#(apb_sequence_item) env2sub_;
 
     //------------------------------------------
     // Constructor for the environment component
@@ -39,9 +39,9 @@
             agt = apb_agent::type_id::create("agt", this);
 
             //Creating environment TLM Connections
-            agt2env_ = new("agt2env_", this);
-            env2scb_ = new("env2scb_", this);
-            env2sub_ = new("env2sub_", this);
+            // agt2env_ = new("agt2env_", this);
+            // env2scb_ = new("env2scb_", this);
+            // env2sub_ = new("env2sub_", this);
         endfunction : build_phase
 
     //---------------------------------------------------------
@@ -53,4 +53,4 @@
 
     endclass : apb_env
 
-`endif
+// `endif

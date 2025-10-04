@@ -10,8 +10,8 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_DRV
-`define AY_APB_DRV
+// `ifndef AY_APB_DRV
+// `define AY_APB_DRV
 
     class apb_driver extends uvm_driver;
     `uvm_component_utils(apb_driver)
@@ -39,4 +39,4 @@
 
     endclass : apb_driver
 
-`endif
+// `endif

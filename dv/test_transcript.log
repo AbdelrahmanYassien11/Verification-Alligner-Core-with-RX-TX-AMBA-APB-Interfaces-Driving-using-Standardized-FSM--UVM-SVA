@@ -1,0 +1,128 @@
+# QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+# Start time: 07:58:53 on Oct 04,2025
+# vlog -f rtl.f "+cover" -covercells 
+# -- Compiling module cfs_synch
+# -- Compiling module cfs_synch_fifo
+# -- Compiling module cfs_rx_ctrl
+# -- Compiling module cfs_ctrl
+# -- Compiling module cfs_tx_ctrl
+# -- Compiling module cfs_edge_detect
+# -- Compiling module cfs_regs
+# -- Compiling module cfs_aligner_core
+# -- Compiling module cfs_aligner
+# 
+# Top level modules:
+# 	cfs_aligner
+# End time: 07:58:53 on Oct 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2024.1 Compiler 2024.02 Feb  1 2024
+# Start time: 07:58:54 on Oct 04,2025
+# vlog -f tb.f "+cover" -covercells 
+# -- Compiling interface apb_if
+# ** Note: (vlog-2286) apb_pkg.sv(16): Using implicit +incdir+C:/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package apb_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Compiling module apb_tb_top
+# -- Importing package apb_pkg
+# 
+# Top level modules:
+# 	apb_tb_top
+# End time: 07:58:54 on Oct 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2024.1 Compiler 2024.02 Feb  1 2024
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# Start time: 07:58:54 on Oct 04,2025
+# vopt apb_tb_top -o top_optimized "+acc" "+cover=bcefsx" 
+# 
+# Top level modules:
+# 	apb_tb_top
+# Support of the MGLS_LICENSE_FILE and LM_LICENSE_FILE licensing environment variables will be discontinued starting with the 2025.1 release. Please update to using the SALT_LICENSE_SERVER variable.
+# Please contact Siemens EDA Customer Support (https://support.sw.siemens.com/) for assistance.
+# 
+# Analyzing design...
+# -- Loading module apb_tb_top
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package apb_pkg
+# -- Loading package mtiUvm.questa_uvm_pkg
+# -- Loading interface apb_if
+# ** Warning: (vopt-13408) Code coverage will be disabled for some DUs/packages/classes and source files.
+# Optimizing 6 design-units (inlining 0/2 module instances):
+# -- Optimizing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)(fast)
+# -- Optimizing package mtiUvm.questa_uvm_pkg(fast)
+# -- Optimizing package apb_pkg(fast)
+# -- Optimizing module apb_tb_top(fast)
+# -- Optimizing interface apb_if(fast__2)
+# -- Optimizing interface apb_if(fast)
+# Optimized design name is top_optimized
+# End time: 07:58:56 on Oct 04,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 2
+# apb_base_test
+# vsim top_optimized -coverage -voptargs="+acc" -solvefaildebug=2 -debugDB "+UVM_TESTNAME=apb_base_test" 
+# Start time: 07:58:56 on Oct 04,2025
+# //  Questa Sim-64
+# //  Version 2024.1 win64 Feb  1 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.apb_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.apb_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.apb_tb_top(fast)
+# Loading work.apb_if(fast__2)
+# Loading C:/questasim64_2024.1/uvm-1.1d\win64\uvm_dpi.dll
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# It appears vopt was not run with -debugdb option on this design.
+# Advanced Causality and Schematic debug features will not be available.
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# Atlas : x
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_base_test...
+# UVM_FATAL apb_env/apb_agent_config.sv(36) @ 0: uvm_test_top.env.agt.apb_agt_cfg [apb_agent_config] FAILED TO GET VIRTUAL INTERFACE INSTANCE
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    3
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    1
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [apb_agent_config]     1
+# ** Note: $finish    : C:/questasim64_2024.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh(292)
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# 1
+# Break in Function uvm_pkg/uvm_report_object::die at C:/questasim64_2024.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292
+# Stopped at C:/questasim64_2024.1/win64/../verilog_src/uvm-1.1d/src/base/uvm_report_object.svh line 292

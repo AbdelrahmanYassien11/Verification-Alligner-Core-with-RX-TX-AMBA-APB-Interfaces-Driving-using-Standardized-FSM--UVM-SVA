@@ -10,9 +10,9 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_TYPES
-`define AY_APB_TYPES
+// `ifndef AY_APB_TYPES
+// `define AY_APB_TYPES
 
     typedef virtual apb_if apb_vif;
 
-`endif
+// `endif

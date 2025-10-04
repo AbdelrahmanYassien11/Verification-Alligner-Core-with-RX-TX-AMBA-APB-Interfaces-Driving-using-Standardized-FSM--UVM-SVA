@@ -9,8 +9,8 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_IF
-`define AY_APB_IF
+// `ifndef AY_APB_IF
+// `define AY_APB_IF
     `ifndef AY_APB_MAX_DATA_WIDTH
         `define AY_APB_MAX_DATA_WIDTH 32
     `endif
@@ -41,4 +41,4 @@
 
     endinterface : apb_if
     
-`endif
+// `endif

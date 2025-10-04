@@ -10,13 +10,13 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_AGT_CFG
-`define AY_APB_AGT_CFG
+// `ifndef AY_APB_AGT_CFG
+// `define AY_APB_AGT_CFG
 
     class apb_agent_config extends uvm_component;
     `uvm_component_utils(apb_agent_config)
 
-    local apb_vif vif;
+    local virtual apb_if vif;
 
     //------------------------------------------
     // Constructor for the monironment component
@@ -44,12 +44,12 @@
         endfunction : connect_phase
 
     //Getter for the APB virtual interface
-        virtual function apb_vif get_vif();
+        virtual function virtual apb_if get_vif();
             return vif;
         endfunction
         
     //Setter for the APB virtual interface
-        virtual function void set_vif(apb_vif value);
+        virtual function void set_vif(virtual apb_if value);
             if(vif == null) begin
                 vif = value;
             end
@@ -73,4 +73,4 @@
 
 
 
-`endif
+// `endif

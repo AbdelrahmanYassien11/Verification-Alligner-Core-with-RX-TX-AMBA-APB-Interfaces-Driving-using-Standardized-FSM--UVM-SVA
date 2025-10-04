@@ -11,8 +11,8 @@
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
 
-`ifndef AY_APB_SEQ_ITEM
-`define AY_APB_SEQ_ITEM
+// `ifndef AY_APB_SEQ_ITEM
+// `define AY_APB_SEQ_ITEM
     class apb_sequence_item extends uvm_sequence_item;
         `uvm_object_utils(apb_sequence_item)
 
@@ -22,4 +22,4 @@
 
 
     endclass : apb_sequence_item
-`endif
+// `endif

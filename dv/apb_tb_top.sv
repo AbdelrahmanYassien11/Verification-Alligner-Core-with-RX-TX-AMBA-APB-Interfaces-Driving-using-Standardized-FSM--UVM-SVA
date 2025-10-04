@@ -23,7 +23,7 @@
     module apb_tb_top();
     
     import uvm_pkg::*;
-    import apb_test_pkg::*;
+    import apb_pkg::*;
 
     bit clk;
 
@@ -31,21 +31,20 @@
 
     apb_if apb_inf(.clk(clk));
 
-    Instantiate the DUT
-    cfs_aligner dut(
-        .clk        (clk),
-        .reset_n    (apb_inf.preset_n),
+    // Instantiate the DUT
+    // cfs_aligner dut(
+    //     .clk        (clk),
+    //     .reset_n    (apb_inf.preset_n),
         
-        .paddr      (apb_inf.paddr),
-        .pwrite     (apb_inf.pwrite),
-        .psel       (apb_inf.psel),
-        .penable    (apb_inf.penable),
-        .pwdata     (apb_inf.pwdata),
-        .pready     (apb_inf.pready),
-        .prdata     (apb_inf.prdata),
-        .pslverr    (apb_inf.pslverr)
-    );
-
+    //     .paddr      (apb_inf.paddr),
+    //     .pwrite     (apb_inf.pwrite),
+    //     .psel       (apb_inf.psel),
+    //     .penable    (apb_inf.penable),
+    //     .pwdata     (apb_inf.pwdata),
+    //     .pready     (apb_inf.pready),
+    //     .prdata     (apb_inf.prdata),
+    //     .pslverr    (apb_inf.pslverr)
+    // );
 
     initial begin
         $dumpfile("dump.vcd");
@@ -55,5 +54,4 @@
 
         run_test();
     end 
-    //atlas
     endmodule : apb_tb_top

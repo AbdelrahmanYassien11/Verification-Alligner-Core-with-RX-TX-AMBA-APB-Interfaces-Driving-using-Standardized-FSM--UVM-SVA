@@ -10,8 +10,8 @@
  * Copyright (c) [2025] Abdelrahman Yassien. All Rights Reserved.
  * This file is part of the verification of AMBA APB Project.
   ******************************************************************/
-`ifndef AY_APB_MON
-`define AY_APB_MON
+// `ifndef AY_APB_MON
+// `define AY_APB_MON
 
     class apb_monitor extends uvm_monitor;
     `uvm_component_utils(apb_monitor)
@@ -44,4 +44,4 @@
 
     endclass : apb_monitor
 
-`endif
+// `endif
