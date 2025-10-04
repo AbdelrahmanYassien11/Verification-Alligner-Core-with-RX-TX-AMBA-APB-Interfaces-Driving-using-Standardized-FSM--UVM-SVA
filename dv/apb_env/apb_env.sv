@@ -18,10 +18,10 @@
 
     apb_agent agt;
 
-    uvm_analysis_port#(apb_sequence_item) agt2env_;
+    uvm_analysis_port#(apb_sequence_item_mon) agt2env_;
 
-    uvm_analysis_port#(apb_sequence_item) env2scb_;
-    uvm_analysis_port#(apb_sequence_item) env2sub_;
+    uvm_analysis_port#(apb_sequence_item_mon) env2scb_;
+    uvm_analysis_port#(apb_sequence_item_mon) env2sub_;
 
     //------------------------------------------
     // Constructor for the environment component

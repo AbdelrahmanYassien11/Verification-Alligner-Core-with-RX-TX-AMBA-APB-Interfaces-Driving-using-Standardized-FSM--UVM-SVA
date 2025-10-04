@@ -22,7 +22,7 @@
 
     apb_agent_config apb_agt_cfg;
 
-    uvm_analysis_port#(apb_sequence_item) agt2env;
+    uvm_analysis_port#(apb_sequence_item_mon) agt2env;
 
 
     //------------------------------------------
@@ -59,7 +59,7 @@
             drv.seq_item_port.connect(seqr.seq_item_export);
             
             //Getting Virtual Interface Instance
-            if(!uvm_config_db#(virtual cfs_apb_if)::get(this, "", "vif", vif)) begin
+            if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif)) begin
                 `uvm_fatal("APB_NO_VIF", $sformatf("Could not get from the database the APB virtual interface using name"))
             end
             else begin

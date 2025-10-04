@@ -18,8 +18,11 @@
 
         import uvm_pkg::*;
         
-        `include "apb_sequence_item.sv"
+        `include "apb_defines.svh"
         `include "apb_types.sv"
+        `include "apb_base_sequence_item.sv"
+        `include "apb_sequence_item_drv.sv"
+        `include "apb_sequence_item_mon.sv"
         `include "apb_agent_config.sv"
 
         `include "apb_driver.sv"

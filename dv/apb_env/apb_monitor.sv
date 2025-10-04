@@ -16,7 +16,7 @@
     class apb_monitor extends uvm_monitor;
     `uvm_component_utils(apb_monitor)
 
-    uvm_analysis_port#(apb_sequence_item) mon2agt;
+    uvm_analysis_port#(apb_sequence_item_mon) mon2agt;
 
     //------------------------------------------
     // Constructor for the monironment component

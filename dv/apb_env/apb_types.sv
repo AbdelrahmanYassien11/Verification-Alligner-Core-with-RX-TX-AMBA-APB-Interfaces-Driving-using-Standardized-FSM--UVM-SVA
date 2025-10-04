@@ -13,6 +13,17 @@
 `ifndef AY_APB_TYPES
 `define AY_APB_TYPES
 
-    typedef virtual apb_if apb_vif;
+  typedef virtual apb_if apb_vif;
+
+  // CONTROL
+  typedef enum  {APB_WR = 0, APB_RD = 1}       apb_dir;
+  typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]   apb_addr;
+  typedef enum  {OK = 0, ERR = 1}             apb_pslverr;
+  typedef enum  {READY = 0, NREADY = 1}       apb_pready;
+
+  // DATA
+  typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;
+  typedef logic [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_rd;
+
 
 `endif

@@ -31,7 +31,7 @@
 
     apb_if apb_inf(.clk(clk));
 
-    Instantiate the DUT
+    // Instantiate the DUT
     cfs_aligner dut(
         .clk        (clk),
         .reset_n    (apb_inf.preset_n),
