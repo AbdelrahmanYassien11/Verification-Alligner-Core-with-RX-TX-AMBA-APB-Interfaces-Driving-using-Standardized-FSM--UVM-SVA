@@ -46,12 +46,16 @@
         .pslverr    (apb_inf.pslverr)
     );
 
-
+    initial begin
+        apb_inf.preset_n = 0;
+        #20ns;
+        apb_inf.preset_n = 1;
+    end
+    
     initial begin
         $dumpfile("dump.vcd");
         $dumpvars;
-        $display("Atlas : %0h", apb_inf.preset_n);
-        uvm_config_db#(virtual apb_if)::set(null, "uvm_test_top", "vif", apb_inf);
+        uvm_config_db#(virtual apb_if)::set(null, "uvm_test_top.env.agt", "vif", apb_inf);
 
         run_test();
     end 

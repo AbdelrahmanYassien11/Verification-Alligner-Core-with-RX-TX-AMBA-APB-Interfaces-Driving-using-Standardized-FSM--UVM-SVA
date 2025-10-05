@@ -9,7 +9,7 @@ vlog -f tb.f +cover -covercells
 vopt apb_tb_top -o top_optimized +acc +cover=bcefsx
 #+ahb_lite(rtl)
 
-set test_names {apb_base_test}
+set test_names {write_read_test}
 
 foreach test_name $test_names {
 	vsim top_optimized -cover -voptargs=+acc -solvefaildebug=2 -debugDB +UVM_TESTNAME=$test_name

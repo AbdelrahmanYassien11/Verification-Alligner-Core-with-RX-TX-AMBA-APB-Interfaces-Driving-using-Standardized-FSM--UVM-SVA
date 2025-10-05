@@ -60,10 +60,12 @@
             
             //Getting Virtual Interface Instance
             if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif)) begin
-                `uvm_fatal("APB_NO_VIF", $sformatf("Could not get from the database the APB virtual interface using name"))
+                `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
             end
             else begin
                 apb_agt_cfg.set_vif(vif);
+                uvm_config_db#(apb_vif)::set(this,"drv", "vif", vif);
+                uvm_config_db#(apb_vif)::set(this,"mon", "vif", vif);
             end
 
             //connecting the monitor's analysis port to the agent's

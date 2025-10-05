@@ -32,8 +32,8 @@
             super.build_phase(phase);
             
             // Setter & Getter
-            if(! uvm_config_db#(virtual apb_if)::get(this,"","vif",vif))
-                `uvm_fatal(get_type_name(), "FAILED TO GET VIRTUAL INTERFACE INSTANCE")
+            // if(! uvm_config_db#(virtual apb_if)::get(this,"","vif",vif))
+            //     `uvm_fatal(get_type_name(), "FAILED TO GET VIRTUAL INTERFACE INSTANCE")
         endfunction : build_phase
 
     //---------------------------------------------------------

@@ -13,7 +13,7 @@
 `ifndef AY_APB_SEQR
 `define AY_APB_SEQR
 
-    class apb_sequencer extends uvm_sequencer;
+    class apb_sequencer extends uvm_sequencer#(apb_sequence_item_drv, apb_sequence_item_mon);
     `uvm_component_utils(apb_sequencer)
 
     //------------------------------------------

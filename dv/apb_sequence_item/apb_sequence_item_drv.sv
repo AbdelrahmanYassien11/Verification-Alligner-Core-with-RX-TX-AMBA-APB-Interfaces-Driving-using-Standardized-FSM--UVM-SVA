@@ -27,8 +27,8 @@
         `uvm_field_int(data_wr, UVM_ALL_ON | UVM_HEX)
         `uvm_field_enum(apb_dir, dir, UVM_ALL_ON)
         // Test Specific
-        `uvm_field_int(pre_send_delay, UVM_ALL_ON | UVM_NOCOMPARE)
-        `uvm_field_int(post_send_delay, UVM_ALL_ON | UVM_NOCOMPARE)
+        `uvm_field_int(pre_send_delay, UVM_ALL_ON | UVM_DEC | UVM_NOCOMPARE)
+        `uvm_field_int(post_send_delay, UVM_ALL_ON | UVM_DEC | UVM_NOCOMPARE)
         `uvm_object_utils_end
         
     //------------------------------------------
@@ -37,6 +37,15 @@
         function new(string name = "");
             super.new(name);
         endfunction : new
+
+    //------------------------------------------
+    // Convert item into string to be displayed
+    //------------------------------------------
+        virtual function string convert2string();
+            string s = $sformatf("ADDR: %0h, DATA_WR: %0h, DIR: %0s, PRE-D: %0d, POST-D: %0d", addr, 
+                                  data_wr, dir.name(), pre_send_delay, post_send_delay);
+            return s;
+        endfunction
 
     endclass : apb_sequence_item_drv
 

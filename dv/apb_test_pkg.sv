@@ -18,10 +18,12 @@
     package apb_test_pkg;
 
         import uvm_pkg::*;
+        import apb_agt_pkg::*;
         import apb_env_pkg::*;
 
         `include "apb_base_test.sv"
-        // `include "apb_test.sv"
+        `include "one_random_test.sv"
+        `include "write_read_test.sv"
 
     endpackage : apb_test_pkg
 `endif

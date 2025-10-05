@@ -36,5 +36,14 @@
                 super.new(name);
             endfunction : new
 
+    //------------------------------------------
+    // Convert item into string to be displayed
+    //------------------------------------------
+        virtual function string convert2string();
+            string s = $sformatf("ADDR: %0h, DATA_RD: %0h, STATE: %0s, READY: %0s", addr, 
+                                  data_rd, pslverr.name(), pready.name());
+            return s;
+        endfunction
+
     endclass : apb_sequence_item_mon
 `endif

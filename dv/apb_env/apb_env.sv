@@ -26,7 +26,7 @@
     //------------------------------------------
     // Constructor for the environment component
     //------------------------------------------
-        function new(string name = "apb_env", uvm_component parent);
+        function new(string name = "", uvm_component parent);
             super.new(name, parent);
         endfunction : new
 
