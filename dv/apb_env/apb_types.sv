@@ -20,6 +20,10 @@
   typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]  apb_addr;
   typedef enum  {OK = 0, ERR = 1}             apb_pslverr;
   typedef enum  {READY = 0, NREADY = 1}       apb_pready;
+  typedef enum  {DISABLED = 0, ENABLED = 1}   apb_penable;
+  //typedef enum  {S1 = 0, S2 = 1, S3 = 2}      apb_psel;
+ 
+
 
   // DATA
   typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;

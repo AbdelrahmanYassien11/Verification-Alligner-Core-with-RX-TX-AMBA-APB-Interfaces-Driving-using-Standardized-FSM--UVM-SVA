@@ -34,6 +34,99 @@
 
         logic pslverr;
 
+
+        // ============================================
+        // CLOCKING BLOCKS
+        // ============================================
+        
+        // Driver Clocking Block (Master side)
+        // Used by driver to drive inputs to DUT
+        clocking driver_cb @(posedge clk);
+            default input #1step output #1ns;  // Setup/hold timing
+            
+            output paddr;
+            output pwrite;
+            output psel;
+            output penable;
+            output pwdata;
+            input  pready;
+            input  prdata;
+            input  pslverr;
+
+        endclocking
+        
+        // Monitor Clocking Block (Observer)
+        // Used by monitor to sample all signals
+        clocking monitor_cb @(posedge clk);
+            default input #1step;  // Sample just before clock edge
+            
+            input paddr;
+            input pwrite;
+            input psel;
+            input penable;
+            input pwdata;
+            input pready;
+            input prdata;
+            input pslverr;
+
+        endclocking
+        
+        // Slave Clocking Block (if needed for slave BFM)
+        // Used by slave responder to drive outputs
+        clocking slave_cb @(posedge clk);
+            default input #1step output #1ns;
+            
+            input  paddr;
+            input  pwrite;
+            input  psel;
+            input  penable;
+            input  pwdata;
+            output pready;
+            output prdata;
+            output pslverr;
+
+        endclocking
+
+        // ============================================
+        // MODPORTS
+        // ============================================
+        
+        // Driver modport - connects to UVM driver
+        modport driver_mp (
+            clocking driver_cb,
+            input clk,
+            input preset_n
+        );
+        
+        // Monitor modport - connects to UVM monitor
+        modport monitor_mp (
+            clocking monitor_cb,
+            input clk,
+            input preset_n
+        );
+        
+        // Slave modport - if needed
+        modport slave_mp (
+            clocking slave_cb,
+            input clk,
+            input preset_n
+        );
+        
+        // Passive modport - Assertions
+        modport passive_mp (
+            input paddr,
+            input pwrite,
+            input psel,
+            input penable,
+            input pwdata,
+            input pready,
+            input prdata,
+            input pslverr,
+            input clk,
+            input preset_n
+        );
+
+
     endinterface : apb_if
     
 `endif
