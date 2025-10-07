@@ -54,46 +54,62 @@
                 `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
             end
             state = IDLE;
-
+            vif.psel    <= 0;
+            vif.penable <= 0;
+            vif.pwrite  <= 0;
+            vif.paddr   <= 0;
+            vif.pwdata  <= 0;
             forever begin
                 rsp = apb_sequence_item_mon::type_id::create("rsp");
                 seq_item_port.get_next_item(req);
                 state_ctrl(req);
                 `uvm_info(get_type_name(), req.convert2string(), UVM_LOW)
-                @(vif.driver_cb);
-                case (state)
-                    IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen");
-                    SETUP:  begin
-                        vif.pwrite <= int'(req.dir);
-                        vif.paddr  <= req.addr;                        
-                    end
-
-
-
-                endcase
-
-                vif.pwrite <= int'(req.dir);
-                vif.paddr  <= req.addr;
-                if(!req.dir) begin
-                    vif.pwdata <= req.data_wr;
-                end
-                else begin
-                    wait(vif.pready);
-                    rsp.data_rd = vif.prdata;
-                    rsp.pslverr = apb_pslverr'(vif.pslverr);
-                    `uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
-                end
-                fork 
-                    begin
-                    @(vif.driver_cb);
-                    vif.driver_cb.penable <= 1'b1;
-                    @(vif.driver_cb);
-                    vif.driver_cb.penable <= 1'b1;
-                    seq_item_port.item_done();
-                    end
-                join_none
+                // @(vif.driver_cb);
             end
         endtask : run_phase
+
+
+        task drive_multiple_transaction;
+
+
+        endtask : drive_multiple_transaction
+
+        task drive_transaction;
+            for(int i = 0; i < item.pre_drive_delay; i++) begin
+                @(posedge vif.cclk);
+            end
+            case (state)
+                IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen");
+                SETUP:  begin
+                    vif.driver_cb.pwrite    <= int'(req.dir);
+                    vif.driver_cb.paddr     <= req.addr;
+                    vif.driver_cb.psel      <= 1;
+                    vif.driver_cb.penable   <= 0;
+                    if(req.dir == WRITE) begin
+                        vif.pwdata <= req.data_wr;
+                    end                       
+                end
+                ACCESS: begin
+                    vif.driver_cb.penable <= 1'b1;
+                end
+            endcase
+
+            foreach (!vif.monitor_cb.pready) begin @(posedge clk); end
+            rsp.data_rd = vif.monitor_cb.prdata;
+            rsp.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
+            `uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
+
+            vif.psel    <= 0;
+            vif.penable <= 0;
+            vif.pwrite  <= 0;
+            vif.paddr   <= 0;
+            vif.pwdata  <= 0;
+
+            for(int i = 0; i < item.post_drive_delay; i++) begin
+                @(posedge vif.clk);
+            end
+        endtask : drive_transaction
+
 
         task state_ctrl(input apb_sequence_item_drv req);
             case (state)
