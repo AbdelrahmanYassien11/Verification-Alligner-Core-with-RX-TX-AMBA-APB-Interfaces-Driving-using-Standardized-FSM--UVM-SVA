@@ -17,6 +17,7 @@
     `uvm_component_utils(apb_driver)
 
     local apb_vif vif;
+    local uvm_event drive_done;
     //------------------------------------------
     // Constructor for the driverironment component
     //------------------------------------------
@@ -29,6 +30,7 @@
     //-------------------------------------------------------------
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
+            drive_done = new();
         endfunction : build_phase
 
     //---------------------------------------------------------
@@ -42,45 +44,53 @@
 
 
     local bit  [1:0] state, next_state;
-    localparam IDLE = 2'b0, SETUP = 2'b01, ACCESS = 2'b10;
+    localparam IDLE = 2'b0, SETUP = 2'b01, ACCESS = 2'b10, RESPONSE = 2'b11;
     //---------------------------------------
     // Run phase
     //---------------------------------------
         task run_phase(uvm_phase phase);
-            apb_sequence_item_drv req;
-            apb_sequence_item_mon rsp;
             super.run_phase(phase);
             if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif)) begin
                 `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
             end
-            state = IDLE;
-            vif.psel    <= 0;
-            vif.penable <= 0;
-            vif.pwrite  <= 0;
-            vif.paddr   <= 0;
-            vif.pwdata  <= 0;
-            forever begin
-                rsp = apb_sequence_item_mon::type_id::create("rsp");
-                seq_item_port.get_next_item(req);
-                state_ctrl(req);
-                `uvm_info(get_type_name(), req.convert2string(), UVM_LOW)
-                // @(vif.driver_cb);
-            end
+            drive_multiple_transaction();
         endtask : run_phase
 
 
         task drive_multiple_transaction;
-
+            state                    = IDLE;
+            vif.driver_cb.psel      <= 0;
+            vif.driver_cb.penable   <= 0;
+            vif.driver_cb.pwrite    <= 0;
+            vif.driver_cb.paddr     <= 0;
+            vif.driver_cb.pwdata    <= 0;
+            forever begin
+                seq_item_port.get_next_item(req);
+                `uvm_info(get_type_name(), req.convert2string(), UVM_LOW)
+                // @(vif.driver_cb);
+                forever begin
+                    drive_transaction(req);
+                    if(drive_done.is_on()) begin
+                        drive_done.reset(0);
+                        break;
+                    end
+                end
+                seq_item_port.item_done();
+            end
 
         endtask : drive_multiple_transaction
 
-        task drive_transaction;
-            for(int i = 0; i < item.pre_drive_delay; i++) begin
-                @(posedge vif.cclk);
-            end
+        task drive_transaction(apb_sequence_item_drv req);
+            apb_sequence_item_mon rsp = apb_sequence_item_mon::type_id::create("rsp");
+            // $display("YOOOOOOOOOOOOOOOOOOOOOO");
+            state_ctrl(req);
             case (state)
-                IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen");
+                IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen")
                 SETUP:  begin
+                    $display("SETUP");
+                    for(int i = 0; i < req.pre_send_delay; i++) begin
+                        @(posedge vif.clk);
+                    end
                     vif.driver_cb.pwrite    <= int'(req.dir);
                     vif.driver_cb.paddr     <= req.addr;
                     vif.driver_cb.psel      <= 1;
@@ -90,24 +100,32 @@
                     end                       
                 end
                 ACCESS: begin
+                    $display("ACCESS");
                     vif.driver_cb.penable <= 1'b1;
+                end
+                RESPONSE: begin
+                    $display("RESPONSE");
+                    while (vif.monitor_cb.pready != 1'b1) begin 
+                        @(posedge vif.clk); 
+                    end
+                    rsp.data_rd = vif.monitor_cb.prdata;
+                    rsp.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
+                    `uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
+
+                    state                    = IDLE;
+                    vif.driver_cb.psel      <= 0;
+                    vif.driver_cb.penable   <= 0;
+                    vif.driver_cb.pwrite    <= 0;
+                    vif.driver_cb.paddr     <= 0;
+                    vif.driver_cb.pwdata    <= 0;
+
+                    for(int i = 0; i < req.post_send_delay; i++) begin
+                        @(posedge vif.clk);
+                    end
+                    drive_done.trigger();                    
                 end
             endcase
 
-            foreach (!vif.monitor_cb.pready) begin @(posedge clk); end
-            rsp.data_rd = vif.monitor_cb.prdata;
-            rsp.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
-            `uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
-
-            vif.psel    <= 0;
-            vif.penable <= 0;
-            vif.pwrite  <= 0;
-            vif.paddr   <= 0;
-            vif.pwdata  <= 0;
-
-            for(int i = 0; i < item.post_drive_delay; i++) begin
-                @(posedge vif.clk);
-            end
         endtask : drive_transaction
 
 
@@ -123,15 +141,16 @@
                     if(vif.monitor_cb.pready == NREADY) begin 
                         state = ACCESS;
                     end
-                    else if (vif.monitor_cb.pready == READY && req.penable) begin
-                        state = SETUP;
-                    end
-                    else if (vif.monitor_cb.pready == READY && ~req.penable) begin
-                        state = IDLE;
+                    else if (vif.monitor_cb.pready == READY && ~vif.monitor_cb.penable) begin
+                        state = RESPONSE;
                     end
                     else begin
                         `uvm_fatal(get_type_name(), "undefined state")
                     end
+                end
+                RESPONSE: begin
+                    $display("HELLOOOOOOOOoooo");
+                    state = IDLE;
                 end
                 default: `uvm_fatal(get_type_name(), "undefined state")  
             endcase

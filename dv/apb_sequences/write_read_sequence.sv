@@ -42,12 +42,12 @@
                 req = apb_sequence_item_drv::type_id::create("req");
 
                 start_item(req);
-                if(!(req.randomize() with {dir == WRITE; addr == 'h0004;}))
+                if(!(req.randomize() with {dir == WRITE; addr == 'h0000; data_wr == 'h0000_0011;}))
                     `uvm_fatal(get_type_name(), "Failed to randomize sequence item")
                 finish_item(req);
 
                 start_item(req);
-                if(!(req.randomize() with {dir == READ; addr == 'h0004;}))
+                if(!(req.randomize() with {dir == READ; addr == 'h000C;}))
                     `uvm_fatal(get_type_name(), "Failed to randomize sequence item")
                 finish_item(req);
             endtask : body

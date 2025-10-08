@@ -31,6 +31,8 @@
         `uvm_field_int(post_send_delay, UVM_ALL_ON | UVM_DEC | UVM_NOCOMPARE)
         `uvm_object_utils_end
         
+        constraint pre_drive_delay  {pre_send_delay  inside {[1:10]};};
+        constraint post_drive_delay {post_send_delay inside {[1:10]};};
     //------------------------------------------
     // Constructor for the Environment Object
     //------------------------------------------

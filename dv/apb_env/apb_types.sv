@@ -16,7 +16,7 @@
   typedef virtual apb_if apb_vif;
 
   // CONTROL
-  typedef enum  {WRITE = 0, READ = 1}         apb_dir;
+  typedef enum  {WRITE = 1, READ = 0}         apb_dir;
   typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]  apb_addr;
   typedef enum  {OK = 0, ERR = 1}             apb_pslverr;
   typedef enum  {READY = 0, NREADY = 1}       apb_pready;

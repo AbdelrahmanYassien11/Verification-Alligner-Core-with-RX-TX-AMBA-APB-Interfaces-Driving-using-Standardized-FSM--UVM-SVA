@@ -73,19 +73,19 @@
         
         // Slave Clocking Block (if needed for slave BFM)
         // Used by slave responder to drive outputs
-        clocking slave_cb @(posedge clk);
-            default input #1step output #1ns;
+        // clocking slave_cb @(posedge clk);
+        //     default input #1step output #1ns;
             
-            input  paddr;
-            input  pwrite;
-            input  psel;
-            input  penable;
-            input  pwdata;
-            output pready;
-            output prdata;
-            output pslverr;
+        //     input  paddr;
+        //     input  pwrite;
+        //     input  psel;
+        //     input  penable;
+        //     input  pwdata;
+        //     output pready;
+        //     output prdata;
+        //     output pslverr;
 
-        endclocking
+        // endclocking
 
         // ============================================
         // MODPORTS
@@ -106,11 +106,11 @@
         );
         
         // Slave modport - if needed
-        modport slave_mp (
-            clocking slave_cb,
-            input clk,
-            input preset_n
-        );
+        // modport slave_mp (
+        //     clocking slave_cb,
+        //     input clk,
+        //     input preset_n
+        // );
         
         // Passive modport - Assertions
         modport passive_mp (
