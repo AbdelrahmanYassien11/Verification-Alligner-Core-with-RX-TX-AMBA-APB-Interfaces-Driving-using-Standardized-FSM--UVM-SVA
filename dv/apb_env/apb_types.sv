@@ -25,9 +25,9 @@
  
 
 
-  // DATA
-  typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;
-  typedef logic [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_rd;
+  // APB DATA
+  // typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;
+  typedef logic [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data;
 
 
 `endif

@@ -82,7 +82,6 @@
 
         task drive_transaction(apb_sequence_item_drv req);
             apb_sequence_item_mon rsp = apb_sequence_item_mon::type_id::create("rsp");
-            // $display("YOOOOOOOOOOOOOOOOOOOOOO");
             state_ctrl(req);
             case (state)
                 IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen")
@@ -149,7 +148,6 @@
                     end
                 end
                 RESPONSE: begin
-                    $display("HELLOOOOOOOOoooo");
                     state = IDLE;
                 end
                 default: `uvm_fatal(get_type_name(), "undefined state")  

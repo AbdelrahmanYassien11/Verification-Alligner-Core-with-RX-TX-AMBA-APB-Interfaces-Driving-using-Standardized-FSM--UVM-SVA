@@ -15,17 +15,14 @@
 `define AY_APB_SEQ_ITEM_DRV
     class apb_sequence_item_drv extends apb_base_sequence_item;
 
-        rand apb_addr        addr;
-        rand apb_data_wr     data_wr;
-        rand apb_dir         dir;
         rand int unsigned pre_send_delay, post_send_delay;
 
         // Field Registeration
         `uvm_object_utils_begin(apb_sequence_item_drv)
         // APB Inputs
-        `uvm_field_int(addr, UVM_ALL_ON | UVM_HEX)
-        `uvm_field_int(data_wr, UVM_ALL_ON | UVM_HEX)
-        `uvm_field_enum(apb_dir, dir, UVM_ALL_ON)
+        // `uvm_field_int(addr, UVM_ALL_ON | UVM_HEX)
+        // `uvm_field_int(data, UVM_ALL_ON | UVM_HEX)
+        // `uvm_field_enum(apb_dir, dir, UVM_ALL_ON)
         // Test Specific
         `uvm_field_int(pre_send_delay, UVM_ALL_ON | UVM_DEC | UVM_NOCOMPARE)
         `uvm_field_int(post_send_delay, UVM_ALL_ON | UVM_DEC | UVM_NOCOMPARE)
@@ -44,8 +41,9 @@
     // Convert item into string to be displayed
     //------------------------------------------
         virtual function string convert2string();
+            super.conver2string();
             string s = $sformatf("ADDR: %0h, DATA_WR: %0h, DIR: %0s, PRE-D: %0d, POST-D: %0d", addr, 
-                                  data_wr, dir.name(), pre_send_delay, post_send_delay);
+                                  data, dir.name(), pre_send_delay, post_send_delay);
             return s;
         endfunction
 

@@ -14,8 +14,18 @@
 `ifndef AY_APB_SEQ_ITEM_BASE
 `define AY_APB_SEQ_ITEM_BASE
     class apb_base_sequence_item extends uvm_sequence_item;
-        `uvm_object_utils(apb_base_sequence_item)
 
+
+        rand apb_addr        addr;
+        rand apb_dir         dir;
+        rand apb_data        data;
+
+        `uvm_object_utils_begin(apb_base_sequence_item)
+            // APB Inputs
+            `uvm_field_int(addr, UVM_ALL_ON | UVM_HEX)
+            `uvm_field_int(data, UVM_ALL_ON | UVM_HEX)
+            `uvm_field_enum(apb_dir, dir, UVM_ALL_ON)
+        `uvm_object_utils_end
     //------------------------------------------
     // Constructor for the Environment Object
     //------------------------------------------
