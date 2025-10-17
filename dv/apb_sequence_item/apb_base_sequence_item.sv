@@ -33,5 +33,10 @@
             super.new(name);
         endfunction : new
 
+        function string convert2string();
+            string s = $sformatf("DATA: %0h, ADDR:%0h, DIR:%0s", data, addr, dir.name());
+            return s;
+        endfunction : convert2string
+
     endclass : apb_base_sequence_item
 `endif

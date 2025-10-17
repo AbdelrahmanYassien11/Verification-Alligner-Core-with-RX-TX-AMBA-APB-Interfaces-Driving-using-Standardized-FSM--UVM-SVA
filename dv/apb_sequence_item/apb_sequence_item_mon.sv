@@ -17,7 +17,7 @@
 
         apb_pslverr     pslverr;
         apb_pready      pready;
-        int unsigned    pre_send_delay;
+        int unsigned    cycles_b4_item;
         int unsigned    transaction_length;
 
         // Field Registeration
@@ -28,7 +28,7 @@
         // `uvm_field_enum(apb_dir, dir, UVM_ALL_ON)
         `uvm_field_enum(apb_pslverr, pslverr, UVM_ALL_ON)
         `uvm_field_enum(apb_pready, pready, UVM_ALL_ON)
-        `uvm_field_int(pre_send_delay, UVM_ALL_ON | UVM_DEC)
+        `uvm_field_int(cycles_b4_item, UVM_ALL_ON | UVM_DEC)
         `uvm_field_int(transaction_length, UVM_ALL_ON | UVM_DEC)
         `uvm_object_utils_end
 
@@ -43,9 +43,9 @@
     // Convert item into string to be displayed
     //------------------------------------------
         virtual function string convert2string();
-            super.convert2string();
-            string s = $sformatf("ADDR: %0h, DIR: %0s, DATA_RD: %0h, STATE: %0s, READY: %0s, PRE-D: %0d, LEN: %0d", addr, 
-                                  data, dir.name(), pslverr.name(), pready.name(), pre_send_delay, transaction_length);
+            string s = super.convert2string();
+            s = $sformatf("%0s, RESPONSE: %0s, READY: %0s, PRE-D: %0d, LEN: %0d", 
+                s, pslverr.name(), pready.name(), cycles_b4_item, transaction_length);
             return s;
         endfunction
 

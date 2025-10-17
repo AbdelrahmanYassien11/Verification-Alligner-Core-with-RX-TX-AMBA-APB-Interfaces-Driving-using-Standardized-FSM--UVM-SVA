@@ -86,30 +86,32 @@
             case (state)
                 IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen")
                 SETUP:  begin
-                    $display("SETUP");
                     for(int i = 0; i < req.pre_send_delay; i++) begin
                         @(posedge vif.clk);
                     end
+                    $display("Time: %0t SETUP", $time());
                     vif.driver_cb.pwrite    <= int'(req.dir);
                     vif.driver_cb.paddr     <= req.addr;
                     vif.driver_cb.psel      <= 1;
                     vif.driver_cb.penable   <= 0;
                     if(req.dir == WRITE) begin
-                        vif.pwdata <= req.data_wr;
-                    end                       
+                        vif.driver_cb.pwdata <= req.data;
+                    end
+                    @(vif.driver_cb);
+                    @(posedge vif.clk);                      
                 end
                 ACCESS: begin
-                    $display("ACCESS");
+                    $display("Time: %0t ACCESS", $time());
                     vif.driver_cb.penable <= 1'b1;
                 end
                 RESPONSE: begin
-                    $display("RESPONSE");
+                    $display("Time: %0t RESPONSE", $time());
                     while (vif.monitor_cb.pready != 1'b1) begin 
                         @(posedge vif.clk); 
                     end
-                    rsp.data_rd = vif.monitor_cb.prdata;
+                    rsp.data = vif.monitor_cb.prdata;
                     rsp.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
-                    `uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
+                    //`uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
 
                     state                    = IDLE;
                     vif.driver_cb.psel      <= 0;

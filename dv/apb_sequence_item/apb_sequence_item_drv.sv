@@ -41,9 +41,9 @@
     // Convert item into string to be displayed
     //------------------------------------------
         virtual function string convert2string();
-            super.conver2string();
-            string s = $sformatf("ADDR: %0h, DATA_WR: %0h, DIR: %0s, PRE-D: %0d, POST-D: %0d", addr, 
-                                  data, dir.name(), pre_send_delay, post_send_delay);
+            string s = super.convert2string();
+            s = $sformatf("%0s, PRE-D: %0d, POST-D: %0d", 
+                            s, pre_send_delay, post_send_delay);
             return s;
         endfunction
 

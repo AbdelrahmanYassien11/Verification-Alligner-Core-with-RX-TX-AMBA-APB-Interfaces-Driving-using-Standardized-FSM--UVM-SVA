@@ -1,0 +1,5342 @@
+$date
+	Fri Oct 17 23:47:59 2025
+$end
+$version
+	QuestaSim Version 2024.1
+$end
+$timescale
+	1ns
+$end
+
+$scope module uvm_root $end
+$upscope $end
+
+$scope module apb_tb_top $end
+$var reg 1 ! clk $end
+
+$scope module dut $end
+$var parameter 32 " ALGN_DATA_WIDTH $end
+$var parameter 32 # FIFO_DEPTH $end
+$var parameter 32 $ APB_ADDR_WIDTH $end
+$var parameter 32 % APB_DATA_WIDTH $end
+$var parameter 32 & ALGN_OFFSET_WIDTH $end
+$var parameter 32 ' ALGN_SIZE_WIDTH $end
+$var parameter 32 ( STATUS_CNT_DROP_WIDTH $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 + paddr [15] $end
+$var wire 1 , paddr [14] $end
+$var wire 1 - paddr [13] $end
+$var wire 1 . paddr [12] $end
+$var wire 1 / paddr [11] $end
+$var wire 1 0 paddr [10] $end
+$var wire 1 1 paddr [9] $end
+$var wire 1 2 paddr [8] $end
+$var wire 1 3 paddr [7] $end
+$var wire 1 4 paddr [6] $end
+$var wire 1 5 paddr [5] $end
+$var wire 1 6 paddr [4] $end
+$var wire 1 7 paddr [3] $end
+$var wire 1 8 paddr [2] $end
+$var wire 1 9 paddr [1] $end
+$var wire 1 : paddr [0] $end
+$var wire 1 ; pwrite $end
+$var wire 1 < psel $end
+$var wire 1 = penable $end
+$var wire 1 > pwdata [31] $end
+$var wire 1 ? pwdata [30] $end
+$var wire 1 @ pwdata [29] $end
+$var wire 1 A pwdata [28] $end
+$var wire 1 B pwdata [27] $end
+$var wire 1 C pwdata [26] $end
+$var wire 1 D pwdata [25] $end
+$var wire 1 E pwdata [24] $end
+$var wire 1 F pwdata [23] $end
+$var wire 1 G pwdata [22] $end
+$var wire 1 H pwdata [21] $end
+$var wire 1 I pwdata [20] $end
+$var wire 1 J pwdata [19] $end
+$var wire 1 K pwdata [18] $end
+$var wire 1 L pwdata [17] $end
+$var wire 1 M pwdata [16] $end
+$var wire 1 N pwdata [15] $end
+$var wire 1 O pwdata [14] $end
+$var wire 1 P pwdata [13] $end
+$var wire 1 Q pwdata [12] $end
+$var wire 1 R pwdata [11] $end
+$var wire 1 S pwdata [10] $end
+$var wire 1 T pwdata [9] $end
+$var wire 1 U pwdata [8] $end
+$var wire 1 V pwdata [7] $end
+$var wire 1 W pwdata [6] $end
+$var wire 1 X pwdata [5] $end
+$var wire 1 Y pwdata [4] $end
+$var wire 1 Z pwdata [3] $end
+$var wire 1 [ pwdata [2] $end
+$var wire 1 \ pwdata [1] $end
+$var wire 1 ] pwdata [0] $end
+$var wire 1 ^ pready $end
+$var reg 32 _ prdata [31:0] $end
+$var reg 1 ` pslverr $end
+$var wire 1 a md_rx_valid $end
+$var wire 1 b md_rx_data [31] $end
+$var wire 1 c md_rx_data [30] $end
+$var wire 1 d md_rx_data [29] $end
+$var wire 1 e md_rx_data [28] $end
+$var wire 1 f md_rx_data [27] $end
+$var wire 1 g md_rx_data [26] $end
+$var wire 1 h md_rx_data [25] $end
+$var wire 1 i md_rx_data [24] $end
+$var wire 1 j md_rx_data [23] $end
+$var wire 1 k md_rx_data [22] $end
+$var wire 1 l md_rx_data [21] $end
+$var wire 1 m md_rx_data [20] $end
+$var wire 1 n md_rx_data [19] $end
+$var wire 1 o md_rx_data [18] $end
+$var wire 1 p md_rx_data [17] $end
+$var wire 1 q md_rx_data [16] $end
+$var wire 1 r md_rx_data [15] $end
+$var wire 1 s md_rx_data [14] $end
+$var wire 1 t md_rx_data [13] $end
+$var wire 1 u md_rx_data [12] $end
+$var wire 1 v md_rx_data [11] $end
+$var wire 1 w md_rx_data [10] $end
+$var wire 1 x md_rx_data [9] $end
+$var wire 1 y md_rx_data [8] $end
+$var wire 1 z md_rx_data [7] $end
+$var wire 1 { md_rx_data [6] $end
+$var wire 1 | md_rx_data [5] $end
+$var wire 1 } md_rx_data [4] $end
+$var wire 1 ~ md_rx_data [3] $end
+$var wire 1 !! md_rx_data [2] $end
+$var wire 1 "! md_rx_data [1] $end
+$var wire 1 #! md_rx_data [0] $end
+$var wire 1 $! md_rx_offset [1] $end
+$var wire 1 %! md_rx_offset [0] $end
+$var wire 1 &! md_rx_size [2] $end
+$var wire 1 '! md_rx_size [1] $end
+$var wire 1 (! md_rx_size [0] $end
+$var reg 1 )! md_rx_ready $end
+$var reg 1 *! md_rx_err $end
+$var reg 1 +! md_tx_valid $end
+$var reg 32 ,! md_tx_data [31:0] $end
+$var reg 2 -! md_tx_offset [1:0] $end
+$var reg 3 .! md_tx_size [2:0] $end
+$var wire 1 /! md_tx_ready $end
+$var wire 1 0! md_tx_err $end
+$var reg 1 1! irq $end
+
+$scope module core $end
+$var parameter 32 2! APB_ADDR_WIDTH $end
+$var parameter 32 3! ALGN_DATA_WIDTH $end
+$var parameter 32 4! FIFO_DEPTH $end
+$var parameter 32 5! CDC_RX_TO_REG $end
+$var parameter 32 6! CDC_REG_TO_TX $end
+$var parameter 32 7! STATUS_CNT_DROP_WIDTH $end
+$var parameter 32 8! APB_DATA_WIDTH $end
+$var parameter 32 9! ALGN_OFFSET_WIDTH $end
+$var parameter 32 :! ALGN_SIZE_WIDTH $end
+$var parameter 32 ;! FIFO_WIDTH $end
+$var parameter 32 <! FIFO_LVL_WIDTH $end
+$var wire 1 ) pclk $end
+$var wire 1 * preset_n $end
+$var wire 1 + paddr [15] $end
+$var wire 1 , paddr [14] $end
+$var wire 1 - paddr [13] $end
+$var wire 1 . paddr [12] $end
+$var wire 1 / paddr [11] $end
+$var wire 1 0 paddr [10] $end
+$var wire 1 1 paddr [9] $end
+$var wire 1 2 paddr [8] $end
+$var wire 1 3 paddr [7] $end
+$var wire 1 4 paddr [6] $end
+$var wire 1 5 paddr [5] $end
+$var wire 1 6 paddr [4] $end
+$var wire 1 7 paddr [3] $end
+$var wire 1 8 paddr [2] $end
+$var wire 1 9 paddr [1] $end
+$var wire 1 : paddr [0] $end
+$var wire 1 ; pwrite $end
+$var wire 1 < psel $end
+$var wire 1 = penable $end
+$var wire 1 > pwdata [31] $end
+$var wire 1 ? pwdata [30] $end
+$var wire 1 @ pwdata [29] $end
+$var wire 1 A pwdata [28] $end
+$var wire 1 B pwdata [27] $end
+$var wire 1 C pwdata [26] $end
+$var wire 1 D pwdata [25] $end
+$var wire 1 E pwdata [24] $end
+$var wire 1 F pwdata [23] $end
+$var wire 1 G pwdata [22] $end
+$var wire 1 H pwdata [21] $end
+$var wire 1 I pwdata [20] $end
+$var wire 1 J pwdata [19] $end
+$var wire 1 K pwdata [18] $end
+$var wire 1 L pwdata [17] $end
+$var wire 1 M pwdata [16] $end
+$var wire 1 N pwdata [15] $end
+$var wire 1 O pwdata [14] $end
+$var wire 1 P pwdata [13] $end
+$var wire 1 Q pwdata [12] $end
+$var wire 1 R pwdata [11] $end
+$var wire 1 S pwdata [10] $end
+$var wire 1 T pwdata [9] $end
+$var wire 1 U pwdata [8] $end
+$var wire 1 V pwdata [7] $end
+$var wire 1 W pwdata [6] $end
+$var wire 1 X pwdata [5] $end
+$var wire 1 Y pwdata [4] $end
+$var wire 1 Z pwdata [3] $end
+$var wire 1 [ pwdata [2] $end
+$var wire 1 \ pwdata [1] $end
+$var wire 1 ] pwdata [0] $end
+$var wire 1 ^ pready $end
+$var reg 32 =! prdata [31:0] $end
+$var reg 1 >! pslverr $end
+$var wire 1 ) md_rx_clk $end
+$var wire 1 a md_rx_valid $end
+$var wire 1 b md_rx_data [31] $end
+$var wire 1 c md_rx_data [30] $end
+$var wire 1 d md_rx_data [29] $end
+$var wire 1 e md_rx_data [28] $end
+$var wire 1 f md_rx_data [27] $end
+$var wire 1 g md_rx_data [26] $end
+$var wire 1 h md_rx_data [25] $end
+$var wire 1 i md_rx_data [24] $end
+$var wire 1 j md_rx_data [23] $end
+$var wire 1 k md_rx_data [22] $end
+$var wire 1 l md_rx_data [21] $end
+$var wire 1 m md_rx_data [20] $end
+$var wire 1 n md_rx_data [19] $end
+$var wire 1 o md_rx_data [18] $end
+$var wire 1 p md_rx_data [17] $end
+$var wire 1 q md_rx_data [16] $end
+$var wire 1 r md_rx_data [15] $end
+$var wire 1 s md_rx_data [14] $end
+$var wire 1 t md_rx_data [13] $end
+$var wire 1 u md_rx_data [12] $end
+$var wire 1 v md_rx_data [11] $end
+$var wire 1 w md_rx_data [10] $end
+$var wire 1 x md_rx_data [9] $end
+$var wire 1 y md_rx_data [8] $end
+$var wire 1 z md_rx_data [7] $end
+$var wire 1 { md_rx_data [6] $end
+$var wire 1 | md_rx_data [5] $end
+$var wire 1 } md_rx_data [4] $end
+$var wire 1 ~ md_rx_data [3] $end
+$var wire 1 !! md_rx_data [2] $end
+$var wire 1 "! md_rx_data [1] $end
+$var wire 1 #! md_rx_data [0] $end
+$var wire 1 $! md_rx_offset [1] $end
+$var wire 1 %! md_rx_offset [0] $end
+$var wire 1 &! md_rx_size [2] $end
+$var wire 1 '! md_rx_size [1] $end
+$var wire 1 (! md_rx_size [0] $end
+$var reg 1 ?! md_rx_ready $end
+$var reg 1 @! md_rx_err $end
+$var wire 1 ) md_tx_clk $end
+$var reg 1 A! md_tx_valid $end
+$var reg 32 B! md_tx_data [31:0] $end
+$var reg 2 C! md_tx_offset [1:0] $end
+$var reg 3 D! md_tx_size [2:0] $end
+$var wire 1 /! md_tx_ready $end
+$var wire 1 0! md_tx_err $end
+$var wire 1 E! irq $end
+$var wire 1 F! rx_ctrl_2_regs_status_cnt_drop [7] $end
+$var wire 1 G! rx_ctrl_2_regs_status_cnt_drop [6] $end
+$var wire 1 H! rx_ctrl_2_regs_status_cnt_drop [5] $end
+$var wire 1 I! rx_ctrl_2_regs_status_cnt_drop [4] $end
+$var wire 1 J! rx_ctrl_2_regs_status_cnt_drop [3] $end
+$var wire 1 K! rx_ctrl_2_regs_status_cnt_drop [2] $end
+$var wire 1 L! rx_ctrl_2_regs_status_cnt_drop [1] $end
+$var wire 1 M! rx_ctrl_2_regs_status_cnt_drop [0] $end
+$var wire 1 N! regs_2_rx_ctrl_ctrl_clr $end
+$var wire 1 O! rx_ctrl_2_rx_fifo_push_valid $end
+$var wire 1 P! rx_ctrl_2_rx_fifo_push_data [36] $end
+$var wire 1 Q! rx_ctrl_2_rx_fifo_push_data [35] $end
+$var wire 1 R! rx_ctrl_2_rx_fifo_push_data [34] $end
+$var wire 1 S! rx_ctrl_2_rx_fifo_push_data [33] $end
+$var wire 1 T! rx_ctrl_2_rx_fifo_push_data [32] $end
+$var wire 1 U! rx_ctrl_2_rx_fifo_push_data [31] $end
+$var wire 1 V! rx_ctrl_2_rx_fifo_push_data [30] $end
+$var wire 1 W! rx_ctrl_2_rx_fifo_push_data [29] $end
+$var wire 1 X! rx_ctrl_2_rx_fifo_push_data [28] $end
+$var wire 1 Y! rx_ctrl_2_rx_fifo_push_data [27] $end
+$var wire 1 Z! rx_ctrl_2_rx_fifo_push_data [26] $end
+$var wire 1 [! rx_ctrl_2_rx_fifo_push_data [25] $end
+$var wire 1 \! rx_ctrl_2_rx_fifo_push_data [24] $end
+$var wire 1 ]! rx_ctrl_2_rx_fifo_push_data [23] $end
+$var wire 1 ^! rx_ctrl_2_rx_fifo_push_data [22] $end
+$var wire 1 _! rx_ctrl_2_rx_fifo_push_data [21] $end
+$var wire 1 `! rx_ctrl_2_rx_fifo_push_data [20] $end
+$var wire 1 a! rx_ctrl_2_rx_fifo_push_data [19] $end
+$var wire 1 b! rx_ctrl_2_rx_fifo_push_data [18] $end
+$var wire 1 c! rx_ctrl_2_rx_fifo_push_data [17] $end
+$var wire 1 d! rx_ctrl_2_rx_fifo_push_data [16] $end
+$var wire 1 e! rx_ctrl_2_rx_fifo_push_data [15] $end
+$var wire 1 f! rx_ctrl_2_rx_fifo_push_data [14] $end
+$var wire 1 g! rx_ctrl_2_rx_fifo_push_data [13] $end
+$var wire 1 h! rx_ctrl_2_rx_fifo_push_data [12] $end
+$var wire 1 i! rx_ctrl_2_rx_fifo_push_data [11] $end
+$var wire 1 j! rx_ctrl_2_rx_fifo_push_data [10] $end
+$var wire 1 k! rx_ctrl_2_rx_fifo_push_data [9] $end
+$var wire 1 l! rx_ctrl_2_rx_fifo_push_data [8] $end
+$var wire 1 m! rx_ctrl_2_rx_fifo_push_data [7] $end
+$var wire 1 n! rx_ctrl_2_rx_fifo_push_data [6] $end
+$var wire 1 o! rx_ctrl_2_rx_fifo_push_data [5] $end
+$var wire 1 p! rx_ctrl_2_rx_fifo_push_data [4] $end
+$var wire 1 q! rx_ctrl_2_rx_fifo_push_data [3] $end
+$var wire 1 r! rx_ctrl_2_rx_fifo_push_data [2] $end
+$var wire 1 s! rx_ctrl_2_rx_fifo_push_data [1] $end
+$var wire 1 t! rx_ctrl_2_rx_fifo_push_data [0] $end
+$var wire 1 u! rx_fifo_2_rx_ctrl_push_ready $end
+$var wire 1 v! rx_fifo_2_rx_ctrl_push_full $end
+$var wire 1 w! rx_fifo_2_regs_fifo_full $end
+$var wire 1 x! rx_fifo_2_regs_fifo_empty $end
+$var wire 1 y! rx_fifo_2_regs_fifo_lvl [3] $end
+$var wire 1 z! rx_fifo_2_regs_fifo_lvl [2] $end
+$var wire 1 {! rx_fifo_2_regs_fifo_lvl [1] $end
+$var wire 1 |! rx_fifo_2_regs_fifo_lvl [0] $end
+$var wire 1 }! tx_fifo_2_regs_fifo_lvl [3] $end
+$var wire 1 ~! tx_fifo_2_regs_fifo_lvl [2] $end
+$var wire 1 !" tx_fifo_2_regs_fifo_lvl [1] $end
+$var wire 1 "" tx_fifo_2_regs_fifo_lvl [0] $end
+$var wire 1 #" tx_fifo_2_regs_fifo_empty $end
+$var wire 1 $" tx_fifo_2_regs_fifo_full $end
+$var wire 1 %" tx_fifo_2_tx_ctrl_pop_valid $end
+$var wire 1 &" tx_fifo_2_tx_ctrl_pop_data [36] $end
+$var wire 1 '" tx_fifo_2_tx_ctrl_pop_data [35] $end
+$var wire 1 (" tx_fifo_2_tx_ctrl_pop_data [34] $end
+$var wire 1 )" tx_fifo_2_tx_ctrl_pop_data [33] $end
+$var wire 1 *" tx_fifo_2_tx_ctrl_pop_data [32] $end
+$var wire 1 +" tx_fifo_2_tx_ctrl_pop_data [31] $end
+$var wire 1 ," tx_fifo_2_tx_ctrl_pop_data [30] $end
+$var wire 1 -" tx_fifo_2_tx_ctrl_pop_data [29] $end
+$var wire 1 ." tx_fifo_2_tx_ctrl_pop_data [28] $end
+$var wire 1 /" tx_fifo_2_tx_ctrl_pop_data [27] $end
+$var wire 1 0" tx_fifo_2_tx_ctrl_pop_data [26] $end
+$var wire 1 1" tx_fifo_2_tx_ctrl_pop_data [25] $end
+$var wire 1 2" tx_fifo_2_tx_ctrl_pop_data [24] $end
+$var wire 1 3" tx_fifo_2_tx_ctrl_pop_data [23] $end
+$var wire 1 4" tx_fifo_2_tx_ctrl_pop_data [22] $end
+$var wire 1 5" tx_fifo_2_tx_ctrl_pop_data [21] $end
+$var wire 1 6" tx_fifo_2_tx_ctrl_pop_data [20] $end
+$var wire 1 7" tx_fifo_2_tx_ctrl_pop_data [19] $end
+$var wire 1 8" tx_fifo_2_tx_ctrl_pop_data [18] $end
+$var wire 1 9" tx_fifo_2_tx_ctrl_pop_data [17] $end
+$var wire 1 :" tx_fifo_2_tx_ctrl_pop_data [16] $end
+$var wire 1 ;" tx_fifo_2_tx_ctrl_pop_data [15] $end
+$var wire 1 <" tx_fifo_2_tx_ctrl_pop_data [14] $end
+$var wire 1 =" tx_fifo_2_tx_ctrl_pop_data [13] $end
+$var wire 1 >" tx_fifo_2_tx_ctrl_pop_data [12] $end
+$var wire 1 ?" tx_fifo_2_tx_ctrl_pop_data [11] $end
+$var wire 1 @" tx_fifo_2_tx_ctrl_pop_data [10] $end
+$var wire 1 A" tx_fifo_2_tx_ctrl_pop_data [9] $end
+$var wire 1 B" tx_fifo_2_tx_ctrl_pop_data [8] $end
+$var wire 1 C" tx_fifo_2_tx_ctrl_pop_data [7] $end
+$var wire 1 D" tx_fifo_2_tx_ctrl_pop_data [6] $end
+$var wire 1 E" tx_fifo_2_tx_ctrl_pop_data [5] $end
+$var wire 1 F" tx_fifo_2_tx_ctrl_pop_data [4] $end
+$var wire 1 G" tx_fifo_2_tx_ctrl_pop_data [3] $end
+$var wire 1 H" tx_fifo_2_tx_ctrl_pop_data [2] $end
+$var wire 1 I" tx_fifo_2_tx_ctrl_pop_data [1] $end
+$var wire 1 J" tx_fifo_2_tx_ctrl_pop_data [0] $end
+$var wire 1 K" tx_fifo_2_tx_ctrl_pop_ready $end
+$var wire 1 L" rx_fifo_2_ctrl_pop_valid $end
+$var wire 1 M" rx_fifo_2_ctrl_pop_data [36] $end
+$var wire 1 N" rx_fifo_2_ctrl_pop_data [35] $end
+$var wire 1 O" rx_fifo_2_ctrl_pop_data [34] $end
+$var wire 1 P" rx_fifo_2_ctrl_pop_data [33] $end
+$var wire 1 Q" rx_fifo_2_ctrl_pop_data [32] $end
+$var wire 1 R" rx_fifo_2_ctrl_pop_data [31] $end
+$var wire 1 S" rx_fifo_2_ctrl_pop_data [30] $end
+$var wire 1 T" rx_fifo_2_ctrl_pop_data [29] $end
+$var wire 1 U" rx_fifo_2_ctrl_pop_data [28] $end
+$var wire 1 V" rx_fifo_2_ctrl_pop_data [27] $end
+$var wire 1 W" rx_fifo_2_ctrl_pop_data [26] $end
+$var wire 1 X" rx_fifo_2_ctrl_pop_data [25] $end
+$var wire 1 Y" rx_fifo_2_ctrl_pop_data [24] $end
+$var wire 1 Z" rx_fifo_2_ctrl_pop_data [23] $end
+$var wire 1 [" rx_fifo_2_ctrl_pop_data [22] $end
+$var wire 1 \" rx_fifo_2_ctrl_pop_data [21] $end
+$var wire 1 ]" rx_fifo_2_ctrl_pop_data [20] $end
+$var wire 1 ^" rx_fifo_2_ctrl_pop_data [19] $end
+$var wire 1 _" rx_fifo_2_ctrl_pop_data [18] $end
+$var wire 1 `" rx_fifo_2_ctrl_pop_data [17] $end
+$var wire 1 a" rx_fifo_2_ctrl_pop_data [16] $end
+$var wire 1 b" rx_fifo_2_ctrl_pop_data [15] $end
+$var wire 1 c" rx_fifo_2_ctrl_pop_data [14] $end
+$var wire 1 d" rx_fifo_2_ctrl_pop_data [13] $end
+$var wire 1 e" rx_fifo_2_ctrl_pop_data [12] $end
+$var wire 1 f" rx_fifo_2_ctrl_pop_data [11] $end
+$var wire 1 g" rx_fifo_2_ctrl_pop_data [10] $end
+$var wire 1 h" rx_fifo_2_ctrl_pop_data [9] $end
+$var wire 1 i" rx_fifo_2_ctrl_pop_data [8] $end
+$var wire 1 j" rx_fifo_2_ctrl_pop_data [7] $end
+$var wire 1 k" rx_fifo_2_ctrl_pop_data [6] $end
+$var wire 1 l" rx_fifo_2_ctrl_pop_data [5] $end
+$var wire 1 m" rx_fifo_2_ctrl_pop_data [4] $end
+$var wire 1 n" rx_fifo_2_ctrl_pop_data [3] $end
+$var wire 1 o" rx_fifo_2_ctrl_pop_data [2] $end
+$var wire 1 p" rx_fifo_2_ctrl_pop_data [1] $end
+$var wire 1 q" rx_fifo_2_ctrl_pop_data [0] $end
+$var wire 1 r" rx_fifo_2_ctrl_pop_ready $end
+$var wire 1 s" ctrl_2_tx_fifo_push_valid $end
+$var wire 1 t" ctrl_2_tx_fifo_push_data [36] $end
+$var wire 1 u" ctrl_2_tx_fifo_push_data [35] $end
+$var wire 1 v" ctrl_2_tx_fifo_push_data [34] $end
+$var wire 1 w" ctrl_2_tx_fifo_push_data [33] $end
+$var wire 1 x" ctrl_2_tx_fifo_push_data [32] $end
+$var wire 1 y" ctrl_2_tx_fifo_push_data [31] $end
+$var wire 1 z" ctrl_2_tx_fifo_push_data [30] $end
+$var wire 1 {" ctrl_2_tx_fifo_push_data [29] $end
+$var wire 1 |" ctrl_2_tx_fifo_push_data [28] $end
+$var wire 1 }" ctrl_2_tx_fifo_push_data [27] $end
+$var wire 1 ~" ctrl_2_tx_fifo_push_data [26] $end
+$var wire 1 !# ctrl_2_tx_fifo_push_data [25] $end
+$var wire 1 "# ctrl_2_tx_fifo_push_data [24] $end
+$var wire 1 ## ctrl_2_tx_fifo_push_data [23] $end
+$var wire 1 $# ctrl_2_tx_fifo_push_data [22] $end
+$var wire 1 %# ctrl_2_tx_fifo_push_data [21] $end
+$var wire 1 &# ctrl_2_tx_fifo_push_data [20] $end
+$var wire 1 '# ctrl_2_tx_fifo_push_data [19] $end
+$var wire 1 (# ctrl_2_tx_fifo_push_data [18] $end
+$var wire 1 )# ctrl_2_tx_fifo_push_data [17] $end
+$var wire 1 *# ctrl_2_tx_fifo_push_data [16] $end
+$var wire 1 +# ctrl_2_tx_fifo_push_data [15] $end
+$var wire 1 ,# ctrl_2_tx_fifo_push_data [14] $end
+$var wire 1 -# ctrl_2_tx_fifo_push_data [13] $end
+$var wire 1 .# ctrl_2_tx_fifo_push_data [12] $end
+$var wire 1 /# ctrl_2_tx_fifo_push_data [11] $end
+$var wire 1 0# ctrl_2_tx_fifo_push_data [10] $end
+$var wire 1 1# ctrl_2_tx_fifo_push_data [9] $end
+$var wire 1 2# ctrl_2_tx_fifo_push_data [8] $end
+$var wire 1 3# ctrl_2_tx_fifo_push_data [7] $end
+$var wire 1 4# ctrl_2_tx_fifo_push_data [6] $end
+$var wire 1 5# ctrl_2_tx_fifo_push_data [5] $end
+$var wire 1 6# ctrl_2_tx_fifo_push_data [4] $end
+$var wire 1 7# ctrl_2_tx_fifo_push_data [3] $end
+$var wire 1 8# ctrl_2_tx_fifo_push_data [2] $end
+$var wire 1 9# ctrl_2_tx_fifo_push_data [1] $end
+$var wire 1 :# ctrl_2_tx_fifo_push_data [0] $end
+$var wire 1 ;# ctrl_2_tx_fifo_push_ready $end
+$var wire 1 <# regs_2_ctrl_ctrl_offset [1] $end
+$var wire 1 =# regs_2_ctrl_ctrl_offset [0] $end
+$var wire 1 ># regs_2_ctrl_ctrl_size [2] $end
+$var wire 1 ?# regs_2_ctrl_ctrl_size [1] $end
+$var wire 1 @# regs_2_ctrl_ctrl_size [0] $end
+
+$scope module rx_ctrl $end
+$var parameter 32 A# ALGN_DATA_WIDTH $end
+$var parameter 32 B# STATUS_CNT_DROP_WIDTH $end
+$var parameter 32 C# ALGN_OFFSET_WIDTH $end
+$var parameter 32 D# ALGN_SIZE_WIDTH $end
+$var parameter 32 E# FIFO_DATA_WIDTH $end
+$var parameter 32 F# DATA_MSB $end
+$var parameter 32 G# DATA_LSB $end
+$var parameter 32 H# OFFSET_MSB $end
+$var parameter 32 I# OFFSET_LSB $end
+$var parameter 32 J# SIZE_MSB $end
+$var parameter 32 K# SIZE_LSB $end
+$var wire 1 * preset_n $end
+$var wire 1 ) pclk $end
+$var wire 1 N! clr_cnt_dop $end
+$var wire 1 F! status_cnt_drop [7] $end
+$var wire 1 G! status_cnt_drop [6] $end
+$var wire 1 H! status_cnt_drop [5] $end
+$var wire 1 I! status_cnt_drop [4] $end
+$var wire 1 J! status_cnt_drop [3] $end
+$var wire 1 K! status_cnt_drop [2] $end
+$var wire 1 L! status_cnt_drop [1] $end
+$var wire 1 M! status_cnt_drop [0] $end
+$var wire 1 ) md_rx_clk $end
+$var wire 1 a md_rx_valid $end
+$var wire 1 b md_rx_data [31] $end
+$var wire 1 c md_rx_data [30] $end
+$var wire 1 d md_rx_data [29] $end
+$var wire 1 e md_rx_data [28] $end
+$var wire 1 f md_rx_data [27] $end
+$var wire 1 g md_rx_data [26] $end
+$var wire 1 h md_rx_data [25] $end
+$var wire 1 i md_rx_data [24] $end
+$var wire 1 j md_rx_data [23] $end
+$var wire 1 k md_rx_data [22] $end
+$var wire 1 l md_rx_data [21] $end
+$var wire 1 m md_rx_data [20] $end
+$var wire 1 n md_rx_data [19] $end
+$var wire 1 o md_rx_data [18] $end
+$var wire 1 p md_rx_data [17] $end
+$var wire 1 q md_rx_data [16] $end
+$var wire 1 r md_rx_data [15] $end
+$var wire 1 s md_rx_data [14] $end
+$var wire 1 t md_rx_data [13] $end
+$var wire 1 u md_rx_data [12] $end
+$var wire 1 v md_rx_data [11] $end
+$var wire 1 w md_rx_data [10] $end
+$var wire 1 x md_rx_data [9] $end
+$var wire 1 y md_rx_data [8] $end
+$var wire 1 z md_rx_data [7] $end
+$var wire 1 { md_rx_data [6] $end
+$var wire 1 | md_rx_data [5] $end
+$var wire 1 } md_rx_data [4] $end
+$var wire 1 ~ md_rx_data [3] $end
+$var wire 1 !! md_rx_data [2] $end
+$var wire 1 "! md_rx_data [1] $end
+$var wire 1 #! md_rx_data [0] $end
+$var wire 1 $! md_rx_offset [1] $end
+$var wire 1 %! md_rx_offset [0] $end
+$var wire 1 &! md_rx_size [2] $end
+$var wire 1 '! md_rx_size [1] $end
+$var wire 1 (! md_rx_size [0] $end
+$var wire 1 L# md_rx_ready $end
+$var reg 1 M# md_rx_err $end
+$var wire 1 O! push_valid $end
+$var wire 1 P! push_data [36] $end
+$var wire 1 Q! push_data [35] $end
+$var wire 1 R! push_data [34] $end
+$var wire 1 S! push_data [33] $end
+$var wire 1 T! push_data [32] $end
+$var wire 1 U! push_data [31] $end
+$var wire 1 V! push_data [30] $end
+$var wire 1 W! push_data [29] $end
+$var wire 1 X! push_data [28] $end
+$var wire 1 Y! push_data [27] $end
+$var wire 1 Z! push_data [26] $end
+$var wire 1 [! push_data [25] $end
+$var wire 1 \! push_data [24] $end
+$var wire 1 ]! push_data [23] $end
+$var wire 1 ^! push_data [22] $end
+$var wire 1 _! push_data [21] $end
+$var wire 1 `! push_data [20] $end
+$var wire 1 a! push_data [19] $end
+$var wire 1 b! push_data [18] $end
+$var wire 1 c! push_data [17] $end
+$var wire 1 d! push_data [16] $end
+$var wire 1 e! push_data [15] $end
+$var wire 1 f! push_data [14] $end
+$var wire 1 g! push_data [13] $end
+$var wire 1 h! push_data [12] $end
+$var wire 1 i! push_data [11] $end
+$var wire 1 j! push_data [10] $end
+$var wire 1 k! push_data [9] $end
+$var wire 1 l! push_data [8] $end
+$var wire 1 m! push_data [7] $end
+$var wire 1 n! push_data [6] $end
+$var wire 1 o! push_data [5] $end
+$var wire 1 p! push_data [4] $end
+$var wire 1 q! push_data [3] $end
+$var wire 1 r! push_data [2] $end
+$var wire 1 s! push_data [1] $end
+$var wire 1 t! push_data [0] $end
+$var wire 1 u! push_ready $end
+$var wire 1 v! rx_fifo_full $end
+$var reg 8 N# md_rx_clk_status_cnt_drop [7:0] $end
+
+$scope module synch_status_cnt_drop $end
+$var parameter 32 O# DATA_WIDTH $end
+$var wire 1 ) clk $end
+$var wire 1 P# i [7] $end
+$var wire 1 Q# i [6] $end
+$var wire 1 R# i [5] $end
+$var wire 1 S# i [4] $end
+$var wire 1 T# i [3] $end
+$var wire 1 U# i [2] $end
+$var wire 1 V# i [1] $end
+$var wire 1 W# i [0] $end
+$var reg 8 X# o [7:0] $end
+$upscope $end
+$upscope $end
+
+$scope module rx_fifo $end
+$var parameter 32 Y# DATA_WIDTH $end
+$var parameter 32 Z# FIFO_DEPTH $end
+$var parameter 32 [# CDC $end
+$var parameter 32 \# CNT_WIDTH $end
+$var wire 1 * reset_n $end
+$var wire 1 ) push_clk $end
+$var wire 1 O! push_valid $end
+$var wire 1 P! push_data [36] $end
+$var wire 1 Q! push_data [35] $end
+$var wire 1 R! push_data [34] $end
+$var wire 1 S! push_data [33] $end
+$var wire 1 T! push_data [32] $end
+$var wire 1 U! push_data [31] $end
+$var wire 1 V! push_data [30] $end
+$var wire 1 W! push_data [29] $end
+$var wire 1 X! push_data [28] $end
+$var wire 1 Y! push_data [27] $end
+$var wire 1 Z! push_data [26] $end
+$var wire 1 [! push_data [25] $end
+$var wire 1 \! push_data [24] $end
+$var wire 1 ]! push_data [23] $end
+$var wire 1 ^! push_data [22] $end
+$var wire 1 _! push_data [21] $end
+$var wire 1 `! push_data [20] $end
+$var wire 1 a! push_data [19] $end
+$var wire 1 b! push_data [18] $end
+$var wire 1 c! push_data [17] $end
+$var wire 1 d! push_data [16] $end
+$var wire 1 e! push_data [15] $end
+$var wire 1 f! push_data [14] $end
+$var wire 1 g! push_data [13] $end
+$var wire 1 h! push_data [12] $end
+$var wire 1 i! push_data [11] $end
+$var wire 1 j! push_data [10] $end
+$var wire 1 k! push_data [9] $end
+$var wire 1 l! push_data [8] $end
+$var wire 1 m! push_data [7] $end
+$var wire 1 n! push_data [6] $end
+$var wire 1 o! push_data [5] $end
+$var wire 1 p! push_data [4] $end
+$var wire 1 q! push_data [3] $end
+$var wire 1 r! push_data [2] $end
+$var wire 1 s! push_data [1] $end
+$var wire 1 t! push_data [0] $end
+$var wire 1 u! push_ready $end
+$var reg 1 ]# push_full $end
+$var reg 1 ^# push_empty $end
+$var reg 4 _# push_fifo_lvl [3:0] $end
+$var wire 1 ) pop_clk $end
+$var wire 1 L" pop_valid $end
+$var wire 1 M" pop_data [36] $end
+$var wire 1 N" pop_data [35] $end
+$var wire 1 O" pop_data [34] $end
+$var wire 1 P" pop_data [33] $end
+$var wire 1 Q" pop_data [32] $end
+$var wire 1 R" pop_data [31] $end
+$var wire 1 S" pop_data [30] $end
+$var wire 1 T" pop_data [29] $end
+$var wire 1 U" pop_data [28] $end
+$var wire 1 V" pop_data [27] $end
+$var wire 1 W" pop_data [26] $end
+$var wire 1 X" pop_data [25] $end
+$var wire 1 Y" pop_data [24] $end
+$var wire 1 Z" pop_data [23] $end
+$var wire 1 [" pop_data [22] $end
+$var wire 1 \" pop_data [21] $end
+$var wire 1 ]" pop_data [20] $end
+$var wire 1 ^" pop_data [19] $end
+$var wire 1 _" pop_data [18] $end
+$var wire 1 `" pop_data [17] $end
+$var wire 1 a" pop_data [16] $end
+$var wire 1 b" pop_data [15] $end
+$var wire 1 c" pop_data [14] $end
+$var wire 1 d" pop_data [13] $end
+$var wire 1 e" pop_data [12] $end
+$var wire 1 f" pop_data [11] $end
+$var wire 1 g" pop_data [10] $end
+$var wire 1 h" pop_data [9] $end
+$var wire 1 i" pop_data [8] $end
+$var wire 1 j" pop_data [7] $end
+$var wire 1 k" pop_data [6] $end
+$var wire 1 l" pop_data [5] $end
+$var wire 1 m" pop_data [4] $end
+$var wire 1 n" pop_data [3] $end
+$var wire 1 o" pop_data [2] $end
+$var wire 1 p" pop_data [1] $end
+$var wire 1 q" pop_data [0] $end
+$var wire 1 r" pop_ready $end
+$var reg 1 `# pop_full $end
+$var reg 1 a# pop_empty $end
+$var reg 4 b# pop_fifo_lvl [3:0] $end
+$var wire 1 c# rd_ptr_push [2] $end
+$var wire 1 d# rd_ptr_push [1] $end
+$var wire 1 e# rd_ptr_push [0] $end
+$var reg 3 f# rd_ptr_pop [2:0] $end
+$var reg 3 g# next_wr_ptr_push [2:0] $end
+$var reg 3 h# next_rd_ptr_pop [2:0] $end
+$var reg 3 i# wr_ptr_push [2:0] $end
+$var wire 1 j# wr_ptr_pop [2] $end
+$var wire 1 k# wr_ptr_pop [1] $end
+$var wire 1 l# wr_ptr_pop [0] $end
+
+$scope begin genblk1 $end
+$upscope $end
+$upscope $end
+
+$scope module tx_fifo $end
+$var parameter 32 m# DATA_WIDTH $end
+$var parameter 32 n# FIFO_DEPTH $end
+$var parameter 32 o# CDC $end
+$var parameter 32 p# CNT_WIDTH $end
+$var wire 1 * reset_n $end
+$var wire 1 ) push_clk $end
+$var wire 1 s" push_valid $end
+$var wire 1 t" push_data [36] $end
+$var wire 1 u" push_data [35] $end
+$var wire 1 v" push_data [34] $end
+$var wire 1 w" push_data [33] $end
+$var wire 1 x" push_data [32] $end
+$var wire 1 y" push_data [31] $end
+$var wire 1 z" push_data [30] $end
+$var wire 1 {" push_data [29] $end
+$var wire 1 |" push_data [28] $end
+$var wire 1 }" push_data [27] $end
+$var wire 1 ~" push_data [26] $end
+$var wire 1 !# push_data [25] $end
+$var wire 1 "# push_data [24] $end
+$var wire 1 ## push_data [23] $end
+$var wire 1 $# push_data [22] $end
+$var wire 1 %# push_data [21] $end
+$var wire 1 &# push_data [20] $end
+$var wire 1 '# push_data [19] $end
+$var wire 1 (# push_data [18] $end
+$var wire 1 )# push_data [17] $end
+$var wire 1 *# push_data [16] $end
+$var wire 1 +# push_data [15] $end
+$var wire 1 ,# push_data [14] $end
+$var wire 1 -# push_data [13] $end
+$var wire 1 .# push_data [12] $end
+$var wire 1 /# push_data [11] $end
+$var wire 1 0# push_data [10] $end
+$var wire 1 1# push_data [9] $end
+$var wire 1 2# push_data [8] $end
+$var wire 1 3# push_data [7] $end
+$var wire 1 4# push_data [6] $end
+$var wire 1 5# push_data [5] $end
+$var wire 1 6# push_data [4] $end
+$var wire 1 7# push_data [3] $end
+$var wire 1 8# push_data [2] $end
+$var wire 1 9# push_data [1] $end
+$var wire 1 :# push_data [0] $end
+$var wire 1 ;# push_ready $end
+$var reg 1 q# push_full $end
+$var reg 1 r# push_empty $end
+$var reg 4 s# push_fifo_lvl [3:0] $end
+$var wire 1 ) pop_clk $end
+$var wire 1 %" pop_valid $end
+$var wire 1 &" pop_data [36] $end
+$var wire 1 '" pop_data [35] $end
+$var wire 1 (" pop_data [34] $end
+$var wire 1 )" pop_data [33] $end
+$var wire 1 *" pop_data [32] $end
+$var wire 1 +" pop_data [31] $end
+$var wire 1 ," pop_data [30] $end
+$var wire 1 -" pop_data [29] $end
+$var wire 1 ." pop_data [28] $end
+$var wire 1 /" pop_data [27] $end
+$var wire 1 0" pop_data [26] $end
+$var wire 1 1" pop_data [25] $end
+$var wire 1 2" pop_data [24] $end
+$var wire 1 3" pop_data [23] $end
+$var wire 1 4" pop_data [22] $end
+$var wire 1 5" pop_data [21] $end
+$var wire 1 6" pop_data [20] $end
+$var wire 1 7" pop_data [19] $end
+$var wire 1 8" pop_data [18] $end
+$var wire 1 9" pop_data [17] $end
+$var wire 1 :" pop_data [16] $end
+$var wire 1 ;" pop_data [15] $end
+$var wire 1 <" pop_data [14] $end
+$var wire 1 =" pop_data [13] $end
+$var wire 1 >" pop_data [12] $end
+$var wire 1 ?" pop_data [11] $end
+$var wire 1 @" pop_data [10] $end
+$var wire 1 A" pop_data [9] $end
+$var wire 1 B" pop_data [8] $end
+$var wire 1 C" pop_data [7] $end
+$var wire 1 D" pop_data [6] $end
+$var wire 1 E" pop_data [5] $end
+$var wire 1 F" pop_data [4] $end
+$var wire 1 G" pop_data [3] $end
+$var wire 1 H" pop_data [2] $end
+$var wire 1 I" pop_data [1] $end
+$var wire 1 J" pop_data [0] $end
+$var wire 1 K" pop_ready $end
+$var reg 1 t# pop_full $end
+$var reg 1 u# pop_empty $end
+$var reg 4 v# pop_fifo_lvl [3:0] $end
+$var wire 1 w# rd_ptr_push [2] $end
+$var wire 1 x# rd_ptr_push [1] $end
+$var wire 1 y# rd_ptr_push [0] $end
+$var reg 3 z# rd_ptr_pop [2:0] $end
+$var reg 3 {# next_wr_ptr_push [2:0] $end
+$var reg 3 |# next_rd_ptr_pop [2:0] $end
+$var reg 3 }# wr_ptr_push [2:0] $end
+$var wire 1 ~# wr_ptr_pop [2] $end
+$var wire 1 !$ wr_ptr_pop [1] $end
+$var wire 1 "$ wr_ptr_pop [0] $end
+
+$scope begin genblk1 $end
+$upscope $end
+$upscope $end
+
+$scope module tx_ctrl $end
+$var parameter 32 #$ ALGN_DATA_WIDTH $end
+$var parameter 32 $$ ALGN_OFFSET_WIDTH $end
+$var parameter 32 %$ ALGN_SIZE_WIDTH $end
+$var parameter 32 &$ FIFO_DATA_WIDTH $end
+$var parameter 32 '$ DATA_MSB $end
+$var parameter 32 ($ DATA_LSB $end
+$var parameter 32 )$ OFFSET_MSB $end
+$var parameter 32 *$ OFFSET_LSB $end
+$var parameter 32 +$ SIZE_MSB $end
+$var parameter 32 ,$ SIZE_LSB $end
+$var wire 1 %" pop_valid $end
+$var wire 1 &" pop_data [36] $end
+$var wire 1 '" pop_data [35] $end
+$var wire 1 (" pop_data [34] $end
+$var wire 1 )" pop_data [33] $end
+$var wire 1 *" pop_data [32] $end
+$var wire 1 +" pop_data [31] $end
+$var wire 1 ," pop_data [30] $end
+$var wire 1 -" pop_data [29] $end
+$var wire 1 ." pop_data [28] $end
+$var wire 1 /" pop_data [27] $end
+$var wire 1 0" pop_data [26] $end
+$var wire 1 1" pop_data [25] $end
+$var wire 1 2" pop_data [24] $end
+$var wire 1 3" pop_data [23] $end
+$var wire 1 4" pop_data [22] $end
+$var wire 1 5" pop_data [21] $end
+$var wire 1 6" pop_data [20] $end
+$var wire 1 7" pop_data [19] $end
+$var wire 1 8" pop_data [18] $end
+$var wire 1 9" pop_data [17] $end
+$var wire 1 :" pop_data [16] $end
+$var wire 1 ;" pop_data [15] $end
+$var wire 1 <" pop_data [14] $end
+$var wire 1 =" pop_data [13] $end
+$var wire 1 >" pop_data [12] $end
+$var wire 1 ?" pop_data [11] $end
+$var wire 1 @" pop_data [10] $end
+$var wire 1 A" pop_data [9] $end
+$var wire 1 B" pop_data [8] $end
+$var wire 1 C" pop_data [7] $end
+$var wire 1 D" pop_data [6] $end
+$var wire 1 E" pop_data [5] $end
+$var wire 1 F" pop_data [4] $end
+$var wire 1 G" pop_data [3] $end
+$var wire 1 H" pop_data [2] $end
+$var wire 1 I" pop_data [1] $end
+$var wire 1 J" pop_data [0] $end
+$var wire 1 K" pop_ready $end
+$var wire 1 -$ md_tx_valid $end
+$var wire 1 .$ md_tx_data [31] $end
+$var wire 1 /$ md_tx_data [30] $end
+$var wire 1 0$ md_tx_data [29] $end
+$var wire 1 1$ md_tx_data [28] $end
+$var wire 1 2$ md_tx_data [27] $end
+$var wire 1 3$ md_tx_data [26] $end
+$var wire 1 4$ md_tx_data [25] $end
+$var wire 1 5$ md_tx_data [24] $end
+$var wire 1 6$ md_tx_data [23] $end
+$var wire 1 7$ md_tx_data [22] $end
+$var wire 1 8$ md_tx_data [21] $end
+$var wire 1 9$ md_tx_data [20] $end
+$var wire 1 :$ md_tx_data [19] $end
+$var wire 1 ;$ md_tx_data [18] $end
+$var wire 1 <$ md_tx_data [17] $end
+$var wire 1 =$ md_tx_data [16] $end
+$var wire 1 >$ md_tx_data [15] $end
+$var wire 1 ?$ md_tx_data [14] $end
+$var wire 1 @$ md_tx_data [13] $end
+$var wire 1 A$ md_tx_data [12] $end
+$var wire 1 B$ md_tx_data [11] $end
+$var wire 1 C$ md_tx_data [10] $end
+$var wire 1 D$ md_tx_data [9] $end
+$var wire 1 E$ md_tx_data [8] $end
+$var wire 1 F$ md_tx_data [7] $end
+$var wire 1 G$ md_tx_data [6] $end
+$var wire 1 H$ md_tx_data [5] $end
+$var wire 1 I$ md_tx_data [4] $end
+$var wire 1 J$ md_tx_data [3] $end
+$var wire 1 K$ md_tx_data [2] $end
+$var wire 1 L$ md_tx_data [1] $end
+$var wire 1 M$ md_tx_data [0] $end
+$var wire 1 N$ md_tx_offset [1] $end
+$var wire 1 O$ md_tx_offset [0] $end
+$var wire 1 P$ md_tx_size [2] $end
+$var wire 1 Q$ md_tx_size [1] $end
+$var wire 1 R$ md_tx_size [0] $end
+$var wire 1 /! md_tx_ready $end
+$upscope $end
+
+$scope module ctrl $end
+$var parameter 32 S$ ALGN_DATA_WIDTH $end
+$var parameter 32 T$ ALGN_OFFSET_WIDTH $end
+$var parameter 32 U$ ALGN_SIZE_WIDTH $end
+$var parameter 32 V$ FIFO_WIDTH $end
+$var parameter 32 W$ DATA_MSB $end
+$var parameter 32 X$ DATA_LSB $end
+$var parameter 32 Y$ OFFSET_MSB $end
+$var parameter 32 Z$ OFFSET_LSB $end
+$var parameter 32 [$ SIZE_MSB $end
+$var parameter 32 \$ SIZE_LSB $end
+$var wire 1 * reset_n $end
+$var wire 1 ) clk $end
+$var wire 1 L" pop_valid $end
+$var wire 1 M" pop_data [36] $end
+$var wire 1 N" pop_data [35] $end
+$var wire 1 O" pop_data [34] $end
+$var wire 1 P" pop_data [33] $end
+$var wire 1 Q" pop_data [32] $end
+$var wire 1 R" pop_data [31] $end
+$var wire 1 S" pop_data [30] $end
+$var wire 1 T" pop_data [29] $end
+$var wire 1 U" pop_data [28] $end
+$var wire 1 V" pop_data [27] $end
+$var wire 1 W" pop_data [26] $end
+$var wire 1 X" pop_data [25] $end
+$var wire 1 Y" pop_data [24] $end
+$var wire 1 Z" pop_data [23] $end
+$var wire 1 [" pop_data [22] $end
+$var wire 1 \" pop_data [21] $end
+$var wire 1 ]" pop_data [20] $end
+$var wire 1 ^" pop_data [19] $end
+$var wire 1 _" pop_data [18] $end
+$var wire 1 `" pop_data [17] $end
+$var wire 1 a" pop_data [16] $end
+$var wire 1 b" pop_data [15] $end
+$var wire 1 c" pop_data [14] $end
+$var wire 1 d" pop_data [13] $end
+$var wire 1 e" pop_data [12] $end
+$var wire 1 f" pop_data [11] $end
+$var wire 1 g" pop_data [10] $end
+$var wire 1 h" pop_data [9] $end
+$var wire 1 i" pop_data [8] $end
+$var wire 1 j" pop_data [7] $end
+$var wire 1 k" pop_data [6] $end
+$var wire 1 l" pop_data [5] $end
+$var wire 1 m" pop_data [4] $end
+$var wire 1 n" pop_data [3] $end
+$var wire 1 o" pop_data [2] $end
+$var wire 1 p" pop_data [1] $end
+$var wire 1 q" pop_data [0] $end
+$var reg 1 ]$ pop_ready $end
+$var reg 1 ^$ push_valid $end
+$var reg 37 _$ push_data [36:0] $end
+$var wire 1 ;# push_ready $end
+$var wire 1 <# ctrl_offset [1] $end
+$var wire 1 =# ctrl_offset [0] $end
+$var wire 1 ># ctrl_size [2] $end
+$var wire 1 ?# ctrl_size [1] $end
+$var wire 1 @# ctrl_size [0] $end
+$var reg 2 `$ unaligned_offset [1:0] $end
+$var reg 3 a$ unaligned_size [2:0] $end
+$var reg 32 b$ unaligned_data [31:0] $end
+$var reg 3 c$ unaligned_bytes_processed [2:0] $end
+$var reg 3 d$ aligned_bytes_processed [2:0] $end
+$upscope $end
+
+$scope module regs $end
+$var parameter 32 e$ APB_ADDR_WIDTH $end
+$var parameter 32 f$ ALGN_DATA_WIDTH $end
+$var parameter 32 g$ STATUS_CNT_DROP_WIDTH $end
+$var parameter 32 h$ STATUS_RX_LVL_WIDTH $end
+$var parameter 32 i$ STATUS_TX_LVL_WIDTH $end
+$var parameter 32 j$ APB_DATA_WIDTH $end
+$var parameter 32 k$ ALGN_OFFSET_WIDTH $end
+$var parameter 32 l$ ALGN_SIZE_WIDTH $end
+$var parameter 32 m$ ADDR_CTRL $end
+$var parameter 32 n$ ADDR_STATUS $end
+$var parameter 32 o$ ADDR_IRQEN $end
+$var parameter 32 p$ ADDR_IRQ $end
+$var parameter 32 q$ LSB_CTRL_SIZE $end
+$var parameter 32 r$ LSB_CTRL_OFFSET $end
+$var parameter 32 s$ LSB_CTRL_CLR $end
+$var parameter 32 t$ LSB_STATUS_CNT_DROP $end
+$var parameter 32 u$ LSB_STATUS_RX_LVL $end
+$var parameter 32 v$ LSB_STATUS_TX_LVL $end
+$var parameter 32 w$ LSB_IRQEN_RX_FIFO_EMPTY $end
+$var parameter 32 x$ LSB_IRQEN_RX_FIFO_FULL $end
+$var parameter 32 y$ LSB_IRQEN_TX_FIFO_EMPTY $end
+$var parameter 32 z$ LSB_IRQEN_TX_FIFO_FULL $end
+$var parameter 32 {$ LSB_IRQEN_MAX_DROP $end
+$var parameter 32 |$ LSB_IRQ_RX_FIFO_EMPTY $end
+$var parameter 32 }$ LSB_IRQ_RX_FIFO_FULL $end
+$var parameter 32 ~$ LSB_IRQ_TX_FIFO_EMPTY $end
+$var parameter 32 !% LSB_IRQ_TX_FIFO_FULL $end
+$var parameter 32 "% LSB_IRQ_MAX_DROP $end
+$var wire 1 ) pclk $end
+$var wire 1 * presetn $end
+$var wire 1 + paddr [15] $end
+$var wire 1 , paddr [14] $end
+$var wire 1 - paddr [13] $end
+$var wire 1 . paddr [12] $end
+$var wire 1 / paddr [11] $end
+$var wire 1 0 paddr [10] $end
+$var wire 1 1 paddr [9] $end
+$var wire 1 2 paddr [8] $end
+$var wire 1 3 paddr [7] $end
+$var wire 1 4 paddr [6] $end
+$var wire 1 5 paddr [5] $end
+$var wire 1 6 paddr [4] $end
+$var wire 1 7 paddr [3] $end
+$var wire 1 8 paddr [2] $end
+$var wire 1 9 paddr [1] $end
+$var wire 1 : paddr [0] $end
+$var wire 1 ; pwrite $end
+$var wire 1 < psel $end
+$var wire 1 = penable $end
+$var wire 1 > pwdata [31] $end
+$var wire 1 ? pwdata [30] $end
+$var wire 1 @ pwdata [29] $end
+$var wire 1 A pwdata [28] $end
+$var wire 1 B pwdata [27] $end
+$var wire 1 C pwdata [26] $end
+$var wire 1 D pwdata [25] $end
+$var wire 1 E pwdata [24] $end
+$var wire 1 F pwdata [23] $end
+$var wire 1 G pwdata [22] $end
+$var wire 1 H pwdata [21] $end
+$var wire 1 I pwdata [20] $end
+$var wire 1 J pwdata [19] $end
+$var wire 1 K pwdata [18] $end
+$var wire 1 L pwdata [17] $end
+$var wire 1 M pwdata [16] $end
+$var wire 1 N pwdata [15] $end
+$var wire 1 O pwdata [14] $end
+$var wire 1 P pwdata [13] $end
+$var wire 1 Q pwdata [12] $end
+$var wire 1 R pwdata [11] $end
+$var wire 1 S pwdata [10] $end
+$var wire 1 T pwdata [9] $end
+$var wire 1 U pwdata [8] $end
+$var wire 1 V pwdata [7] $end
+$var wire 1 W pwdata [6] $end
+$var wire 1 X pwdata [5] $end
+$var wire 1 Y pwdata [4] $end
+$var wire 1 Z pwdata [3] $end
+$var wire 1 [ pwdata [2] $end
+$var wire 1 \ pwdata [1] $end
+$var wire 1 ] pwdata [0] $end
+$var reg 1 #% pready $end
+$var reg 32 $% prdata [31:0] $end
+$var reg 1 %% pslverr $end
+$var reg 2 &% ctrl_offset [1:0] $end
+$var reg 3 '% ctrl_size [2:0] $end
+$var reg 1 (% ctrl_clr $end
+$var wire 1 F! status_cnt_drop [7] $end
+$var wire 1 G! status_cnt_drop [6] $end
+$var wire 1 H! status_cnt_drop [5] $end
+$var wire 1 I! status_cnt_drop [4] $end
+$var wire 1 J! status_cnt_drop [3] $end
+$var wire 1 K! status_cnt_drop [2] $end
+$var wire 1 L! status_cnt_drop [1] $end
+$var wire 1 M! status_cnt_drop [0] $end
+$var wire 1 y! status_rx_lvl [3] $end
+$var wire 1 z! status_rx_lvl [2] $end
+$var wire 1 {! status_rx_lvl [1] $end
+$var wire 1 |! status_rx_lvl [0] $end
+$var wire 1 }! status_tx_lvl [3] $end
+$var wire 1 ~! status_tx_lvl [2] $end
+$var wire 1 !" status_tx_lvl [1] $end
+$var wire 1 "" status_tx_lvl [0] $end
+$var wire 1 x! rx_fifo_empty $end
+$var wire 1 w! rx_fifo_full $end
+$var wire 1 #" tx_fifo_empty $end
+$var wire 1 $" tx_fifo_full $end
+$var wire 1 )% max_drop $end
+$var wire 1 E! irq $end
+$var wire 1 *% addr_aligned [15] $end
+$var wire 1 +% addr_aligned [14] $end
+$var wire 1 ,% addr_aligned [13] $end
+$var wire 1 -% addr_aligned [12] $end
+$var wire 1 .% addr_aligned [11] $end
+$var wire 1 /% addr_aligned [10] $end
+$var wire 1 0% addr_aligned [9] $end
+$var wire 1 1% addr_aligned [8] $end
+$var wire 1 2% addr_aligned [7] $end
+$var wire 1 3% addr_aligned [6] $end
+$var wire 1 4% addr_aligned [5] $end
+$var wire 1 5% addr_aligned [4] $end
+$var wire 1 6% addr_aligned [3] $end
+$var wire 1 7% addr_aligned [2] $end
+$var wire 1 8% addr_aligned [1] $end
+$var wire 1 9% addr_aligned [0] $end
+$var reg 1 :% wr_ctrl_is_illegal $end
+$var wire 1 ;% ctrl_size_wr_val [2] $end
+$var wire 1 <% ctrl_size_wr_val [1] $end
+$var wire 1 =% ctrl_size_wr_val [0] $end
+$var wire 1 >% ctrl_offset_wr_val [1] $end
+$var wire 1 ?% ctrl_offset_wr_val [0] $end
+$var reg 32 @% ctrl_rd_val [31:0] $end
+$var reg 1 A% irqen_rx_fifo_empty $end
+$var reg 1 B% irqen_rx_fifo_full $end
+$var reg 1 C% irqen_tx_fifo_empty $end
+$var reg 1 D% irqen_tx_fifo_full $end
+$var reg 1 E% irqen_max_drop $end
+$var reg 1 F% irq_rx_fifo_empty $end
+$var reg 1 G% irq_rx_fifo_full $end
+$var reg 1 H% irq_tx_fifo_empty $end
+$var reg 1 I% irq_tx_fifo_full $end
+$var reg 1 J% irq_max_drop $end
+$var reg 32 K% status_rd_val [31:0] $end
+$var reg 32 L% irqen_rd_val [31:0] $end
+$var reg 32 M% irq_rd_val [31:0] $end
+$var wire 1 N% edge_rx_fifo_empty $end
+$var wire 1 O% edge_rx_fifo_full $end
+$var wire 1 P% edge_tx_fifo_empty $end
+$var wire 1 Q% edge_tx_fifo_full $end
+$var wire 1 R% edge_max_drop $end
+
+$scope module edge_detect_rx_fifo_empty $end
+$var parameter 1 S% EDGE $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 x! data $end
+$var reg 1 T% detected $end
+$var reg 1 U% dly1_data $end
+$upscope $end
+
+$scope module edge_detect_rx_fifo_full $end
+$var parameter 1 V% EDGE $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 w! data $end
+$var reg 1 W% detected $end
+$var reg 1 X% dly1_data $end
+$upscope $end
+
+$scope module edge_detect_tx_fifo_empty $end
+$var parameter 1 Y% EDGE $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 #" data $end
+$var reg 1 Z% detected $end
+$var reg 1 [% dly1_data $end
+$upscope $end
+
+$scope module edge_detect_tx_fifo_full $end
+$var parameter 1 \% EDGE $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 x! data $end
+$var reg 1 ]% detected $end
+$var reg 1 ^% dly1_data $end
+$upscope $end
+
+$scope module edge_detect_max_drop $end
+$var parameter 1 _% EDGE $end
+$var wire 1 ) clk $end
+$var wire 1 * reset_n $end
+$var wire 1 )% data $end
+$var reg 1 `% detected $end
+$var reg 1 a% dly1_data $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+
+$scope begin uvm_pkg $end
+$var parameter 32 b% UVM_HDL_MAX_WIDTH $end
+$var parameter 32 c% UVM_STREAMBITS $end
+$var parameter 32 d% UVM_RADIX $end
+$var parameter 32 e% UVM_MACRO_NUMFLAGS $end
+$var parameter 32 f% UVM_DEFAULT $end
+$var parameter 32 g% UVM_ALL_ON $end
+$var parameter 32 h% UVM_FLAGS_ON $end
+$var parameter 32 i% UVM_FLAGS_OFF $end
+$var parameter 32 j% UVM_COPY $end
+$var parameter 32 k% UVM_NOCOPY $end
+$var parameter 32 l% UVM_COMPARE $end
+$var parameter 32 m% UVM_NOCOMPARE $end
+$var parameter 32 n% UVM_PRINT $end
+$var parameter 32 o% UVM_NOPRINT $end
+$var parameter 32 p% UVM_RECORD $end
+$var parameter 32 q% UVM_NORECORD $end
+$var parameter 32 r% UVM_PACK $end
+$var parameter 32 s% UVM_NOPACK $end
+$var parameter 32 t% UVM_PHYSICAL $end
+$var parameter 32 u% UVM_ABSTRACT $end
+$var parameter 32 v% UVM_READONLY $end
+$var parameter 32 w% UVM_NODEFPRINT $end
+$var parameter 32 x% UVM_MACRO_EXTRAS $end
+$var parameter 32 y% UVM_FLAGS $end
+$var parameter 32 z% UVM_UNPACK $end
+$var parameter 32 {% UVM_CHECK_FIELDS $end
+$var parameter 32 |% UVM_END_DATA_EXTRA $end
+$var parameter 32 }% UVM_START_FUNCS $end
+$var parameter 32 ~% UVM_SET $end
+$var parameter 32 !& UVM_SETINT $end
+$var parameter 32 "& UVM_SETOBJ $end
+$var parameter 32 #& UVM_SETSTR $end
+$var parameter 32 $& UVM_END_FUNCS $end
+$var parameter 32 %& UVM_STR_CRC_POLYNOMIAL $end
+$var parameter 32 && UVM_STDOUT $end
+$var parameter 32 '& UVM_LINE_WIDTH $end
+$var parameter 32 (& UVM_NUM_LINES $end
+$var parameter 32 )& UVM_SMALL_STRING $end
+$var parameter 32 *& UVM_LARGE_STRING $end
+$var reg 1 +& uvm_start_uvm_declarations $end
+$var integer 32 ,& uvm_global_random_seed $end
+$var integer 32 -& UVM_UNBOUNDED_CONNECTIONS $end
+
+$scope function uvm_hdl_check_path $end
+$var integer 32 .& uvm_hdl_check_path $end
+$upscope $end
+
+$scope function uvm_hdl_deposit $end
+$var integer 32 /& uvm_hdl_deposit $end
+$var reg 1024 0& value [1023:0] $end
+$upscope $end
+
+$scope function uvm_hdl_force $end
+$var integer 32 1& uvm_hdl_force $end
+$var reg 1024 2& value [1023:0] $end
+$upscope $end
+
+$scope task uvm_hdl_force_time $end
+$var reg 1024 3& value [1023:0] $end
+$var time 64 4& force_time $end
+$upscope $end
+
+$scope function uvm_hdl_release_and_read $end
+$var integer 32 5& uvm_hdl_release_and_read $end
+$var reg 1024 6& value [1023:0] $end
+$upscope $end
+
+$scope function uvm_hdl_release $end
+$var integer 32 7& uvm_hdl_release $end
+$upscope $end
+
+$scope function uvm_hdl_read $end
+$var integer 32 8& uvm_hdl_read $end
+$var reg 1024 9& value [1023:0] $end
+$upscope $end
+
+$scope function uvm_dpi_get_next_arg_c $end
+$upscope $end
+
+$scope function uvm_dpi_get_tool_name_c $end
+$upscope $end
+
+$scope function uvm_dpi_get_tool_version_c $end
+$upscope $end
+
+$scope function uvm_dpi_get_next_arg $end
+$upscope $end
+
+$scope function uvm_dpi_get_tool_name $end
+$upscope $end
+
+$scope function uvm_dpi_get_tool_version $end
+$upscope $end
+
+$scope function uvm_dpi_regcomp $end
+$upscope $end
+
+$scope function uvm_dpi_regexec $end
+$var integer 32 :& uvm_dpi_regexec $end
+$upscope $end
+
+$scope function uvm_dpi_regfree $end
+$upscope $end
+
+$scope function uvm_re_match $end
+$var integer 32 ;& uvm_re_match $end
+$upscope $end
+
+$scope function uvm_dump_re_cache $end
+$upscope $end
+
+$scope function uvm_glob_to_re $end
+$upscope $end
+
+$scope function uvm_revision_string $end
+$upscope $end
+
+$scope function uvm_radix_to_string $end
+$var integer 32 <& radix $end
+$upscope $end
+
+$scope function uvm_instance_scope $end
+$var reg 8 =& c [7:0] $end
+$var integer 32 >& pos $end
+$upscope $end
+
+$scope function uvm_oneway_hash $end
+$var integer 32 ?& uvm_oneway_hash $end
+$var integer 32 @& seed $end
+$var reg 1 A& msb $end
+$var reg 8 B& current_byte [7:0] $end
+$var reg 32 C& crc1 [31:0] $end
+$upscope $end
+
+$scope function uvm_create_random_seed $end
+$var integer 32 D& uvm_create_random_seed $end
+$upscope $end
+
+$scope function uvm_object_value_str $end
+$upscope $end
+
+$scope function uvm_leaf_scope $end
+$var reg 8 E& scope_separator [7:0] $end
+$var reg 8 F& bracket_match [7:0] $end
+$var integer 32 G& pos $end
+$var integer 32 H& bmatches $end
+$upscope $end
+
+$scope function uvm_vector_to_string $end
+$var reg 4096 I& value [4095:0] $end
+$var integer 32 J& size $end
+$var integer 32 K& radix $end
+$upscope $end
+
+$scope function uvm_get_array_index_int $end
+$var integer 32 L& uvm_get_array_index_int $end
+$var reg 1 M& is_wildcard $end
+$var integer 32 N& i $end
+$upscope $end
+
+$scope function uvm_get_array_index_string $end
+$var reg 1 O& is_wildcard $end
+$var integer 32 P& i $end
+$upscope $end
+
+$scope function uvm_is_array $end
+$var reg 1 Q& uvm_is_array $end
+$upscope $end
+
+$scope function uvm_has_wildcard $end
+$upscope $end
+
+$scope task run_test $end
+$upscope $end
+
+$scope function global_stop_request $end
+$upscope $end
+
+$scope function set_global_timeout $end
+$var time 64 R& timeout $end
+$var reg 1 S& overridable $end
+$upscope $end
+
+$scope function set_global_stop_timeout $end
+$var time 64 T& timeout $end
+$upscope $end
+
+$scope function uvm_report_enabled $end
+$var reg 1 U& uvm_report_enabled $end
+$var integer 32 V& verbosity $end
+$var reg 2 W& severity [1:0] $end
+$upscope $end
+
+$scope function uvm_report $end
+$var reg 2 X& severity [1:0] $end
+$var integer 32 Y& verbosity $end
+$var integer 32 Z& line $end
+$upscope $end
+
+$scope function uvm_report_info $end
+$var integer 32 [& verbosity $end
+$var integer 32 \& line $end
+$upscope $end
+
+$scope function uvm_report_warning $end
+$var integer 32 ]& verbosity $end
+$var integer 32 ^& line $end
+$upscope $end
+
+$scope function uvm_report_error $end
+$var integer 32 _& verbosity $end
+$var integer 32 `& line $end
+$upscope $end
+
+$scope function uvm_report_fatal $end
+$var integer 32 a& verbosity $end
+$var integer 32 b& line $end
+$upscope $end
+
+$scope function uvm_string_to_severity $end
+$var reg 1 c& uvm_string_to_severity $end
+$var reg 2 d& sev [1:0] $end
+$upscope $end
+
+$scope function uvm_string_to_action $end
+$upscope $end
+
+$scope function set_config_int $end
+$var reg 4096 e& value [4095:0] $end
+$upscope $end
+
+$scope function set_config_object $end
+$var reg 1 f& clone $end
+$upscope $end
+
+$scope function set_config_string $end
+$upscope $end
+
+$scope function uvm_is_match $end
+$var reg 1 g& uvm_is_match $end
+$upscope $end
+
+$scope function uvm_string_to_bits $end
+$var reg 115200 h& uvm_string_to_bits [115199:0] $end
+$upscope $end
+
+$scope function uvm_bits_to_string $end
+$var reg 115200 i& str [115199:0] $end
+$upscope $end
+
+$scope task uvm_wait_for_nba_region $end
+$var integer 32 j& nba $end
+$var integer 32 k& next_nba $end
+$upscope $end
+
+$scope function uvm_split_string $end
+$upscope $end
+
+$scope function uvm_hdl_concat2string $end
+$upscope $end
+$upscope $end
+
+$scope begin apb_agt_pkg $end
+$upscope $end
+
+$scope begin apb_env_pkg $end
+$upscope $end
+
+$scope begin apb_test_pkg $end
+$upscope $end
+
+$scope begin questa_uvm_pkg $end
+$upscope $end
+
+$scope begin std $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0M&
+0O&
+0Q&
+0c&
+b0 d&
+bx h&
+bx i&
+bx 0&
+bx 2&
+bx 3&
+bx 6&
+bx 9&
+1+&
+1A&
+b1011111 B&
+b10011001001111101100001010011 C&
+b1 I&
+0S&
+0U&
+b0 W&
+b0 X&
+bx e&
+0f&
+0g&
+0!
+bx _
+x`
+x)!
+0*!
+0+!
+bx ,!
+bx -!
+bx .!
+11!
+bx =!
+x>!
+x?!
+0@!
+0A!
+bx B!
+bx C!
+bx D!
+0M#
+b0 N#
+bx X#
+0]#
+1^#
+b0 _#
+0`#
+1a#
+b0 b#
+b0 f#
+b1 g#
+b1 h#
+b0 i#
+0q#
+1r#
+b0 s#
+0t#
+1u#
+b0 v#
+b0 z#
+b1 {#
+b1 |#
+b0 }#
+1]$
+0^$
+b0 _$
+b0 `$
+b0 a$
+b0 b$
+b0 c$
+b0 d$
+x#%
+bx $%
+x%%
+b0 &%
+b1 '%
+0(%
+0:%
+b1 @%
+1A%
+1B%
+1C%
+1D%
+1E%
+0F%
+0G%
+0H%
+0I%
+0J%
+b0xxxxxxxx K%
+b11111 L%
+b0 M%
+1T%
+0U%
+0W%
+0X%
+1Z%
+0[%
+1]%
+0^%
+x`%
+0a%
+b10000000000 b%
+b1000000000000 c%
+b1111000000000000000000000000 d%
+b10001 e%
+b10101010101 f%
+b101010101 g%
+b101010101 h%
+b0 i%
+b1 j%
+b10 k%
+b100 l%
+b1000 m%
+b10000 n%
+b100000 o%
+b1000000 p%
+b10000000 q%
+b100000000 r%
+b1000000000 s%
+b10000000000000 t%
+b100000000000000 u%
+b1000000000000000 v%
+b10000000000000000 w%
+b100000000000000000 x%
+b100000000000000001 y%
+b100000000000000010 z%
+b100000000000000011 {%
+b100000000000000100 |%
+b100000000000000101 }%
+b100000000000000110 ~%
+b100000000000000110 !&
+b100000000000000111 "&
+b100000000000001000 #&
+b100000000000001000 $&
+b100110000010001110110110110 %&
+b1 &&
+b1111000 '&
+b1111000 (&
+b1110111111 )&
+b11100000111111111 *&
+b100000 "
+b1000 #
+b10000 $
+b100000 %
+b10 &
+b11 '
+b1000 (
+b10000 2!
+b100000 3!
+b1000 4!
+b0 5!
+b0 6!
+b1000 7!
+b100000 8!
+b10 9!
+b11 :!
+b100101 ;!
+b100 <!
+b100000 A#
+b1000 B#
+b10 C#
+b11 D#
+b100101 E#
+b11111 F#
+b0 G#
+b100001 H#
+b100000 I#
+b100100 J#
+b100010 K#
+b1000 O#
+b100101 Y#
+b1000 Z#
+b0 [#
+b11 \#
+b100101 m#
+b1000 n#
+b0 o#
+b11 p#
+b100000 #$
+b10 $$
+b11 %$
+b100101 &$
+b11111 '$
+b0 ($
+b100001 )$
+b100000 *$
+b100100 +$
+b100010 ,$
+b100000 S$
+b10 T$
+b11 U$
+b100101 V$
+b11111 W$
+b0 X$
+b100001 Y$
+b100000 Z$
+b100100 [$
+b100010 \$
+b10000 e$
+b100000 f$
+b1000 g$
+b100 h$
+b100 i$
+b100000 j$
+b10 k$
+b11 l$
+b0 m$
+b1100 n$
+b11110000 o$
+b11110100 p$
+b0 q$
+b1000 r$
+b10000 s$
+b0 t$
+b1000 u$
+b10000 v$
+b0 w$
+b1 x$
+b10 y$
+b11 z$
+b100 {$
+b0 |$
+b1 }$
+b10 ~$
+b11 !%
+b100 "%
+b1 S%
+b1 V%
+b1 Y%
+b1 \%
+b1 _%
+b0 <&
+b101110 E&
+b0 F&
+b10000 G&
+b11111111111111111111111111111111 H&
+b0 L&
+b0 N&
+b0 P&
+b0 .&
+b0 /&
+b0 1&
+b0 5&
+b0 7&
+b0 8&
+b1 :&
+b1 ;&
+b1100101110011111100110100100110 ,&
+b101110 =&
+b111 >&
+b10001111101111010011000010010 ?&
+b1100101110011111100110100100110 @&
+b10110100001011010010001111111 D&
+b100000 J&
+b10000000000000000000000000 K&
+b111110100 V&
+b0 Y&
+b0 Z&
+b11001000 [&
+b100010110 \&
+b0 ]&
+b0 ^&
+b0 _&
+b0 `&
+b0 a&
+b0 b&
+b100100 j&
+b100100 k&
+b11111111111111111111111111111111 -&
+bx 4&
+bx R&
+bx T&
+x]
+x\
+x[
+xZ
+xY
+xX
+xW
+xV
+xU
+xT
+xS
+xR
+xQ
+xP
+xO
+xN
+xM
+xL
+xK
+xJ
+xI
+xH
+xG
+xF
+xE
+xD
+xC
+xB
+xA
+x@
+x?
+x>
+x=
+x<
+x;
+x:
+x9
+x8
+x7
+x6
+x5
+x4
+x3
+x2
+x1
+x0
+x/
+x.
+x-
+x,
+x+
+0*
+0)
+x^
+za
+z#!
+z"!
+z!!
+z~
+z}
+z|
+z{
+zz
+zy
+zx
+zw
+zv
+zu
+zt
+zs
+zr
+zq
+zp
+zo
+zn
+zm
+zl
+zk
+zj
+zi
+zh
+zg
+zf
+ze
+zd
+zc
+zb
+z%!
+z$!
+z(!
+z'!
+z&!
+z/!
+z0!
+1E!
+x)%
+xL#
+0W#
+0V#
+0U#
+0T#
+0S#
+0R#
+0Q#
+0P#
+0-$
+xM$
+xL$
+xK$
+xJ$
+xI$
+xH$
+xG$
+xF$
+xE$
+xD$
+xC$
+xB$
+xA$
+x@$
+x?$
+x>$
+x=$
+x<$
+x;$
+x:$
+x9$
+x8$
+x7$
+x6$
+x5$
+x4$
+x3$
+x2$
+x1$
+x0$
+x/$
+x.$
+xO$
+xN$
+xR$
+xQ$
+xP$
+xM!
+xL!
+xK!
+xJ!
+xI!
+xH!
+xG!
+xF!
+0N!
+xO!
+zt!
+zs!
+zr!
+zq!
+zp!
+zo!
+zn!
+zm!
+zl!
+zk!
+zj!
+zi!
+zh!
+zg!
+zf!
+ze!
+zd!
+zc!
+zb!
+za!
+z`!
+z_!
+z^!
+z]!
+z\!
+z[!
+zZ!
+zY!
+zX!
+zW!
+zV!
+zU!
+zT!
+zS!
+zR!
+zQ!
+zP!
+xu!
+0v!
+0w!
+1x!
+0|!
+0{!
+0z!
+0y!
+0""
+0!"
+0~!
+0}!
+1#"
+0$"
+0%"
+xJ"
+xI"
+xH"
+xG"
+xF"
+xE"
+xD"
+xC"
+xB"
+xA"
+x@"
+x?"
+x>"
+x="
+x<"
+x;"
+x:"
+x9"
+x8"
+x7"
+x6"
+x5"
+x4"
+x3"
+x2"
+x1"
+x0"
+x/"
+x."
+x-"
+x,"
+x+"
+x*"
+x)"
+x("
+x'"
+x&"
+0K"
+0L"
+xq"
+xp"
+xo"
+xn"
+xm"
+xl"
+xk"
+xj"
+xi"
+xh"
+xg"
+xf"
+xe"
+xd"
+xc"
+xb"
+xa"
+x`"
+x_"
+x^"
+x]"
+x\"
+x["
+xZ"
+xY"
+xX"
+xW"
+xV"
+xU"
+xT"
+xS"
+xR"
+xQ"
+xP"
+xO"
+xN"
+xM"
+1r"
+0s"
+0:#
+09#
+08#
+07#
+06#
+05#
+04#
+03#
+02#
+01#
+00#
+0/#
+0.#
+0-#
+0,#
+0+#
+0*#
+0)#
+0(#
+0'#
+0&#
+0%#
+0$#
+0##
+0"#
+0!#
+0~"
+0}"
+0|"
+0{"
+0z"
+0y"
+0x"
+0w"
+0v"
+0u"
+0t"
+0;#
+0=#
+0<#
+1@#
+0?#
+0>#
+0e#
+0d#
+0c#
+0l#
+0k#
+0j#
+0y#
+0x#
+0w#
+0"$
+0!$
+0~#
+09%
+08%
+x7%
+x6%
+x5%
+x4%
+x3%
+x2%
+x1%
+x0%
+x/%
+x.%
+x-%
+x,%
+x+%
+x*%
+x=%
+x<%
+x;%
+x?%
+x>%
+1N%
+0O%
+1P%
+1Q%
+xR%
+$end
+#5
+1!
+1)
+b0 X#
+0M!
+0L!
+0K!
+0J!
+0I!
+0H!
+0G!
+0F!
+0)%
+0`%
+0R%
+b0 K%
+#6
+0<
+0=
+0;
+0]
+0\
+0[
+0Z
+0Y
+0X
+0W
+0V
+0U
+0T
+0S
+0R
+0Q
+0P
+0O
+0N
+0M
+0L
+0K
+0J
+0I
+0H
+0G
+0F
+0E
+0D
+0C
+0B
+0A
+0@
+0?
+0>
+0:
+09
+08
+07
+06
+05
+04
+03
+02
+01
+00
+0/
+0.
+0-
+0,
+0+
+07%
+06%
+05%
+04%
+03%
+02%
+01%
+00%
+0/%
+0.%
+0-%
+0,%
+0+%
+0*%
+0?%
+0>%
+0=%
+0<%
+0;%
+#10
+0!
+0)
+#15
+1!
+1)
+#20
+0!
+1*
+0)
+#25
+1!
+1)
+1U%
+1[%
+1^%
+0#%
+0%%
+b0 $%
+1F%
+1H%
+1I%
+b0 =!
+0>!
+0]%
+0Z%
+0T%
+0^
+0`
+b0 _
+0Q%
+0P%
+0N%
+0E!
+01!
+b1 M%
+b101 M%
+b1101 M%
+#30
+0!
+0)
+#35
+1!
+1)
+#40
+b1100101110011111100110100100110 ?&
+b11111111111111111111111111111111 C&
+b1110101 B&
+b11111111111111111111111111111110 C&
+b11111111111111111111111111111100 C&
+b11111011001111101110001001001010 C&
+b11111011001111101110001001001011 C&
+b11110110011111011100010010010110 C&
+b11101100111110111000100100101100 C&
+b11101000001110101001010010011010 C&
+b11101000001110101001010010011011 C&
+b11010000011101010010100100110110 C&
+b10100000111010100101001001101100 C&
+b1000001110101001010010011011000 C&
+0A&
+b10000011101010010100100110110000 C&
+b1110110 B&
+1A&
+b111010100101001001101100000 C&
+b11100100111000111011010110 C&
+b11100100111000111011010111 C&
+0A&
+b111001001110001110110101110 C&
+b11111001100000000000011000 C&
+b11111001100000000000011001 C&
+b111110011000000000000110010 C&
+b11000011010001110110000100 C&
+b11000011010001110110000101 C&
+b110000110100011101100001010 C&
+b1100001101000111011000010100 C&
+b1000111101010110101110100010 C&
+b1000111101010110101110100011 C&
+b10001111010101101011101000110 C&
+b10101001010111100101011110000 C&
+b10101001010111100101011110001 C&
+b101010010101111001010111100010 C&
+b101110100101101000100001010100 C&
+b101110100101101000100001010101 C&
+b1011101001011010001000010101010 C&
+b1101101 B&
+b10111010010110100010000101010100 C&
+b10111110100110110011110011100010 C&
+b10111110100110110011110011100011 C&
+1A&
+b1111101001101100111100111000110 C&
+b1111001111101110110010001110000 C&
+b1111001111101110110010001110001 C&
+0A&
+b11110011111011101100100011100010 C&
+b11110111001011111101010101010100 C&
+b11110111001011111101010101010101 C&
+1A&
+b11101110010111111010101010101010 C&
+b11011100101111110101010101010100 C&
+b11011000011111100100100011100010 C&
+b11011000011111100100100011100011 C&
+b10110000111111001001000111000110 C&
+b1100001111110010010001110001100 C&
+0A&
+b11000011111100100100011100011000 C&
+b1011111 B&
+1A&
+b10000111111001001000111000110000 C&
+b1111110010010001110001100000 C&
+0A&
+b11111100100100011100011000000 C&
+b11011010100110010010101110110 C&
+b11011010100110010010101110111 C&
+b110110101001100100101011101110 C&
+b110010011001110101011101011000 C&
+b110010011001110101011101011001 C&
+b1100100110011101010111010110010 C&
+b1100000000011111011001100000100 C&
+b1100000000011111011001100000101 C&
+b11000000000111110110011000001010 C&
+1A&
+b10000000001111101100110000010100 C&
+b11111011001100000101000 C&
+b100101111001000010110011110 C&
+b100101111001000010110011111 C&
+b1110000 B&
+0A&
+b1001011110010000101100111110 C&
+b10010111100100001011001111100 C&
+b100101111001000010110011111000 C&
+b1001011110010000101100111110000 C&
+b10010111100100001011001111100000 C&
+b10010011010100011010111001010110 C&
+b10010011010100011010111001010111 C&
+1A&
+b100110101000110101110010101110 C&
+0A&
+b1001101010001101011100101011100 C&
+b1001001100001111010010011101010 C&
+b1001001100001111010010011101011 C&
+b10010011000011110100100111010110 C&
+b1101011 B&
+1A&
+b100110000111101001001110101100 C&
+0A&
+b1001100001111010010011101011000 C&
+b1001000111111000011101011101110 C&
+b1001000111111000011101011101111 C&
+b10010001111110000111010111011110 C&
+1A&
+b100011111100001110101110111100 C&
+0A&
+b1000111111000011101011101111000 C&
+b10001111110000111010111011110000 C&
+b10001011000000101011001101000110 C&
+b10001011000000101011001101000111 C&
+1A&
+b10110000001010110011010001110 C&
+0A&
+b101100000010101100110100011100 C&
+b1100111 B&
+b1011000000101011001101000111000 C&
+b1011100110101001000011110001110 C&
+b1011100110101001000011110001111 C&
+b10111001101010010000111100011110 C&
+b10111101011010000001001010101000 C&
+b10111101011010000001001010101001 C&
+1A&
+b1111010110100000010010101010010 C&
+0A&
+b11110101101000000100101010100100 C&
+1A&
+b11101011010000001001010101001000 C&
+b11101111100000011000100011111110 C&
+b11101111100000011000100011111111 C&
+b11011111000000110001000111111110 C&
+b10111110000001100010001111111100 C&
+b1111100000011000100011111111000 C&
+b1111000110011010101101001001110 C&
+b1111000110011010101101001001111 C&
+b101110 B&
+0A&
+b11110001100110101011010010011110 C&
+1A&
+b11100011001101010110100100111100 C&
+b11000110011010101101001001111000 C&
+b10001100110101011010010011110000 C&
+b11001101010110100100111100000 C&
+b11101011010100101010001010110 C&
+b11101011010100101010001010111 C&
+0A&
+b111010110101001010100010101110 C&
+b111110000101011011010100011000 C&
+b111110000101011011010100011001 C&
+b1111100001010110110101000110010 C&
+b11111000010101101101010001100100 C&
+b1110111 B&
+1A&
+b11110000101011011010100011001000 C&
+b11100001010110110101000110010000 C&
+b11000010101101101010001100100000 C&
+b10000101011011010100011001000000 C&
+b10000001101011000101101111110110 C&
+b10000001101011000101101111110111 C&
+b11010110001011011111101110 C&
+0A&
+b110101100010110111111011100 C&
+b10011100000111001001101010 C&
+b10011100000111001001101011 C&
+b100111000001110010011010110 C&
+b1000011111100101100000 C&
+b1000011111100101100001 C&
+b10000111111001011000010 C&
+b1110010 B&
+b100001111110010110000100 C&
+b1000011111100101100001000 C&
+b101110011101101011010111110 C&
+b101110011101101011010111111 C&
+b1011100111011010110101111110 C&
+b10111001110110101101011111100 C&
+b101110011101101011010111111000 C&
+b101010101101111010100001001110 C&
+b101010101101111010100001001111 C&
+b1010101011011110101000010011110 C&
+b1010001101011100100110100101000 C&
+b1010001101011100100110100101001 C&
+b10100011010111001001101001010010 C&
+b10100111100111011000011111100100 C&
+b10100111100111011000011111100101 C&
+1A&
+b1001111001110110000111111001010 C&
+b1001011111110100001001001111100 C&
+b1001011111110100001001001111101 C&
+b1101001 B&
+0A&
+b10010111111101000010010011111010 C&
+b10010011001101010011100101001100 C&
+b10010011001101010011100101001101 C&
+1A&
+b100110011010100111001010011010 C&
+b100010101010110110111100101100 C&
+b100010101010110110111100101101 C&
+0A&
+b1000101010101101101111001011010 C&
+b10001010101011011011110010110100 C&
+b10001110011011001010000100000010 C&
+b10001110011011001010000100000011 C&
+1A&
+b11100110110010100001000000110 C&
+b11000000110000101111110110000 C&
+b11000000110000101111110110001 C&
+0A&
+b110000001100001011111101100010 C&
+b110100111100011010001011010100 C&
+b110100111100011010001011010101 C&
+b1101001111000110100010110101010 C&
+b1101101001000100101100000011100 C&
+b1101101001000100101100000011101 C&
+b11011010010001001011000000111010 C&
+b1110100 B&
+1A&
+b10110100100010010110000001110100 C&
+b10110000010010000111110111000010 C&
+b10110000010010000111110111000011 C&
+b1100000100100001111101110000110 C&
+b1100100010100011110011000110000 C&
+b1100100010100011110011000110001 C&
+0A&
+b11001000101000111100110001100010 C&
+b11001100011000101101000111010100 C&
+b11001100011000101101000111010101 C&
+1A&
+b10011000110001011010001110101010 C&
+b10011100000001001011111000011100 C&
+b10011100000001001011111000011101 C&
+b111000000010010111110000111010 C&
+0A&
+b1110000000100101111100001110100 C&
+b1110100110100111110010111000010 C&
+b1110100110100111110010111000011 C&
+b11101001101001111100101110000110 C&
+b11101101011001101101011000110000 C&
+b11101101011001101101011000110001 C&
+1A&
+b11011010110011011010110001100010 C&
+b11011110000011001011000111010100 C&
+b11011110000011001011000111010101 C&
+b1100101 B&
+b10111100000110010110001110101010 C&
+b1111000001100101100011101010100 C&
+b1111100111100111101101011100010 C&
+b1111100111100111101101011100011 C&
+0A&
+b11111001111001111011010111000110 C&
+b11111101001001101010100001110000 C&
+b11111101001001101010100001110001 C&
+1A&
+b11111010010011010101000011100010 C&
+b11111110100011000100110101010100 C&
+b11111110100011000100110101010101 C&
+b11111101000110001001101010101010 C&
+b11111001110110011000011100011100 C&
+b11111001110110011000011100011101 C&
+b11110011101100110000111000111010 C&
+b11100111011001100001110001110100 C&
+b11001110110011000011100011101000 C&
+b11001010000011010010010101011110 C&
+b11001010000011010010010101011111 C&
+b1011111 B&
+b10010100000110100100101010111110 C&
+b101000001101001001010101111100 C&
+0A&
+b1010000011010010010101011111000 C&
+b1010100101010000011011101001110 C&
+b1010100101010000011011101001111 C&
+b10101001010100000110111010011110 C&
+b10101101100100010111001100101000 C&
+b10101101100100010111001100101001 C&
+1A&
+b1011011001000101110011001010010 C&
+0A&
+b10110110010001011100110010100100 C&
+1A&
+b1101100100010111001100101001000 C&
+0A&
+b11011001000101110011001010010000 C&
+b1110010 B&
+1A&
+b10110010001011100110010100100000 C&
+b10110110111011110111100010010110 C&
+b10110110111011110111100010010111 C&
+b1101101110111101111000100101110 C&
+0A&
+b11011011101111011110001001011100 C&
+1A&
+b10110111011110111100010010111000 C&
+b10110011101110101101100100001110 C&
+b10110011101110101101100100001111 C&
+b1100111011101011011001000011110 C&
+0A&
+b11001110111010110110010000111100 C&
+b11001010001010100111100110001010 C&
+b11001010001010100111100110001011 C&
+1A&
+b10010100010101001111001100010110 C&
+b101000101010011110011000101100 C&
+b101100011010001111101110011010 C&
+b101100011010001111101110011011 C&
+b1100101 B&
+0A&
+b1011000110100011111011100110110 C&
+b1011100000100001110101010000000 C&
+b1011100000100001110101010000001 C&
+b10111000001000011101010100000010 C&
+1A&
+b1110000010000111010101000000100 C&
+0A&
+b11100000100001110101010000001000 C&
+1A&
+b11000001000011101010100000010000 C&
+b11000101110011111011010110100110 C&
+b11000101110011111011010110100111 C&
+b10001011100111110110101101001110 C&
+b10111001111101101011010011100 C&
+0A&
+b101110011111011010110100111000 C&
+b1100001 B&
+b1011100111110110101101001110000 C&
+b1011000001110100100011111000110 C&
+b1011000001110100100011111000111 C&
+b10110000011101001000111110001110 C&
+1A&
+b1100000111010010001111100011100 C&
+b1100100001010000000001010101010 C&
+b1100100001010000000001010101011 C&
+0A&
+b11001000010100000000010101010110 C&
+1A&
+b10010000101000000000101010101100 C&
+b10010100011000010001011100011010 C&
+b10010100011000010001011100011011 C&
+b101000110000100010111000110110 C&
+0A&
+b1010001100001000101110001101100 C&
+b1010101010001010100000111011010 C&
+b1010101010001010100000111011011 C&
+b10101010100010101000001110110110 C&
+b1100100 B&
+1A&
+b1010101000101010000011101101100 C&
+b1010001110101000001101011011010 C&
+b1010001110101000001101011011011 C&
+0A&
+b10100011101010000011010110110110 C&
+1A&
+b1000111010100000110101101101100 C&
+0A&
+b10001110101000001101011011011000 C&
+1A&
+b11101010000011010110110110000 C&
+b11001100000001011000000000110 C&
+b11001100000001011000000000111 C&
+0A&
+b110011000000010110000000001110 C&
+b110111110000000111110110111000 C&
+b110111110000000111110110111001 C&
+b1101111100000001111101101110010 C&
+b1101011010000011110011011000100 C&
+b1101011010000011110011011000101 C&
+b11010110100000111100110110001010 C&
+b1011111 B&
+1A&
+b10101101000001111001101100010100 C&
+b1011010000011110011011000101000 C&
+0A&
+b10110100000111100110110001010000 C&
+b10110000110111110111000111100110 C&
+b10110000110111110111000111100111 C&
+1A&
+b1100001101111101110001111001110 C&
+0A&
+b11000011011111011100011110011100 C&
+b11000111101111001101101000101010 C&
+b11000111101111001101101000101011 C&
+1A&
+b10001111011110011011010001010110 C&
+b10001011101110001010100111100000 C&
+b10001011101110001010100111100001 C&
+b10111011100010101001111000010 C&
+0A&
+b101110111000101010011110000100 C&
+b1110011 B&
+b1011101110001010100111100001000 C&
+b1011001000001000101001010111110 C&
+b1011001000001000101001010111111 C&
+b10110010000010001010010101111110 C&
+b10110110110010011011100011001000 C&
+b10110110110010011011100011001001 C&
+1A&
+b1101101100100110111000110010010 C&
+b1101001010100100110110000100100 C&
+b1101001010100100110110000100101 C&
+0A&
+b11010010101001001101100001001010 C&
+1A&
+b10100101010010011011000010010100 C&
+b1001010100100110110000100101000 C&
+0A&
+b10010101001001101100001001010000 C&
+b10010001111001111101111111100110 C&
+b10010001111001111101111111100111 C&
+1A&
+b100011110011111011111111001110 C&
+b100111000011101010001001111000 C&
+b100111000011101010001001111001 C&
+b1100101 B&
+0A&
+b1001110000111010100010011110010 C&
+b1001010110111000101100101000100 C&
+b1001010110111000101100101000101 C&
+b10010101101110001011001010001010 C&
+1A&
+b101011011100010110010100010100 C&
+0A&
+b1010110111000101100101000101000 C&
+b10101101110001011001010001010000 C&
+1A&
+b1011011100010110010100010100000 C&
+0A&
+b10110111000101100101000101000000 C&
+b10110011110101110100110011110110 C&
+b10110011110101110100110011110111 C&
+1A&
+b1100111101011101001100111101110 C&
+b1100011011011111000010001011000 C&
+b1100011011011111000010001011001 C&
+b1110001 B&
+0A&
+b11000110110111110000100010110010 C&
+b11000010000111100001010100000100 C&
+b11000010000111100001010100000101 C&
+1A&
+b10000100001111000010101000001010 C&
+b10000000111111010011011110111100 C&
+b10000000111111010011011110111101 C&
+b1111110100110111101111010 C&
+b101001110110111001011001100 C&
+b101001110110111001011001101 C&
+0A&
+b1010011101101110010110011010 C&
+b10100111011011100101100110100 C&
+b10000001011001101011010000010 C&
+b10000001011001101011010000011 C&
+b100000010110011010110100000110 C&
+b100100100110001011000010110000 C&
+b100100100110001011000010110001 C&
+b1001001001100010110000101100010 C&
+b1001101111100000111110011010100 C&
+b1001101111100000111110011010101 C&
+b10011011111000001111100110101010 C&
+b1110101 B&
+1A&
+b110111110000011111001101010100 C&
+0A&
+b1101111100000111110011010101000 C&
+b11011111000001111100110101010000 C&
+b11011011110001101101000011100110 C&
+b11011011110001101101000011100111 C&
+1A&
+b10110111100011011010000111001110 C&
+b10110011010011001011110001111000 C&
+b10110011010011001011110001111001 C&
+b1100110100110010111100011110010 C&
+0A&
+b11001101001100101111000111100100 C&
+b11001001111100111110110001010010 C&
+b11001001111100111110110001010011 C&
+1A&
+b10010011111001111101100010100110 C&
+b100111110011111011000101001100 C&
+b100011000011101010110011111010 C&
+b100011000011101010110011111011 C&
+b1100101 B&
+0A&
+b1000110000111010101100111110110 C&
+b1000010110111000100010001000000 C&
+b1000010110111000100010001000001 C&
+b10000101101110001000100010000010 C&
+1A&
+b1011011100010001000100000100 C&
+0A&
+b10110111000100010001000001000 C&
+b101101110001000100010000010000 C&
+b1011011100010001000100000100000 C&
+b1011111010010011001010110010110 C&
+b1011111010010011001010110010111 C&
+b10111110100100110010101100101110 C&
+b10111010010100100011011010011000 C&
+b10111010010100100011011010011001 C&
+1A&
+b1110100101001000110110100110010 C&
+b1110000011001010111000010000100 C&
+b1110000011001010111000010000101 C&
+b1101110 B&
+0A&
+b11100000110010101110000100001010 C&
+1A&
+b11000001100101011100001000010100 C&
+b10000011001010111000010000101000 C&
+b110010101110000100001010000 C&
+0A&
+b1100101011100001000010100000 C&
+b11001010111000010000101000000 C&
+b11101100111010011110011110110 C&
+b11101100111010011110011110111 C&
+b111011001110100111100111101110 C&
+b111111111110110110010001011000 C&
+b111111111110110110010001011001 C&
+b1111111111101101100100010110010 C&
+b1100011 B&
+b11111111111011011001000101100100 C&
+b11111011001011001000110011010010 C&
+b11111011001011001000110011010011 C&
+1A&
+b11110110010110010001100110100110 C&
+b11101100101100100011001101001100 C&
+b11101000011100110010111011111010 C&
+b11101000011100110010111011111011 C&
+b11010000111001100101110111110110 C&
+b11010100001001110100000001000000 C&
+b11010100001001110100000001000001 C&
+b10101000010011101000000010000010 C&
+b10101100100011111001110100110100 C&
+b10101100100011111001110100110101 C&
+b1011001000111110011101001101010 C&
+0A&
+b10110010001111100111010011010100 C&
+b10110110111111110110100101100010 C&
+b10110110111111110110100101100011 C&
+1A&
+b1101101111111101101001011000110 C&
+b1101001001111111100111101110000 C&
+b1101001001111111100111101110001 C&
+b1100101 B&
+0A&
+b11010010011111111001111011100010 C&
+b11010110101111101000001101010100 C&
+b11010110101111101000001101010101 C&
+1A&
+b10101101011111010000011010101010 C&
+b10101001101111000001101100011100 C&
+b10101001101111000001101100011101 C&
+b1010011011110000011011000111010 C&
+0A&
+b10100110111100000110110001110100 C&
+1A&
+b1001101111000001101100011101000 C&
+b1001001001000011100010101011110 C&
+b1001001001000011100010101011111 C&
+0A&
+b10010010010000111000101010111110 C&
+b10010110100000101001011100001000 C&
+b10010110100000101001011100001001 C&
+1A&
+b101101000001010010111000010010 C&
+0A&
+b1011010000010100101110000100100 C&
+b111010 B&
+b10110100000101001011100001001000 C&
+1A&
+b1101000001010010111000010010000 C&
+0A&
+b11010000010100101110000100100000 C&
+1A&
+b10100000101001011100001001000000 C&
+b1000001010010111000010010000000 C&
+0A&
+b10000010100101110000100100000000 C&
+b10000110010101100001010010110110 C&
+b10000110010101100001010010110111 C&
+1A&
+b1100101011000010100101101110 C&
+b1000011011010011010011011000 C&
+b1000011011010011010011011001 C&
+0A&
+b10000110110100110100110110010 C&
+b100001101101001101001101100100 C&
+b1000011011010011010011011001000 C&
+b1000111101010001011101101111110 C&
+b1000111101010001011101101111111 C&
+b10001111010100010111011011111110 C&
+1A&
+b11110101000101110110111111100 C&
+0A&
+b111101010001011101101111111000 C&
+b111001100001001100011001001110 C&
+b111001100001001100011001001111 C&
+b1110011000010011000110010011110 C&
+b1110111110010001001000100101000 C&
+b1110111110010001001000100101001 C&
+b11101111100100010010001001010010 C&
+1A&
+b11011111001000100100010010100100 C&
+b11011011111000110101100100010010 C&
+b11011011111000110101100100010011 C&
+b1110101 B&
+b10110111110001101011001000100110 C&
+b1101111100011010110010001001100 C&
+b1101011010011000111100111111010 C&
+b1101011010011000111100111111011 C&
+0A&
+b11010110100110001111001111110110 C&
+b11010010010110011110111001000000 C&
+b11010010010110011110111001000001 C&
+1A&
+b10100100101100111101110010000010 C&
+b10100000011100101100000100110100 C&
+b10100000011100101100000100110101 C&
+b1000000111001011000001001101010 C&
+0A&
+b10000001110010110000010011010100 C&
+b10000101000010100001100101100010 C&
+b10000101000010100001100101100011 C&
+1A&
+b1010000101000011001011000110 C&
+0A&
+b10100001010000110010110001100 C&
+b1110110 B&
+b101000010100001100101100011000 C&
+b1010000101000011001011000110000 C&
+b1010100011000001000101110000110 C&
+b1010100011000001000101110000111 C&
+b10101000110000010001011100001110 C&
+b10101100000000000000101010111000 C&
+b10101100000000000000101010111001 C&
+1A&
+b1011000000000000001010101110010 C&
+b1011100110000010000100011000100 C&
+b1011100110000010000100011000101 C&
+0A&
+b10111001100000100001000110001010 C&
+b10111101010000110000110000111100 C&
+b10111101010000110000110000111101 C&
+1A&
+b1111010100001100001100001111010 C&
+0A&
+b11110101000011000011000011110100 C&
+b11110001110011010010110101000010 C&
+b11110001110011010010110101000011 C&
+1A&
+b11100011100110100101101010000110 C&
+b11100111010110110100011100110000 C&
+b11100111010110110100011100110001 C&
+b1101101 B&
+b11001110101101101000111001100010 C&
+b10011101011011010001110011000100 C&
+b10011001101011000000000101110010 C&
+b10011001101011000000000101110011 C&
+b110011010110000000001011100110 C&
+0A&
+b1100110101100000000010111001100 C&
+b1100010011100010001100001111010 C&
+b1100010011100010001100001111011 C&
+b11000100111000100011000011110110 C&
+1A&
+b10001001110001000110000111101100 C&
+b10011100010001100001111011000 C&
+0A&
+b100111000100011000011110110000 C&
+b1011111 B&
+b1001110001000110000111101100000 C&
+b1001010111000100001001011010110 C&
+b1001010111000100001001011010111 C&
+b10010101110001000010010110101110 C&
+b10010001000001010011100000011000 C&
+b10010001000001010011100000011001 C&
+1A&
+b100010000010100111000000110010 C&
+0A&
+b1000100000101001110000001100100 C&
+b1000000110101011111110111010010 C&
+b1000000110101011111110111010011 C&
+b10000001101010111111101110100110 C&
+b10000101011010101110011000010000 C&
+b10000101011010101110011000010001 C&
+1A&
+b1010110101011100110000100010 C&
+b1110000101001101000110010100 C&
+b1110000101001101000110010101 C&
+0A&
+b11100001010011010001100101010 C&
+b11000111010001011111010011100 C&
+b11000111010001011111010011101 C&
+b110001110100010111110100111010 C&
+b1110100 B&
+b1100011101000101111101001110100 C&
+b11000111010001011111010011101000 C&
+1A&
+b10001110100010111110100111010000 C&
+b11101000101111101001110100000 C&
+b11001110101101100111000010110 C&
+b11001110101101100111000010111 C&
+0A&
+b110011101011011001110000101110 C&
+b110111011011001000000110011000 C&
+b110111011011001000000110011001 C&
+b1101110110110010000001100110010 C&
+b1101010000110000001111010000100 C&
+b1101010000110000001111010000101 C&
+b11010100001100000011110100001010 C&
+b11010000111100010010000010111100 C&
+b11010000111100010010000010111101 C&
+1A&
+b10100001111000100100000101111010 C&
+b10100101001000110101110011001100 C&
+b10100101001000110101110011001101 C&
+b1100101 B&
+b1001010010001101011100110011010 C&
+0A&
+b10010100100011010111001100110100 C&
+1A&
+b101001000110101110011001101000 C&
+0A&
+b1010010001101011100110011010000 C&
+b10100100011010111001100110100000 C&
+1A&
+b1001000110101110011001101000000 C&
+0A&
+b10010001101011100110011010000000 C&
+b10010101011011110111101100110110 C&
+b10010101011011110111101100110111 C&
+1A&
+b101010110111101111011001101110 C&
+b101110000111111110101111011000 C&
+b101110000111111110101111011001 C&
+b1110011 B&
+0A&
+b1011100001111111101011110110010 C&
+b1011000111111101100101000000100 C&
+b1011000111111101100101000000101 C&
+b10110001111111011001010000001010 C&
+b10110101001111001000100110111100 C&
+b10110101001111001000100110111101 C&
+1A&
+b1101010011110010001001101111010 C&
+b1101110101110000000111011001100 C&
+b1101110101110000000111011001101 C&
+0A&
+b11011101011100000001110110011010 C&
+1A&
+b10111010111000000011101100110100 C&
+b1110101110000000111011001101000 C&
+0A&
+b11101011100000001110110011010000 C&
+b11101111010000011111000101100110 C&
+b11101111010000011111000101100111 C&
+1A&
+b11011110100000111110001011001110 C&
+b11011010010000101111111101111000 C&
+b11011010010000101111111101111001 C&
+b1110100 B&
+b10110100100001011111111011110010 C&
+b10110000010001001110001101000100 C&
+b10110000010001001110001101000101 C&
+b1100000100010011100011010001010 C&
+b1100100010010001101101100111100 C&
+b1100100010010001101101100111101 C&
+0A&
+b11001000100100011011011001111010 C&
+b11001100010100001010101111001100 C&
+b11001100010100001010101111001101 C&
+1A&
+b10011000101000010101011110011010 C&
+b10011100011000000100101000101100 C&
+b10011100011000000100101000101101 C&
+b111000110000001001010001011010 C&
+0A&
+b1110001100000010010100010110100 C&
+b1110101010000000011010100000010 C&
+b1110101010000000011010100000011 C&
+b11101010100000000110101000000110 C&
+b11101110010000010111011110110000 C&
+b11101110010000010111011110110001 C&
+1A&
+b11011100100000101110111101100010 C&
+b11011000010000111111001011010100 C&
+b11011000010000111111001011010101 C&
+b1011111 B&
+b10110000100001111110010110101010 C&
+b1100001000011111100101101010100 C&
+0A&
+b11000010000111111001011010101000 C&
+b11000110110111101000101100011110 C&
+b11000110110111101000101100011111 C&
+1A&
+b10001101101111010001011000111110 C&
+b11011011110100010110001111100 C&
+0A&
+b110110111101000101100011111000 C&
+b1101101111010001011000111110000 C&
+b1101001001010011010110001000110 C&
+b1101001001010011010110001000111 C&
+b11010010010100110101100010001110 C&
+b1110100 B&
+1A&
+b10100100101001101011000100011100 C&
+b10100000011001111010110010101010 C&
+b10100000011001111010110010101011 C&
+b1000000110011110101100101010110 C&
+b1000100000011100100010011100000 C&
+b1000100000011100100010011100001 C&
+0A&
+b10001000000111001000100111000010 C&
+b10001100110111011001010001110100 C&
+b10001100110111011001010001110101 C&
+1A&
+b11001101110110010100011101010 C&
+b11101011110100011010101011100 C&
+b11101011110100011010101011101 C&
+0A&
+b111010111101000110101010111010 C&
+b111110001101010111011100001100 C&
+b111110001101010111011100001101 C&
+b1111100011010101110111000011010 C&
+b1111000101010111111001110101100 C&
+b1111000101010111111001110101101 C&
+b11110001010101111110011101011010 C&
+b11110101100101101111101011101100 C&
+b11110101100101101111101011101101 C&
+1A&
+b11101011001011011111010111011010 C&
+b11101111111011001110100001101100 C&
+b11101111111011001110100001101101 C&
+b1101111 B&
+b11011111110110011101000011011010 C&
+b10111111101100111010000110110100 C&
+b1111111011001110100001101101000 C&
+0A&
+b11111110110011101000011011010000 C&
+b11111010000011111001101101100110 C&
+b11111010000011111001101101100111 C&
+1A&
+b11110100000111110011011011001110 C&
+b11110000110111100010101101111000 C&
+b11110000110111100010101101111001 C&
+b11100001101111000101011011110010 C&
+b11000011011110001010110111100100 C&
+b10000110111100010101101111001000 C&
+b10000010001100000100011001111110 C&
+b10000010001100000100011001111111 C&
+b1110000 B&
+b100011000001000110011111110 C&
+b101000011001000101001000 C&
+b101000011001000101001001 C&
+0A&
+b1010000110010001010010010 C&
+b10100001100100010100100100 C&
+b101000011001000101001001000 C&
+b1010000110010001010010010000 C&
+b1110110110000000100100100110 C&
+b1110110110000000100100100111 C&
+b11101101100000001001001001110 C&
+b11001011100010000111111111000 C&
+b11001011100010000111111111001 C&
+b110010111000100001111111110010 C&
+b110110001000110000001001000100 C&
+b110110001000110000001001000101 C&
+b1101100010001100000010010001010 C&
+b101110 B&
+b11011000100011000000100100010100 C&
+1A&
+b10110001000110000001001000101000 C&
+b1100010001100000010010001010000 C&
+0A&
+b11000100011000000100100010100000 C&
+b11000000101000010101010100010110 C&
+b11000000101000010101010100010111 C&
+1A&
+b10000001010000101010101000101110 C&
+b10000101100000111011011110011000 C&
+b10000101100000111011011110011001 C&
+b1011000001110110111100110010 C&
+0A&
+b10110000011101101111001100100 C&
+b101100000111011011110011001000 C&
+b1100101 B&
+b1011000001110110111100110010000 C&
+b1011100111110100110010000100110 C&
+b1011100111110100110010000100111 C&
+b10111001111101001100100001001110 C&
+1A&
+b1110011111010011001000010011100 C&
+0A&
+b11100111110100110010000100111000 C&
+1A&
+b11001111101001100100001001110000 C&
+b11001011011001110101111111000110 C&
+b11001011011001110101111111000111 C&
+b10010110110011101011111110001110 C&
+b101101100111010111111100011100 C&
+0A&
+b1011011001110101111111000111000 C&
+b1101110 B&
+b10110110011101011111110001110000 C&
+1A&
+b1101100111010111111100011100000 C&
+0A&
+b11011001110101111111000111000000 C&
+b11011101000101101110110001110110 C&
+b11011101000101101110110001110111 C&
+1A&
+b10111010001011011101100011101110 C&
+b1110100010110111011000111011100 C&
+b1110000100110101010110001101010 C&
+b1110000100110101010110001101011 C&
+0A&
+b11100001001101010101100011010110 C&
+b11100101111101000100010101100000 C&
+b11100101111101000100010101100001 C&
+1A&
+b11001011111010001000101011000010 C&
+b10010111110100010001010110000100 C&
+b10010011000100000000100000110010 C&
+b10010011000100000000100000110011 C&
+b1110110 B&
+b100110001000000001000001100110 C&
+b100010111000010000110111010000 C&
+b100010111000010000110111010001 C&
+0A&
+b1000101110000100001101110100010 C&
+b1000001000000110000011000010100 C&
+b1000001000000110000011000010101 C&
+b10000010000001100000110000101010 C&
+b10000110110001110001000110011100 C&
+b10000110110001110001000110011101 C&
+1A&
+b1101100011100010001100111010 C&
+b1001010011110011111010001100 C&
+b1001010011110011111010001101 C&
+0A&
+b10010100111100111110100011010 C&
+b10110010111110110000010101100 C&
+b10110010111110110000010101101 C&
+b101100101111101100000101011010 C&
+b101000011111111101110011101100 C&
+b101000011111111101110011101101 C&
+b1010000111111111011100111011010 C&
+b1010100001111101010010001101100 C&
+b1010100001111101010010001101101 C&
+b10101000011111010100100011011010 C&
+b101110 B&
+1A&
+b1010000111110101001000110110100 C&
+b1010100001110111000110000000010 C&
+b1010100001110111000110000000011 C&
+0A&
+b10101000011101110001100000000110 C&
+b10101100101101100000010110110000 C&
+b10101100101101100000010110110001 C&
+1A&
+b1011001011011000000101101100010 C&
+0A&
+b10110010110110000001011011000100 C&
+b10110110000110010000101101110010 C&
+b10110110000110010000101101110011 C&
+1A&
+b1101100001100100001011011100110 C&
+b1101000111100110000101101010000 C&
+b1101000111100110000101101010001 C&
+0A&
+b11010001111001100001011010100010 C&
+b11010101001001110000101100010100 C&
+b11010101001001110000101100010101 C&
+1A&
+b10101010010011100001011000101010 C&
+b10101110100011110000101110011100 C&
+b10101110100011110000101110011101 C&
+b1011101000111100001011100111010 C&
+b1011001110111110000101010001100 C&
+b1011001110111110000101010001101 C&
+b1100001 B&
+0A&
+b10110011101111100001010100011010 C&
+b10110111011111110000100010101100 C&
+b10110111011111110000100010101101 C&
+1A&
+b1101110111111100001000101011010 C&
+b1101010001111110000110011101100 C&
+b1101010001111110000110011101101 C&
+0A&
+b11010100011111100001100111011010 C&
+1A&
+b10101000111111000011001110110100 C&
+b10101100001111010010111000000010 C&
+b10101100001111010010111000000011 C&
+b1011000011110100101110000000110 C&
+b1011100101110110100000110110000 C&
+b1011100101110110100000110110001 C&
+0A&
+b10111001011101101000001101100010 C&
+b10111101101101111001111011010100 C&
+b10111101101101111001111011010101 C&
+1A&
+b1111011011011110011110110101010 C&
+0A&
+b11110110110111100111101101010100 C&
+b1100111 B&
+1A&
+b11101101101111001111011010101000 C&
+b11011011011110011110110101010000 C&
+b10110110111100111101101010100000 C&
+b1101101111001111011010101000000 C&
+b1101001001001101010100011110110 C&
+b1101001001001101010100011110111 C&
+0A&
+b11010010010011010101000111101110 C&
+1A&
+b10100100100110101010001111011100 C&
+b1001001001101010100011110111000 C&
+0A&
+b10010010011010101000111101110000 C&
+b1110100 B&
+1A&
+b100100110101010001111011100000 C&
+b100000000101000000001101010110 C&
+b100000000101000000001101010111 C&
+0A&
+b1000000001010000000011010101110 C&
+b10000000010100000000110101011100 C&
+b10000100100100010001000011101010 C&
+b10000100100100010001000011101011 C&
+1A&
+b1001001000100010000111010110 C&
+b1101111000110011110001100000 C&
+b1101111000110011110001100001 C&
+0A&
+b11011110001100111100011000010 C&
+b11111000001110110010101110100 C&
+b11111000001110110010101110101 C&
+b111110000011101100101011101010 C&
+b111010110011111101011101011100 C&
+b111010110011111101011101011101 C&
+b1110101100111111010111010111010 C&
+b1110001010111101011001100001100 C&
+b1110001010111101011001100001101 C&
+b11100010101111010110011000011010 C&
+b101110 B&
+1A&
+b11000101011110101100110000110100 C&
+b11000001101110111101000110000010 C&
+b11000001101110111101000110000011 C&
+b10000011011101111010001100000110 C&
+b110111011110100011000001100 C&
+0A&
+b1101110111101000110000011000 C&
+b1001000111111001000110101110 C&
+b1001000111111001000110101111 C&
+b10010001111110010001101011110 C&
+b100100011111100100011010111100 C&
+b100000101111110101101100001010 C&
+b100000101111110101101100001011 C&
+b1000001011111101011011000010110 C&
+b10000010111111010110110000101100 C&
+b1110011 B&
+1A&
+b101111110101101100001011000 C&
+0A&
+b1011111101011011000010110000 C&
+b1111001101001010110100000110 C&
+b1111001101001010110100000111 C&
+b11110011010010101101000001110 C&
+b111100110100101011010000011100 C&
+b1111001101001010110100000111000 C&
+b1111101011001000111010110001110 C&
+b1111101011001000111010110001111 C&
+b11111010110010001110101100011110 C&
+b11111110000010011111011010101000 C&
+b11111110000010011111011010101001 C&
+1A&
+b11111100000100111110110101010010 C&
+b11111000001001111101101010100100 C&
+b11111100111001101100011100010010 C&
+b11111100111001101100011100010011 C&
+b1100101 B&
+b11111001110011011000111000100110 C&
+b11110011100110110001110001001100 C&
+b11110111010110100000000111111010 C&
+b11110111010110100000000111111011 C&
+b11101110101101000000001111110110 C&
+b11011101011010000000011111101100 C&
+b11011001101010010001101001011010 C&
+b11011001101010010001101001011011 C&
+b10110011010100100011010010110110 C&
+b10110111100100110010100100000000 C&
+b10110111100100110010100100000001 C&
+b1101111001001100101001000000010 C&
+0A&
+b11011110010011001010010000000100 C&
+b11011010100011011011100110110010 C&
+b11011010100011011011100110110011 C&
+1A&
+b10110101000110110111001101100110 C&
+b10110001110110100110111011010000 C&
+b10110001110110100110111011010001 C&
+b1110001 B&
+b1100011101101001101110110100010 C&
+0A&
+b11000111011010011011101101000100 C&
+1A&
+b10001110110100110111011010001000 C&
+b10001010000100100110101100111110 C&
+b10001010000100100110101100111111 C&
+b10100001001001101011001111110 C&
+b10000111001011100101111001000 C&
+b10000111001011100101111001001 C&
+0A&
+b100001110010111001011110010010 C&
+b100101000010101000101000100100 C&
+b100101000010101000101000100101 C&
+b1001010000101010001010001001010 C&
+b1001110110101000000100111111100 C&
+b1001110110101000000100111111101 C&
+b10011101101010000001001111111010 C&
+b10011001011010010000111001001100 C&
+b10011001011010010000111001001101 C&
+1A&
+b110010110100100001110010011010 C&
+b110110000100110000000100101100 C&
+b110110000100110000000100101101 C&
+b1110010 B&
+0A&
+b1101100001001100000001001011010 C&
+b11011000010011000000010010110100 C&
+b11011100100011010001100100000010 C&
+b11011100100011010001100100000011 C&
+1A&
+b10111001000110100011001000000110 C&
+b10111101110110110010111110110000 C&
+b10111101110110110010111110110001 C&
+b1111011101101100101111101100010 C&
+b1111111011101110100001011010100 C&
+b1111111011101110100001011010101 C&
+0A&
+b11111110111011101000010110101010 C&
+b11111010001011111001100000011100 C&
+b11111010001011111001100000011101 C&
+1A&
+b11110100010111110011000000111010 C&
+b11101000101111100110000001110100 C&
+b11010001011111001100000011101000 C&
+b11010101101111011101110101011110 C&
+b11010101101111011101110101011111 C&
+b101110 B&
+b10101011011110111011101010111110 C&
+b10101111101110101010011100001000 C&
+b10101111101110101010011100001001 C&
+b1011111011101010100111000010010 C&
+0A&
+b10111110111010101001110000100100 C&
+b10111010001010111000000110010010 C&
+b10111010001010111000000110010011 C&
+1A&
+b1110100010101110000001100100110 C&
+0A&
+b11101000101011100000011001001100 C&
+1A&
+b11010001010111000000110010011000 C&
+b10100010101110000001100100110000 C&
+b10100110011110010000010010000110 C&
+b10100110011110010000010010000111 C&
+b1001100111100100000100100001110 C&
+b1001000001100110001010010111000 C&
+b1001000001100110001010010111001 C&
+b1100010 B&
+0A&
+b10010000011001100010100101110010 C&
+1A&
+b100000110011000101001011100100 C&
+0A&
+b1000001100110001010010111001000 C&
+b10000011001100010100101110010000 C&
+1A&
+b110011000101001011100100000 C&
+b10101000111000101010010110 C&
+b10101000111000101010010111 C&
+0A&
+b101010001110001010100101110 C&
+b1100001100000100010011000 C&
+b1100001100000100010011001 C&
+b11000011000001000100110010 C&
+b111110011010000110010000100 C&
+b111110011010000110010000101 C&
+b1111100110100001100100001010 C&
+b1100001 B&
+b11111001101000011001000010100 C&
+b11011111101010010111110100010 C&
+b11011111101010010111110100011 C&
+b110111111010100101111101000110 C&
+b1101111110101001011111010001100 C&
+b11011111101010010111110100011000 C&
+1A&
+b10111111010100101111101000110000 C&
+b10111011100100111110011110000110 C&
+b10111011100100111110011110000111 C&
+b1110111001001111100111100001110 C&
+0A&
+b11101110010011111001111000011100 C&
+b11101010100011101000001110101010 C&
+b11101010100011101000001110101011 C&
+1A&
+b11010101000111010000011101010110 C&
+b11010001110111000001101011100000 C&
+b11010001110111000001101011100001 C&
+b1110011 B&
+b10100011101110000011010111000010 C&
+b1000111011100000110101110000100 C&
+0A&
+b10001110111000001101011100001000 C&
+1A&
+b11101110000011010111000010000 C&
+b11001000000001011001110100110 C&
+b11001000000001011001110100111 C&
+0A&
+b110010000000010110011101001110 C&
+b110110110000000111101011111000 C&
+b110110110000000111101011111001 C&
+b1101101100000001111010111110010 C&
+b1101001010000011110100001000100 C&
+b1101001010000011110100001000101 C&
+b11010010100000111101000010001010 C&
+b11010110010000101100110100111100 C&
+b11010110010000101100110100111101 C&
+1A&
+b10101100100001011001101001111010 C&
+b10101000010001001000011111001100 C&
+b10101000010001001000011111001101 C&
+b1100101 B&
+b1010000100010010000111110011010 C&
+0A&
+b10100001000100100001111100110100 C&
+1A&
+b1000010001001000011111001101000 C&
+0A&
+b10000100010010000111110011010000 C&
+1A&
+b1000100100001111100110100000 C&
+b1100010100011110010000010110 C&
+b1100010100011110010000010111 C&
+0A&
+b11000101000111100100000101110 C&
+b11100011000101101010110011000 C&
+b11100011000101101010110011001 C&
+b111000110001011010101100110010 C&
+b111100000001001011011010000100 C&
+b111100000001001011011010000101 C&
+b1111000000010010110110100001010 C&
+b1011111 B&
+b11110000000100101101101000010100 C&
+b11110100110100111100011110100010 C&
+b11110100110100111100011110100011 C&
+1A&
+b11101001101001111000111101000110 C&
+b11010011010011110001111010001100 C&
+b10100110100111100011110100011000 C&
+b1001101001111000111101000110000 C&
+0A&
+b10011010011110001111010001100000 C&
+1A&
+b110100111100011110100011000000 C&
+0A&
+b1101001111000111101000110000000 C&
+b1110011 B&
+b11010011110001111010001100000000 C&
+b11010111000001101011111010110110 C&
+b11010111000001101011111010110111 C&
+1A&
+b10101110000011010111110101101110 C&
+b1011100000110101111101011011100 C&
+b1011000110110111110011101101010 C&
+b1011000110110111110011101101011 C&
+0A&
+b10110001101101111100111011010110 C&
+1A&
+b1100011011011111001110110101100 C&
+0A&
+b11000110110111110011101101011000 C&
+b11000010000111100010011011101110 C&
+b11000010000111100010011011101111 C&
+1A&
+b10000100001111000100110111011110 C&
+b1000011110001001101110111100 C&
+b1100101110011000011000001010 C&
+b1100101110011000011000001011 C&
+b1100101 B&
+0A&
+b11001011100110000110000010110 C&
+b11101101100100001000110100000 C&
+b11101101100100001000110100001 C&
+b111011011001000010001101000010 C&
+b1110110110010000100011010000100 C&
+b1110010000010010101101100110010 C&
+b1110010000010010101101100110011 C&
+b11100100000100101011011001100110 C&
+1A&
+b11001000001001010110110011001100 C&
+b11001100111001000111000101111010 C&
+b11001100111001000111000101111011 C&
+b10011001110010001110001011110110 C&
+b110011100100011100010111101100 C&
+0A&
+b1100111001000111000101111011000 C&
+b1110001 B&
+b11001110010001110001011110110000 C&
+b11001010100001100000101000000110 C&
+b11001010100001100000101000000111 C&
+1A&
+b10010101000011000001010000001110 C&
+b10010001110011010000100110111000 C&
+b10010001110011010000100110111001 C&
+b100011100110100001001101110010 C&
+b100111010110110000111011000100 C&
+b100111010110110000111011000101 C&
+0A&
+b1001110101101100001110110001010 C&
+b10011101011011000011101100010100 C&
+b10011001101011010010011010100010 C&
+b10011001101011010010011010100011 C&
+1A&
+b110011010110100100110101000110 C&
+0A&
+b1100110101101001001101010001100 C&
+b1100010011101011000011100111010 C&
+b1100010011101011000011100111011 C&
+b11000100111010110000111001110110 C&
+b11101111110000001110000101100001 ?&
+b11101111110000001110000101100001 D&
+0!
+0)
+b1100101110011111100110100100110 ?&
+b11111111111111111111111111111111 C&
+b1110101 B&
+1A&
+b11111111111111111111111111111110 C&
+b11111111111111111111111111111100 C&
+b11111011001111101110001001001010 C&
+b11111011001111101110001001001011 C&
+b11110110011111011100010010010110 C&
+b11101100111110111000100100101100 C&
+b11101000001110101001010010011010 C&
+b11101000001110101001010010011011 C&
+b11010000011101010010100100110110 C&
+b10100000111010100101001001101100 C&
+b1000001110101001010010011011000 C&
+0A&
+b10000011101010010100100110110000 C&
+b1110110 B&
+1A&
+b111010100101001001101100000 C&
+b11100100111000111011010110 C&
+b11100100111000111011010111 C&
+0A&
+b111001001110001110110101110 C&
+b11111001100000000000011000 C&
+b11111001100000000000011001 C&
+b111110011000000000000110010 C&
+b11000011010001110110000100 C&
+b11000011010001110110000101 C&
+b110000110100011101100001010 C&
+b1100001101000111011000010100 C&
+b1000111101010110101110100010 C&
+b1000111101010110101110100011 C&
+b10001111010101101011101000110 C&
+b10101001010111100101011110000 C&
+b10101001010111100101011110001 C&
+b101010010101111001010111100010 C&
+b101110100101101000100001010100 C&
+b101110100101101000100001010101 C&
+b1011101001011010001000010101010 C&
+b1101101 B&
+b10111010010110100010000101010100 C&
+b10111110100110110011110011100010 C&
+b10111110100110110011110011100011 C&
+1A&
+b1111101001101100111100111000110 C&
+b1111001111101110110010001110000 C&
+b1111001111101110110010001110001 C&
+0A&
+b11110011111011101100100011100010 C&
+b11110111001011111101010101010100 C&
+b11110111001011111101010101010101 C&
+1A&
+b11101110010111111010101010101010 C&
+b11011100101111110101010101010100 C&
+b11011000011111100100100011100010 C&
+b11011000011111100100100011100011 C&
+b10110000111111001001000111000110 C&
+b1100001111110010010001110001100 C&
+0A&
+b11000011111100100100011100011000 C&
+b1011111 B&
+1A&
+b10000111111001001000111000110000 C&
+b1111110010010001110001100000 C&
+0A&
+b11111100100100011100011000000 C&
+b11011010100110010010101110110 C&
+b11011010100110010010101110111 C&
+b110110101001100100101011101110 C&
+b110010011001110101011101011000 C&
+b110010011001110101011101011001 C&
+b1100100110011101010111010110010 C&
+b1100000000011111011001100000100 C&
+b1100000000011111011001100000101 C&
+b11000000000111110110011000001010 C&
+1A&
+b10000000001111101100110000010100 C&
+b11111011001100000101000 C&
+b100101111001000010110011110 C&
+b100101111001000010110011111 C&
+b1110000 B&
+0A&
+b1001011110010000101100111110 C&
+b10010111100100001011001111100 C&
+b100101111001000010110011111000 C&
+b1001011110010000101100111110000 C&
+b10010111100100001011001111100000 C&
+b10010011010100011010111001010110 C&
+b10010011010100011010111001010111 C&
+1A&
+b100110101000110101110010101110 C&
+0A&
+b1001101010001101011100101011100 C&
+b1001001100001111010010011101010 C&
+b1001001100001111010010011101011 C&
+b10010011000011110100100111010110 C&
+b1101011 B&
+1A&
+b100110000111101001001110101100 C&
+0A&
+b1001100001111010010011101011000 C&
+b1001000111111000011101011101110 C&
+b1001000111111000011101011101111 C&
+b10010001111110000111010111011110 C&
+1A&
+b100011111100001110101110111100 C&
+0A&
+b1000111111000011101011101111000 C&
+b10001111110000111010111011110000 C&
+b10001011000000101011001101000110 C&
+b10001011000000101011001101000111 C&
+1A&
+b10110000001010110011010001110 C&
+0A&
+b101100000010101100110100011100 C&
+b1100111 B&
+b1011000000101011001101000111000 C&
+b1011100110101001000011110001110 C&
+b1011100110101001000011110001111 C&
+b10111001101010010000111100011110 C&
+b10111101011010000001001010101000 C&
+b10111101011010000001001010101001 C&
+1A&
+b1111010110100000010010101010010 C&
+0A&
+b11110101101000000100101010100100 C&
+1A&
+b11101011010000001001010101001000 C&
+b11101111100000011000100011111110 C&
+b11101111100000011000100011111111 C&
+b11011111000000110001000111111110 C&
+b10111110000001100010001111111100 C&
+b1111100000011000100011111111000 C&
+b1111000110011010101101001001110 C&
+b1111000110011010101101001001111 C&
+b101110 B&
+0A&
+b11110001100110101011010010011110 C&
+1A&
+b11100011001101010110100100111100 C&
+b11000110011010101101001001111000 C&
+b10001100110101011010010011110000 C&
+b11001101010110100100111100000 C&
+b11101011010100101010001010110 C&
+b11101011010100101010001010111 C&
+0A&
+b111010110101001010100010101110 C&
+b111110000101011011010100011000 C&
+b111110000101011011010100011001 C&
+b1111100001010110110101000110010 C&
+b11111000010101101101010001100100 C&
+b1100001 B&
+1A&
+b11110000101011011010100011001000 C&
+b11100001010110110101000110010000 C&
+b11100101100110100100110000100110 C&
+b11100101100110100100110000100111 C&
+b11001011001101001001100001001110 C&
+b11001111111101011000010111111000 C&
+b11001111111101011000010111111001 C&
+b10011111111010110000101111110010 C&
+b10011011001010100001011001000100 C&
+b10011011001010100001011001000101 C&
+b110110010101000010110010001010 C&
+b110010100101010011000100111100 C&
+b110010100101010011000100111101 C&
+0A&
+b1100101001010100110001001111010 C&
+b1100001111010110111111111001100 C&
+b1100001111010110111111111001101 C&
+b11000011110101101111111110011010 C&
+b11000111000101111110001000101100 C&
+b11000111000101111110001000101101 C&
+1A&
+b10001110001011111100010001011010 C&
+b10001010111011101101100111101100 C&
+b10001010111011101101100111101101 C&
+b1110000 B&
+b10101110111011011001111011010 C&
+b10001000111001010111001101100 C&
+b10001000111001010111001101101 C&
+0A&
+b100010001110010101110011011010 C&
+b1000100011100101011100110110100 C&
+b10001000111001010111001101101000 C&
+1A&
+b10001110010101110011011010000 C&
+0A&
+b100011100101011100110110100000 C&
+b100111010101001101000000010110 C&
+b100111010101001101000000010111 C&
+b1001110101010011010000000101110 C&
+b1001010011010001011110110011000 C&
+b1001010011010001011110110011001 C&
+b10010100110100010111101100110010 C&
+b1100010 B&
+1A&
+b101001101000101111011001100100 C&
+b101101011000111110101111010010 C&
+b101101011000111110101111010011 C&
+0A&
+b1011010110001111101011110100110 C&
+b1011110000001101100101000010000 C&
+b1011110000001101100101000010001 C&
+b10111100000011011001010000100010 C&
+1A&
+b1111000000110110010100001000100 C&
+b1111100110110100011010111110010 C&
+b1111100110110100011010111110011 C&
+0A&
+b11111001101101000110101111100110 C&
+1A&
+b11110011011010001101011111001100 C&
+b11100110110100011010111110011000 C&
+b11001101101000110101111100110000 C&
+b11001001011000100100001010000110 C&
+b11001001011000100100001010000111 C&
+b1011111 B&
+b10010010110001001000010100001110 C&
+b100101100010010000101000011100 C&
+0A&
+b1001011000100100001010000111000 C&
+b1001111110100110000100110001110 C&
+b1001111110100110000100110001111 C&
+b10011111101001100001001100011110 C&
+b10011011011001110000111010101000 C&
+b10011011011001110000111010101001 C&
+1A&
+b110110110011100001110101010010 C&
+0A&
+b1101101100111000011101010100100 C&
+b11011011001110000111010101001000 C&
+b11011111111110010110100011111110 C&
+b11011111111110010110100011111111 C&
+1A&
+b10111111111100101101000111111110 C&
+b10111011001100111100110001001000 C&
+b10111011001100111100110001001001 C&
+b1110011 B&
+b1110110011001111001100010010010 C&
+0A&
+b11101100110011110011000100100100 C&
+b11101000000011100010110010010010 C&
+b11101000000011100010110010010011 C&
+1A&
+b11010000000111000101100100100110 C&
+b11010100110111010100010010010000 C&
+b11010100110111010100010010010001 C&
+b10101001101110101000100100100010 C&
+b10101101011110111001010010010100 C&
+b10101101011110111001010010010101 C&
+b1011010111101110010100100101010 C&
+0A&
+b10110101111011100101001001010100 C&
+b10110001001011110100111111100010 C&
+b10110001001011110100111111100011 C&
+1A&
+b1100010010111101001111111000110 C&
+0A&
+b11000100101111010011111110001100 C&
+b1100101 B&
+1A&
+b10001001011110100111111100011000 C&
+b10010111101001111111000110000 C&
+b10110001101011110001110000110 C&
+b10110001101011110001110000111 C&
+0A&
+b101100011010111100011100001110 C&
+b101000101010101101101010111000 C&
+b101000101010101101101010111001 C&
+b1010001010101011011010101110010 C&
+b10100010101010110110101011100100 C&
+1A&
+b1000101010101101101010111001000 C&
+0A&
+b10001010101011011010101110010000 C&
+b10001110011011001011011000100110 C&
+b10001110011011001011011000100111 C&
+1A&
+b11100110110010110110001001110 C&
+b11000000110000111000111111000 C&
+b11000000110000111000111111001 C&
+b1110001 B&
+0A&
+b110000001100001110001111110010 C&
+b110100111100011111111001000100 C&
+b110100111100011111111001000101 C&
+b1101001111000111111110010001010 C&
+b11010011110001111111100100010100 C&
+1A&
+b10100111100011111111001000101000 C&
+b10100011010011101110111110011110 C&
+b10100011010011101110111110011111 C&
+b1000110100111011101111100111110 C&
+0A&
+b10001101001110111011111001111100 C&
+b10001001111110101010001111001010 C&
+b10001001111110101010001111001011 C&
+1A&
+b10011111101010100011110010110 C&
+0A&
+b100111111010101000111100101100 C&
+b1110101 B&
+b1001111110101010001111001011000 C&
+b1001011000101000000001111101110 C&
+b1001011000101000000001111101111 C&
+b10010110001010000000011111011110 C&
+1A&
+b101100010100000000111110111100 C&
+0A&
+b1011000101000000001111101111000 C&
+b10110001010000000011111011110000 C&
+b10110101100000010010001101000110 C&
+b10110101100000010010001101000111 C&
+1A&
+b1101011000000100100011010001110 C&
+0A&
+b11010110000001001000110100011100 C&
+b11010010110001011001000010101010 C&
+b11010010110001011001000010101011 C&
+1A&
+b10100101100010110010000101010110 C&
+b10100001010010100011110011100000 C&
+b10100001010010100011110011100001 C&
+b1100101 B&
+b1000010100101000111100111000010 C&
+0A&
+b10000101001010001111001110000100 C&
+1A&
+b1010010100011110011100001000 C&
+0A&
+b10100101000111100111000010000 C&
+b101001010001111001110000100000 C&
+b1010010100011110011100001000000 C&
+b1010110010011100010010111110110 C&
+b1010110010011100010010111110111 C&
+b10101100100111000100101111101110 C&
+b10101000010111010101011001011000 C&
+b10101000010111010101011001011001 C&
+1A&
+b1010000101110101010110010110010 C&
+b1010100011110111011000100000100 C&
+b1010100011110111011000100000101 C&
+b1101110 B&
+0A&
+b10101000111101110110001000001010 C&
+1A&
+b1010001111011101100010000010100 C&
+0A&
+b10100011110111011000100000101000 C&
+b10100111000111001001010110011110 C&
+b10100111000111001001010110011111 C&
+1A&
+b1001110001110010010101100111110 C&
+0A&
+b10011100011100100101011001111100 C&
+1A&
+b111000111001001010110011111000 C&
+0A&
+b1110001110010010101100111110000 C&
+b1110101000010000100010001000110 C&
+b1110101000010000100010001000111 C&
+b11101010000100001000100010001110 C&
+b1100011 B&
+1A&
+b11010100001000010001000100011100 C&
+b10101000010000100010001000111000 C&
+b1010000100001000100010001110000 C&
+b1010100010001010101100111000110 C&
+b1010100010001010101100111000111 C&
+0A&
+b10101000100010101011001110001110 C&
+1A&
+b1010001000101010110011100011100 C&
+b1010101110101000111101010101010 C&
+b1010101110101000111101010101011 C&
+0A&
+b10101011101010001111010101010110 C&
+b10101111011010011110100011100000 C&
+b10101111011010011110100011100001 C&
+1A&
+b1011110110100111101000111000010 C&
+0A&
+b10111101101001111010001110000100 C&
+b1100101 B&
+1A&
+b1111011010011110100011100001000 C&
+0A&
+b11110110100111101000111000010000 C&
+1A&
+b11101101001111010001110000100000 C&
+b11011010011110100011100001000000 C&
+b11011110101110110010010111110110 C&
+b11011110101110110010010111110111 C&
+b10111101011101100100101111101110 C&
+b10111001101101110101011001011000 C&
+b10111001101101110101011001011001 C&
+b1110011011011101010110010110010 C&
+0A&
+b11100110110111010101100101100100 C&
+b11100010000111000100010011010010 C&
+b11100010000111000100010011010011 C&
+1A&
+b11000100001110001000100110100110 C&
+b11000000111110011001010000010000 C&
+b11000000111110011001010000010001 C&
+b1011111 B&
+b10000001111100110010100000100010 C&
+b11111001100101000001000100 C&
+0A&
+b111110011001010000010001000 C&
+b11000011011011110100111110 C&
+b11000011011011110100111111 C&
+b110000110110111101001111110 C&
+b10110110100110011111001000 C&
+b10110110100110011111001001 C&
+b101101101001100111110010010 C&
+b1011101011101001000100100 C&
+b1011101011101001000100101 C&
+b10111010111010010001001010 C&
+b101110101110100100010010100 C&
+b1000101100101010100100010 C&
+b1000101100101010100100011 C&
+b10001011001010101001000110 C&
+b1101001 B&
+b100010110010101010010001100 C&
+b100110000100100100111010 C&
+b100110000100100100111011 C&
+b1001100001001001001110110 C&
+b10011000010010010011101100 C&
+b100110000100100100111011000 C&
+b110101010001101110 C&
+b110101010001101111 C&
+b1101010100011011110 C&
+b11010101000110111100 C&
+b100110011000100110000001010 C&
+b100110011000100110000001011 C&
+b1001100110001001100000010110 C&
+b1101010110011000010110100000 C&
+b1101010110011000010110100001 C&
+b11010101100110000101101000010 C&
+b1110100 B&
+b110101011001100001011010000100 C&
+b1101010110011000010110100001000 C&
+b11010101100110000101101000010000 C&
+b11010001010110010100011110100110 C&
+b11010001010110010100011110100111 C&
+1A&
+b10100010101100101000111101001110 C&
+b10100110011100111001001011111000 C&
+b10100110011100111001001011111001 C&
+b1001100111001110010010111110010 C&
+0A&
+b10011001110011100100101111100100 C&
+b10011101000011110101011001010010 C&
+b10011101000011110101011001010011 C&
+1A&
+b111010000111101010110010100110 C&
+0A&
+b1110100001111010101100101001100 C&
+b1100101 B&
+b11101000011110101011001010011000 C&
+b11101100101110111010111100101110 C&
+b11101100101110111010111100101111 C&
+1A&
+b11011001011101110101111001011110 C&
+b11011101101101100100001111101000 C&
+b11011101101101100100001111101001 C&
+b10111011011011001000011111010010 C&
+b1110110110110010000111110100100 C&
+b1110010000110000001001000010010 C&
+b1110010000110000001001000010011 C&
+0A&
+b11100100001100000010010000100110 C&
+1A&
+b11001000011000000100100001001100 C&
+b10010000110000001001000010011000 C&
+b100001100000010010000100110000 C&
+b100101010000000011110010000110 C&
+b100101010000000011110010000111 C&
+b1101101 B&
+0A&
+b1001010100000000111100100001110 C&
+b1001110010000010110010010111000 C&
+b1001110010000010110010010111001 C&
+b10011100100000101100100101110010 C&
+1A&
+b111001000001011001001011100100 C&
+0A&
+b1110010000010110010010111001000 C&
+b1110110110010100011100001111110 C&
+b1110110110010100011100001111111 C&
+b11101101100101000111000011111110 C&
+1A&
+b11011011001010001110000111111100 C&
+b10110110010100011100001111111000 C&
+b1101100101000111000011111110000 C&
+b1101000011000101001101001000110 C&
+b1101000011000101001101001000111 C&
+b1011111 B&
+0A&
+b11010000110001010011010010001110 C&
+b11010100000001000010100100111000 C&
+b11010100000001000010100100111001 C&
+1A&
+b10101000000010000101001001110010 C&
+b1010000000100001010010011100100 C&
+0A&
+b10100000001000010100100111001000 C&
+b10100100111000000101010001111110 C&
+b10100100111000000101010001111111 C&
+1A&
+b1001001110000001010100011111110 C&
+0A&
+b10010011100000010101000111111100 C&
+1A&
+b100111000000101010001111111000 C&
+0A&
+b1001110000001010100011111110000 C&
+b1100100 B&
+b10011100000010101000111111100000 C&
+1A&
+b111000000101010001111111000000 C&
+b111100110101000000001001110110 C&
+b111100110101000000001001110111 C&
+0A&
+b1111001101010000000010011101110 C&
+b1111101011010010001100101011000 C&
+b1111101011010010001100101011001 C&
+b11111010110100100011001010110010 C&
+1A&
+b11110101101001000110010101100100 C&
+b11110001011001010111100011010010 C&
+b11110001011001010111100011010011 C&
+b11100010110010101111000110100110 C&
+b11000101100101011110001101001100 C&
+b10001011001010111100011010011000 C&
+b10001111111010101101101100101110 C&
+b10001111111010101101101100101111 C&
+b1110010 B&
+b11111110101011011011001011110 C&
+b11011000101001010101111101000 C&
+b11011000101001010101111101001 C&
+0A&
+b110110001010010101011111010010 C&
+b110010111010000100101001100100 C&
+b110010111010000100101001100101 C&
+b1100101110100001001010011001010 C&
+b11001011101000010010100110010100 C&
+1A&
+b10010111010000100101001100101000 C&
+b101110100001001010011001010000 C&
+0A&
+b1011101000010010100110010100000 C&
+b1011001110010000101000100010110 C&
+b1011001110010000101000100010111 C&
+b10110011100100001010001000101110 C&
+b1110110 B&
+1A&
+b1100111001000010100010001011100 C&
+b1100011111000000101100111101010 C&
+b1100011111000000101100111101011 C&
+0A&
+b11000111110000001011001111010110 C&
+b11000011000000011010111001100000 C&
+b11000011000000011010111001100001 C&
+1A&
+b10000110000000110101110011000010 C&
+b1100000001101011100110000100 C&
+b1000110001111010010000110010 C&
+b1000110001111010010000110011 C&
+0A&
+b10001100011110100100001100110 C&
+b10101010011100101010111010000 C&
+b10101010011100101010111010001 C&
+b101010100111001010101110100010 C&
+b101110010111011011011000010100 C&
+b101110010111011011011000010101 C&
+b1011100101110110110110000101010 C&
+b1011000011110100111000110011100 C&
+b1011000011110100111000110011101 C&
+b10110000111101001110001100111010 C&
+b111010 B&
+1A&
+b1100001111010011100011001110100 C&
+b1100101001010001101101111000010 C&
+b1100101001010001101101111000011 C&
+0A&
+b11001010010100011011011110000110 C&
+b11001110100100001010101000110000 C&
+b11001110100100001010101000110001 C&
+1A&
+b10011101001000010101010001100010 C&
+b10011001111000000100100111010100 C&
+b10011001111000000100100111010101 C&
+b110011110000001001001110101010 C&
+0A&
+b1100111100000010010011101010100 C&
+b1100011010000000011101011100010 C&
+b1100011010000000011101011100011 C&
+b11000110100000000111010111000110 C&
+b11000010010000010110100001110000 C&
+b11000010010000010110100001110001 C&
+1A&
+b10000100100000101101000011100010 C&
+b10000000010000111100110101010100 C&
+b10000000010000111100110101010101 C&
+b100001111001101010101010 C&
+b100010001101000011100011100 C&
+b100010001101000011100011101 C&
+0A&
+b1000100011010000111000111010 C&
+b10001000110100001110001110100 C&
+b10101110110110000000111000010 C&
+b10101110110110000000111000011 C&
+b101011101101100000001110000110 C&
+b1010111011011000000011100001100 C&
+b1010011101011010001101010111010 C&
+b1010011101011010001101010111011 C&
+b10100111010110100011010101110110 C&
+b10100011100110110010100011000000 C&
+b10100011100110110010100011000001 C&
+1A&
+b1000111001101100101000110000010 C&
+0A&
+b10001110011011001010001100000100 C&
+1A&
+b11100110110010100011000001000 C&
+b11000000110000101101110111110 C&
+b11000000110000101101110111111 C&
+b1110101 B&
+0A&
+b110000001100001011011101111110 C&
+b110100111100011010101011001000 C&
+b110100111100011010101011001001 C&
+b1101001111000110101010110010010 C&
+b11010011110001101010101100100100 C&
+b11010111000001111011011010010010 C&
+b11010111000001111011011010010011 C&
+1A&
+b10101110000011110110110100100110 C&
+b10101010110011100111000010010000 C&
+b10101010110011100111000010010001 C&
+b1010101100111001110000100100010 C&
+0A&
+b10101011001110011100001001000100 C&
+b10101111111110001101111111110010 C&
+b10101111111110001101111111110011 C&
+1A&
+b1011111111100011011111111100110 C&
+0A&
+b10111111111000110111111111001100 C&
+b1110110 B&
+1A&
+b1111111110001101111111110011000 C&
+b1111011000001111110001000101110 C&
+b1111011000001111110001000101111 C&
+0A&
+b11110110000011111100010001011110 C&
+b11110010110011101101100111101000 C&
+b11110010110011101101100111101001 C&
+1A&
+b11100101100111011011001111010010 C&
+b11001011001110110110011110100100 C&
+b11001111111110100111101000010010 C&
+b11001111111110100111101000010011 C&
+b10011111111101001111010000100110 C&
+b111111111010011110100001001100 C&
+0A&
+b1111111110100111101000010011000 C&
+b1111011000100101100110100101110 C&
+b1111011000100101100110100101111 C&
+b11110110001001011001101001011110 C&
+b1101101 B&
+1A&
+b11101100010010110011010010111100 C&
+b11011000100101100110100101111000 C&
+b11011100010101110111010011001110 C&
+b11011100010101110111010011001111 C&
+b10111000101011101110100110011110 C&
+b1110001010111011101001100111100 C&
+0A&
+b11100010101110111010011001111000 C&
+1A&
+b11000101011101110100110011110000 C&
+b10001010111011101001100111100000 C&
+b10101110111010011001111000000 C&
+b10001000111000010111001110110 C&
+b10001000111000010111001110111 C&
+b1011111 B&
+0A&
+b100010001110000101110011101110 C&
+b100110111110010100000101011000 C&
+b100110111110010100000101011001 C&
+b1001101111100101000001010110010 C&
+b1001001001100111001111100000100 C&
+b1001001001100111001111100000101 C&
+b10010010011001110011111000001010 C&
+b10010110101001100010001110111100 C&
+b10010110101001100010001110111101 C&
+1A&
+b101101010011000100011101111010 C&
+0A&
+b1011010100110001000111011110100 C&
+b1011110010110011001001101000010 C&
+b1011110010110011001001101000011 C&
+b10111100101100110010011010000110 C&
+1A&
+b1111001011001100100110100001100 C&
+0A&
+b11110010110011001001101000011000 C&
+b1110100 B&
+1A&
+b11100101100110010011010000110000 C&
+b11100001010110000010100110000110 C&
+b11100001010110000010100110000111 C&
+b11000010101100000101001100001110 C&
+b11000110011100010100111010111000 C&
+b11000110011100010100111010111001 C&
+b10001100111000101001110101110010 C&
+b11001110001010011101011100100 C&
+b11101000001000010011101010010 C&
+b11101000001000010011101010011 C&
+0A&
+b111010000010000100111010100110 C&
+b111110110010010101001100010000 C&
+b111110110010010101001100010001 C&
+b1111101100100101010011000100010 C&
+b1111001010100111011101110010100 C&
+b1111001010100111011101110010101 C&
+b11110010101001110111011100101010 C&
+b11110110011001100110101010011100 C&
+b11110110011001100110101010011101 C&
+1A&
+b11101100110011001101010100111010 C&
+b11101000000011011100100010001100 C&
+b11101000000011011100100010001101 C&
+b1100101 B&
+b11010000000110111001000100011010 C&
+b10100000001101110010001000110100 C&
+b10100100111101100011111110000010 C&
+b10100100111101100011111110000011 C&
+b1001001111011000111111100000110 C&
+0A&
+b10010011110110001111111000001100 C&
+1A&
+b100111101100011111110000011000 C&
+b100011011100001110000110101110 C&
+b100011011100001110000110101111 C&
+0A&
+b1000110111000011100001101011110 C&
+b1000010001000001101111011101000 C&
+b1000010001000001101111011101001 C&
+b10000100010000011011110111010010 C&
+b10000000100000001010000001100100 C&
+b10000000100000001010000001100101 C&
+1A&
+b1000000010100000011001010 C&
+b101110000000101110101111100 C&
+b101110000000101110101111101 C&
+b1110011 B&
+0A&
+b1011100000001011101011111010 C&
+b1111010000011010011101001100 C&
+b1111010000011010011101001101 C&
+b11110100000110100111010011010 C&
+b11010010000100101001100101100 C&
+b11010010000100101001100101101 C&
+b110100100001001010011001011010 C&
+b1101001000010010100110010110100 C&
+b11010010000100101001100101101000 C&
+b11010110110100111000010011011110 C&
+b11010110110100111000010011011111 C&
+1A&
+b10101101101001110000100110111110 C&
+b1011011010011100001001101111100 C&
+0A&
+b10110110100111000010011011111000 C&
+b1110100 B&
+1A&
+b1101101001110000100110111110000 C&
+b1101001111110010101000001000110 C&
+b1101001111110010101000001000111 C&
+0A&
+b11010011111100101010000010001110 C&
+1A&
+b10100111111001010100000100011100 C&
+b1001111110010101000001000111000 C&
+b1001011000010111001111110001110 C&
+b1001011000010111001111110001111 C&
+0A&
+b10010110000101110011111100011110 C&
+b10010010110101100010001010101000 C&
+b10010010110101100010001010101001 C&
+1A&
+b100101101011000100010101010010 C&
+0A&
+b1001011010110001000101010100100 C&
+b1001111100110011001011100010010 C&
+b1001111100110011001011100010011 C&
+b10011111001100110010111000100110 C&
+b1011111 B&
+1A&
+b111110011001100101110001001100 C&
+0A&
+b1111100110011001011100010011000 C&
+b1111000000011011010010100101110 C&
+b1111000000011011010010100101111 C&
+b11110000000110110100101001011110 C&
+b11110100110110100101011111101000 C&
+b11110100110110100101011111101001 C&
+1A&
+b11101001101101001010111111010010 C&
+b11010011011010010101111110100100 C&
+b10100110110100101011111101001000 C&
+b10100010000100111010001011111110 C&
+b10100010000100111010001011111111 C&
+b1000100001001110100010111111110 C&
+0A&
+b10001000010011101000101111111100 C&
+b1110100 B&
+1A&
+b10000100111010001011111111000 C&
+b10100010111000000101001001110 C&
+b10100010111000000101001001111 C&
+0A&
+b101000101110000001010010011110 C&
+b1010001011100000010100100111100 C&
+b1010101101100010011010010001010 C&
+b1010101101100010011010010001011 C&
+b10101011011000100110100100010110 C&
+1A&
+b1010110110001001101001000101100 C&
+0A&
+b10101101100010011010010001011000 C&
+b10101001010010001011100111101110 C&
+b10101001010010001011100111101111 C&
+1A&
+b1010010100100010111001111011110 C&
+0A&
+b10100101001000101110011110111100 C&
+b1101111 B&
+1A&
+b1001010010001011100111101111000 C&
+0A&
+b10010100100010111001111011110000 C&
+b10010000010010101000001101000110 C&
+b10010000010010101000001101000111 C&
+1A&
+b100000100101010000011010001110 C&
+0A&
+b1000001001010100000110100011100 C&
+b1000101111010110001000010101010 C&
+b1000101111010110001000010101011 C&
+b10001011110101100010000101010110 C&
+1A&
+b10111101011000100001010101100 C&
+0A&
+b101111010110001000010101011000 C&
+b101011100110011001100011101110 C&
+b101011100110011001100011101111 C&
+b1010111001100110011000111011110 C&
+b1110000 B&
+b10101110011001100110001110111100 C&
+1A&
+b1011100110011001100011101111000 C&
+b1011000000011011101101011001110 C&
+b1011000000011011101101011001111 C&
+0A&
+b10110000000110111011010110011110 C&
+1A&
+b1100000001101110110101100111100 C&
+b1100100111101100111011010001010 C&
+b1100100111101100111011010001011 C&
+0A&
+b11001001111011001110110100010110 C&
+b11001101001011011111000010100000 C&
+b11001101001011011111000010100001 C&
+1A&
+b10011010010110111110000101000010 C&
+b110100101101111100001010000100 C&
+0A&
+b1101001011011111000010100001000 C&
+b101110 B&
+b11010010110111110000101000010000 C&
+1A&
+b10100101101111100001010000100000 C&
+b1001011011111000010100001000000 C&
+0A&
+b10010110111110000101000010000000 C&
+b10010010001110010100110100110110 C&
+b10010010001110010100110100110111 C&
+1A&
+b100100011100101001101001101110 C&
+b100000101100111000011111011000 C&
+b100000101100111000011111011001 C&
+0A&
+b1000001011001110000111110110010 C&
+b1000101101001100001001000000100 C&
+b1000101101001100001001000000101 C&
+b10001011010011000010010000001010 C&
+1A&
+b10110100110000100100000010100 C&
+b10010010110010101010110100010 C&
+b10010010110010101010110100011 C&
+b1100101 B&
+0A&
+b100100101100101010101101000110 C&
+b100000011100111011011011110000 C&
+b100000011100111011011011110001 C&
+b1000000111001110110110111100010 C&
+b10000001110011101101101111000100 C&
+b10000101000011111100011001110010 C&
+b10000101000011111100011001110011 C&
+1A&
+b1010000111111000110011100110 C&
+b1110110111101001000101010000 C&
+b1110110111101001000101010001 C&
+0A&
+b11101101111010010001010100010 C&
+b111011011110100100010101000100 C&
+b111111101110110101100011110010 C&
+b111111101110110101100011110011 C&
+b1111111011101101011000111100110 C&
+b1111011101101111010110001010000 C&
+b1111011101101111010110001010001 C&
+b11110111011011110101100010100010 C&
+b1101110 B&
+1A&
+b11101110110111101011000101000100 C&
+b11101010000111111010110011110010 C&
+b11101010000111111010110011110011 C&
+b11010100001111110101100111100110 C&
+b10101000011111101011001111001100 C&
+b1010000111111010110011110011000 C&
+0A&
+b10100001111110101100111100110000 C&
+1A&
+b1000011111101011001111001100000 C&
+0A&
+b10000111111010110011110011000000 C&
+b10000011001010100010000101110110 C&
+b10000011001010100010000101110111 C&
+1A&
+b110010101000100001011101110 C&
+b10100101010101111101011000 C&
+b10100101010101111101011001 C&
+b1110110 B&
+0A&
+b101001010101011111010110010 C&
+b1010010101010111110101100100 C&
+b1110100101000110000011010010 C&
+b1110100101000110000011010011 C&
+b11101001010001100000110100110 C&
+b11001111010011101110000010000 C&
+b11001111010011101110000010001 C&
+b110011110100111011100000100010 C&
+b1100111101001110111000001000100 C&
+b1100011011001100110110111110010 C&
+b1100011011001100110110111110011 C&
+b11000110110011001101101111100110 C&
+b11000010000011011100011001010000 C&
+b11000010000011011100011001010001 C&
+1A&
+b10000100000110111000110010100010 C&
+b1000001101110001100101000100 C&
+b1100111101100000010011110010 C&
+b1100111101100000010011110011 C&
+b101110 B&
+0A&
+b11001111011000000100111100110 C&
+b110011110110000001001111001100 C&
+b110111000110010000111001111010 C&
+b110111000110010000111001111011 C&
+b1101110001100100001110011110110 C&
+b1101010111100110000000101000000 C&
+b1101010111100110000000101000001 C&
+b11010101111001100000001010000010 C&
+b11010001001001110001111100110100 C&
+b11010001001001110001111100110101 C&
+1A&
+b10100010010011100011111001101010 C&
+b10100110100011110010001111011100 C&
+b10100110100011110010001111011101 C&
+b1001101000111100100011110111010 C&
+0A&
+b10011010001111001000111101110100 C&
+1A&
+b110100011110010001111011101000 C&
+b110000101110000000001101011110 C&
+b110000101110000000001101011111 C&
+b1100001 B&
+0A&
+b1100001011100000000011010111110 C&
+b1100101101100010001101100001000 C&
+b1100101101100010001101100001001 C&
+b11001011011000100011011000010010 C&
+1A&
+b10010110110001000110110000100100 C&
+b10010010000001010111000110010010 C&
+b10010010000001010111000110010011 C&
+b100100000010101110001100100110 C&
+b100000110010111111111010010000 C&
+b100000110010111111111010010001 C&
+0A&
+b1000001100101111111110100100010 C&
+b10000011001011111111101001000100 C&
+b10000111111011101110011111110010 C&
+b10000111111011101110011111110011 C&
+1A&
+b1111110111011100111111100110 C&
+0A&
+b11111101110111001111111001100 C&
+b1100111 B&
+b111111011101110011111110011000 C&
+b111011101101100010001000101110 C&
+b111011101101100010001000101111 C&
+b1110111011011000100010001011110 C&
+b1110011101011010101100111101000 C&
+b1110011101011010101100111101001 C&
+b11100111010110101011001111010010 C&
+b11100011100110111010111001100100 C&
+b11100011100110111010111001100101 C&
+1A&
+b11000111001101110101110011001010 C&
+b11000011111101100100000101111100 C&
+b11000011111101100100000101111101 C&
+b10000111111011001000001011111010 C&
+b10000011001011011001111101001100 C&
+b10000011001011011001111101001101 C&
+b110010110110011111010011010 C&
+0A&
+b1100101101100111110100110100 C&
+b1000011101110110000010000010 C&
+b1000011101110110000010000011 C&
+b10000111011101100000100000110 C&
+b1110100 B&
+b100001110111011000001000001100 C&
+b1000011101110110000010000011000 C&
+b10000111011101100000100000110000 C&
+b10000011101101110001010110000110 C&
+b10000011101101110001010110000111 C&
+1A&
+b111011011100010101100001110 C&
+b11101011110011011010111000 C&
+b11101011110011011010111001 C&
+0A&
+b111010111100110110101110010 C&
+b11100111110111000011000100 C&
+b11100111110111000011000101 C&
+b111001111101110000110001010 C&
+b11111111111111110000111100 C&
+b11111111111111110000111101 C&
+b111111111111111100001111010 C&
+b11001111101110010111001100 C&
+b11001111101110010111001101 C&
+b110011111011100101110011010 C&
+b101110 B&
+b1100111110111001011100110100 C&
+b11001111101110010111001101000 C&
+b11101001101100011001111011110 C&
+b11101001101100011001111011111 C&
+b111010011011000110011110111110 C&
+b111110101011010111101000001000 C&
+b111110101011010111101000001001 C&
+b1111101010110101111010000010010 C&
+b1111001100110111110100110100100 C&
+b1111001100110111110100110100101 C&
+b11110011001101111101001101001010 C&
+1A&
+b11100110011011111010011010010100 C&
+b11001100110111110100110100101000 C&
+b11001000000111100101000010011110 C&
+b11001000000111100101000010011111 C&
+b10010000001111001010000100111110 C&
+b10010100111111011011110010001000 C&
+b10010100111111011011110010001001 C&
+b1110011 B&
+b101001111110110111100100010010 C&
+0A&
+b1010011111101101111001000100100 C&
+b1010111001101111110111110010010 C&
+b1010111001101111110111110010011 C&
+b10101110011011111101111100100110 C&
+1A&
+b1011100110111111011111001001100 C&
+b1011000000111101010001111111010 C&
+b1011000000111101010001111111011 C&
+0A&
+b10110000001111010100011111110110 C&
+b10110100111111000101101001000000 C&
+b10110100111111000101101001000001 C&
+1A&
+b1101001111110001011010010000010 C&
+0A&
+b11010011111100010110100100000100 C&
+b11010111001100000111010010110010 C&
+b11010111001100000111010010110011 C&
+1A&
+b10101110011000001110100101100110 C&
+b10101010101000011111010011010000 C&
+b10101010101000011111010011010001 C&
+b1100101 B&
+b1010101010000111110100110100010 C&
+0A&
+b10101010100001111101001101000100 C&
+1A&
+b1010101000011111010011010001000 C&
+0A&
+b10101010000111110100110100010000 C&
+1A&
+b1010100001111101001101000100000 C&
+b1010000111111111000011110010110 C&
+b1010000111111111000011110010111 C&
+0A&
+b10100001111111110000111100101110 C&
+b10100101001111100001001010011000 C&
+b10100101001111100001001010011001 C&
+1A&
+b1001010011111000010010100110010 C&
+0A&
+b10010100111110000100101001100100 C&
+b1110001 B&
+1A&
+b101001111100001001010011001000 C&
+0A&
+b1010011111000010010100110010000 C&
+b10100111110000100101001100100000 C&
+1A&
+b1001111100001001010011001000000 C&
+b1001011010001011011101111110110 C&
+b1001011010001011011101111110111 C&
+0A&
+b10010110100010110111011111101110 C&
+b10010010010010100110101001011000 C&
+b10010010010010100110101001011001 C&
+1A&
+b100100100101001101010010110010 C&
+0A&
+b1001001001010011010100101100100 C&
+b1001101111010001011010011010010 C&
+b1001101111010001011010011010011 C&
+b10011011110100010110100110100110 C&
+b1110010 B&
+1A&
+b110111101000101101001101001100 C&
+b110011011000111100111011111010 C&
+b110011011000111100111011111011 C&
+0A&
+b1100110110001111001110111110110 C&
+b1100010000001101000000001000000 C&
+b1100010000001101000000001000001 C&
+b11000100000011010000000010000010 C&
+1A&
+b10001000000110100000000100000100 C&
+b10001100110110110001110010110010 C&
+b10001100110110110001110010110011 C&
+b11001101101100011100101100110 C&
+0A&
+b110011011011000111001011001100 C&
+b110111101011010110111101111010 C&
+b110111101011010110111101111011 C&
+b1101111010110101101111011110110 C&
+b1101011100110111100001101000000 C&
+b1101011100110111100001101000001 C&
+b11010111001101111000011010000010 C&
+b101110 B&
+1A&
+b10101110011011110000110100000100 C&
+b10101010101011100001000010110010 C&
+b10101010101011100001000010110011 C&
+b1010101010111000010000101100110 C&
+0A&
+b10101010101110000100001011001100 C&
+b10101110011110010101111101111010 C&
+b10101110011110010101111101111011 C&
+1A&
+b1011100111100101011111011110110 C&
+0A&
+b10111001111001010111110111101100 C&
+1A&
+b1110011110010101111101111011000 C&
+0A&
+b11100111100101011111011110110000 C&
+1A&
+b11001111001010111110111101100000 C&
+b11001011111010101111001011010110 C&
+b11001011111010101111001011010111 C&
+b1100010 B&
+b10010111110101011110010110101110 C&
+b10010011000101001111100000011000 C&
+b10010011000101001111100000011001 C&
+b100110001010011111000000110010 C&
+0A&
+b1001100010100111110000001100100 C&
+b10011000101001111100000011001000 C&
+1A&
+b110001010011111000000110010000 C&
+b110101100011101001110000100110 C&
+b110101100011101001110000100111 C&
+0A&
+b1101011000111010011100001001110 C&
+b1101111110111000010010111111000 C&
+b1101111110111000010010111111001 C&
+b11011111101110000100101111110010 C&
+b11011011011110010101011001000100 C&
+b11011011011110010101011001000101 C&
+1A&
+b10110110111100101010110010001010 C&
+b10110010001100111011000100111100 C&
+b10110010001100111011000100111101 C&
+b1100001 B&
+b1100100011001110110001001111010 C&
+0A&
+b11001000110011101100010011110100 C&
+1A&
+b10010001100111011000100111101000 C&
+b10010101010111001001010001011110 C&
+b10010101010111001001010001011111 C&
+b101010101110010010100010111110 C&
+b101110011110000011010100001000 C&
+b101110011110000011010100001001 C&
+0A&
+b1011100111100000110101000010010 C&
+b10111001111000001101010000100100 C&
+b10111101001000011100100110010010 C&
+b10111101001000011100100110010011 C&
+1A&
+b1111010010000111001001100100110 C&
+0A&
+b11110100100001110010011001001100 C&
+b1110011 B&
+1A&
+b11101001000011100100110010011000 C&
+b11010010000111001001100100110000 C&
+b10100100001110010011001001100000 C&
+b10100000111110000010111111010110 C&
+b10100000111110000010111111010111 C&
+b1000001111100000101111110101110 C&
+b1000101001100010100001000011000 C&
+b1000101001100010100001000011001 C&
+0A&
+b10001010011000101000010000110010 C&
+b10001110101000111001100110000100 C&
+b10001110101000111001100110000101 C&
+1A&
+b11101010001110011001100001010 C&
+0A&
+b111010100011100110011000010100 C&
+b111110010011110111101110100010 C&
+b111110010011110111101110100011 C&
+b1111100100111101111011101000110 C&
+b1100101 B&
+b11111001001111011110111010001100 C&
+b11111101111111001111001100111010 C&
+b11111101111111001111001100111011 C&
+1A&
+b11111011111110011110011001110110 C&
+b11111111001110001111101111000000 C&
+b11111111001110001111101111000001 C&
+b11111110011100011111011110000010 C&
+b11111100111000111110111100000100 C&
+b11111000001000101111001010110010 C&
+b11111000001000101111001010110011 C&
+b11110000010001011110010101100110 C&
+b11110100100001001111100011010000 C&
+b11110100100001001111100011010001 C&
+b11101001000010011111000110100010 C&
+b11010010000100111110001101000100 C&
+b10100100001001111100011010001000 C&
+b10100000111001101101101100111110 C&
+b10100000111001101101101100111111 C&
+b1011111 B&
+b1000001110011011011011001111110 C&
+0A&
+b10000011100110110110110011111100 C&
+b10000111010110100111000101001010 C&
+b10000111010110100111000101001011 C&
+1A&
+b1110101101001110001010010110 C&
+0A&
+b11101011010011100010100101100 C&
+b11001101010001101100010011010 C&
+b11001101010001101100010011011 C&
+b110011010100011011000100110110 C&
+b110111100100001010110010000000 C&
+b110111100100001010110010000001 C&
+b1101111001000010101100100000010 C&
+b11011110010000101011001000000100 C&
+b11011010100000111010111110110010 C&
+b11011010100000111010111110110011 C&
+1A&
+b10110101000001110101111101100110 C&
+b10110001110001100100001011010000 C&
+b10110001110001100100001011010001 C&
+b1110011 B&
+b1100011100011001000010110100010 C&
+0A&
+b11000111000110010000101101000100 C&
+b11000011110110000001011011110010 C&
+b11000011110110000001011011110011 C&
+1A&
+b10000111101100000010110111100110 C&
+b10000011011100010011000001010000 C&
+b10000011011100010011000001010001 C&
+b110111000100110000010100010 C&
+b10001000110111110100010100 C&
+b10001000110111110100010101 C&
+0A&
+b100010001101111101000101010 C&
+b100001111110011110011100 C&
+b100001111110011110011101 C&
+b1000011111100111100111010 C&
+b101110011101101001010001100 C&
+b101110011101101001010001101 C&
+b1011100111011010010100011010 C&
+b1111010111001011100010101100 C&
+b1111010111001011100010101101 C&
+b11110101110010111000101011010 C&
+b1100101 B&
+b111101011100101110001010110100 C&
+b111001101100111111111100000010 C&
+b111001101100111111111100000011 C&
+b1110011011001111111111000000110 C&
+b11100110110011111111110000001100 C&
+b11100010000011101110000110111010 C&
+b11100010000011101110000110111011 C&
+1A&
+b11000100000111011100001101110110 C&
+b11000000110111001101111011000000 C&
+b11000000110111001101111011000001 C&
+b10000001101110011011110110000010 C&
+b10000101011110001010000000110100 C&
+b10000101011110001010000000110101 C&
+b1010111100010100000001101010 C&
+0A&
+b10101111000101000000011010100 C&
+b10001001000111001110101100010 C&
+b10001001000111001110101100011 C&
+b100010010001110011101011000110 C&
+b1110001 B&
+b1000100100011100111010110001100 C&
+b1000000010011110110100000111010 C&
+b1000000010011110110100000111011 C&
+b10000000100111101101000001110110 C&
+1A&
+b1001111011010000011101100 C&
+b101111111001011110101011010 C&
+b101111111001011110101011011 C&
+0A&
+b1011111110010111101010110110 C&
+b10111111100101111010101101100 C&
+b10011001100111110100011011010 C&
+b10011001100111110100011011011 C&
+b100110011001111101000110110110 C&
+b100010101001101100110000000000 C&
+b100010101001101100110000000001 C&
+b1000101010011011001100000000010 C&
+b1000001100011001000010110110100 C&
+b1000001100011001000010110110101 C&
+b10000011000110010000101101101010 C&
+b101110 B&
+1A&
+b110001100100001011011010100 C&
+b10111100110000101101100010 C&
+b10111100110000101101100011 C&
+0A&
+b101111001100001011011000110 C&
+b1001001110000101101110000 C&
+b1001001110000101101110001 C&
+b10010011100001011011100010 C&
+b110100011110000101101010100 C&
+b110100011110000101101010101 C&
+b1101000111100001011010101010 C&
+b1001110111110000101100011100 C&
+b1001110111110000101100011101 C&
+b10011101111100001011000111010 C&
+b100111011111000010110001110100 C&
+b100011101111010011000111000010 C&
+b100011101111010011000111000011 C&
+b1000111011110100110001110000110 C&
+b10001110111101001100011100001100 C&
+b1110010 B&
+1A&
+b11101111010011000111000011000 C&
+b11001001010001001001110101110 C&
+b11001001010001001001110101111 C&
+0A&
+b110010010100010010011101011110 C&
+b110110100100000011101011101000 C&
+b110110100100000011101011101001 C&
+b1101101001000000111010111010010 C&
+b11011010010000001110101110100100 C&
+1A&
+b10110100100000011101011101001000 C&
+b1101001000000111010111010010000 C&
+0A&
+b11010010000001110101110100100000 C&
+b11010110110001100100000010010110 C&
+b11010110110001100100000010010111 C&
+1A&
+b10101101100011001000000100101110 C&
+b10101001010011011001110010011000 C&
+b10101001010011011001110010011001 C&
+b1100101 B&
+b1010010100110110011100100110010 C&
+0A&
+b10100101001101100111001001100100 C&
+1A&
+b1001010011011001110010011001000 C&
+0A&
+b10010100110110011100100110010000 C&
+1A&
+b101001101100111001001100100000 C&
+b101101011100101000111010010110 C&
+b101101011100101000111010010111 C&
+0A&
+b1011010111001010001110100101110 C&
+b1011110001001000000000010011000 C&
+b1011110001001000000000010011001 C&
+b10111100010010000000000100110010 C&
+b10111000100010010001110010000100 C&
+b10111000100010010001110010000101 C&
+1A&
+b1110001000100100011100100001010 C&
+b1110101110100110010010010111100 C&
+b1110101110100110010010010111101 C&
+b1110001 B&
+0A&
+b11101011101001100100100101111010 C&
+b11101111011001110101010011001100 C&
+b11101111011001110101010011001101 C&
+1A&
+b11011110110011101010100110011010 C&
+b11011010000011111011010000101100 C&
+b11011010000011111011010000101101 C&
+b10110100000111110110100001011010 C&
+b10110000110111100111010111101100 C&
+b10110000110111100111010111101101 C&
+b1100001101111001110101111011010 C&
+b1100101011111011111011001101100 C&
+b1100101011111011111011001101101 C&
+0A&
+b11001010111110111110110011011010 C&
+b11001110001110101111000101101100 C&
+b11001110001110101111000101101101 C&
+1A&
+b10011100011101011110001011011010 C&
+b111000111010111100010110110100 C&
+0A&
+b1110001110101111000101101101000 C&
+b11111101010000111111010110110100 ?&
+b11111101010000111111010110110100 D&
+b100101 k&
+b100101 j&
+#45
+1!
+1)
+#50
+0!
+0)
+#55
+1!
+1)
+#60
+0!
+0)
+#65
+1!
+1)
+#70
+0!
+0)
+#75
+1!
+1)
+#80
+0!
+0)
+#85
+1!
+1)
+#90
+0!
+0)
+#95
+1!
+1)
+#100
+0!
+0)
+#105
+1!
+1)
+#110
+0!
+0)
+#115
+1!
+1)
+#116
+1;
+1<
+1]
+1Y
+1=%
+#120
+0!
+0)
+#125
+1!
+1)
+#126
+1=
+#130
+0!
+0)
+#135
+1!
+1)
+1#%
+1^
+#140
+0!
+0)
+#145
+1!
+1)
+0#%
+0^
+#150
+0!
+0)
+#155
+1!
+1)
+1#%
+1^
+#156
+0<
+0=
+0;
+0]
+0Y
+0=%
+#160
+0!
+0)
+#165
+1!
+1)
+0#%
+0^
+#170
+0!
+0)
+#175
+1!
+1)
+#180
+0!
+0)
+#185
+1!
+1)
+#190
+0!
+0)
+#195
+1!
+1)
+b100110 k&
+b11111101010000111111010110110101 D&
+b100110 j&
+#200
+0!
+0)
+#205
+1!
+1)
+#210
+0!
+0)
+#215
+1!
+1)
+#220
+0!
+0)
+#225
+1!
+1)
+#230
+0!
+0)
+#235
+1!
+1)
+#240
+0!
+0)
+#245
+1!
+1)
+#250
+0!
+0)
+#255
+1!
+1)
+#260
+0!
+0)
+#265
+1!
+1)
+#270
+0!
+0)
+#275
+1!
+1)
+#280
+0!
+0)
+#285
+1!
+1)
+#286
+18
+17
+1<
+17%
+16%
+#290
+0!
+0)
+#295
+1!
+1)
+#296
+1=
+#300
+0!
+0)
+#305
+1!
+1)
+1#%
+1^
+#310
+0!
+0)
+#315
+1!
+1)
+0#%
+0^
+#320
+0!
+0)
+#325
+1!
+1)
+1#%
+1^
+#326
+0<
+0=
+08
+07
+07%
+06%
+#330
+0!
+0)
+#335
+1!
+1)
+0#%
+0^
+#340
+0!
+0)
+#345
+1!
+1)
+#350
+0!
+0)
+#355
+1!
+1)
+#360
+0!
+0)
+#365
+1!
+1)
+#370
+0!
+0)
+#375
+1!
+1)
+#380
+0!
+0)
+#385
+1!
+1)
+b100111 k&
+b101000 k&
+b101001 k&
+b100111 j&
+b101000 j&
+b101001 j&
+b101010 k&
+b101011 k&
+b101010 j&
+b101011 j&
+b10110100001011010010010010001 D&
+b110001100101000001111100110100 D&
+b11100011110110001100000110101010 D&
+b101100011011101111100010011010 D&
+b11101010111101011110111100010010 D&
+b1100001000010010000000010100111 D&
+b10101000011111011010000010110011 D&
+b10101000101010110010011010010110 D&
+b11011010001110100000101111111111 D&
+b10100001111001111100101100010001 D&
+b10010100111001101001001001100 D&
+b10000011010101101101110001101 D&
+b1001110101101001000010111010000 D&
+b101111000000000010100100110010 D&
+b100110110000110100100110100111 D&
+b101000011110000011100001101010 D&
+b10100011011100000011100101101000 D&
+b100010001101001001110011101101 D&
+b11110101101010110010111101101000 D&
+b11101111001101011000000000100110 D&
+b10010100111011110111101001010001 D&
+b11010100001100100011011001101 D&
+b10101010010110100001010000011010 D&
+b11010110000011111000110000000 D&
+b10001111101111010011010111101 D&
+b10011110011110001010010010000010 D&
+b110100110100100000111010110111 D&
+b11011000100010110101100101000110 D&
+b10110100001011010010010100100 D&
+b110001100101000001111101000111 D&
+b11100011110110001100000110111101 D&
+b101100011011101111100010101101 D&
+b11101010111101011110111100100101 D&
+b1100001000010010000000010111010 D&
+b10101000011111011010000011000110 D&
+b10101000101010110010011010101001 D&
+b11011010001110100000110000010010 D&
+b10100001111001111100101100100100 D&
+b10010100111001101001001011111 D&
+b10000011010101101101110100000 D&
+b1001110101101001000010111100011 D&
+b101111000000000010100101000101 D&
+b100110110000110100100110111010 D&
+b101000011110000011100001111101 D&
+b10100011011100000011100101111011 D&
+b100010001101001001110100000000 D&
+b11110101101010110010111101111011 D&
+b11101111001101011000000000111001 D&
+b10010100111011110111101001100100 D&
+b11010100001100100011011100000 D&
+b10101010010110100001010000101101 D&
+b11010110000011111000110010011 D&
+b10001111101111010011011010000 D&
+b10011110011110001010010010010101 D&
+b110100110100100000111011001010 D&
+b11011000100010110101100101011001 D&
+b10110100001011010010010111000 D&
+b110001100101000001111101011011 D&
+b11100011110110001100000111010001 D&
+b101100011011101111100011000001 D&
+b11101010111101011110111100111001 D&
+b1100001000010010000000011001110 D&
+b10101000011111011010000011011010 D&
+b10101000101010110010011010111101 D&
+b11011010001110100000110000100110 D&
+b10100001111001111100101100111000 D&
+b10010100111001101001001110011 D&
+b10000011010101101101110110100 D&
+b1001110101101001000010111110111 D&
+b101111000000000010100101011001 D&
+b100110110000110100100111001110 D&
+b101000011110000011100010010001 D&
+b10100011011100000011100110001111 D&
+b100010001101001001110100010100 D&
+b11110101101010110010111110001111 D&
+b11101111001101011000000001001101 D&
+b10010100111011110111101001111000 D&
+b11010100001100100011011110100 D&
+b10101010010110100001010001000001 D&
+b11010110000011111000110100111 D&
+b10001111101111010011011100100 D&
+b10011110011110001010010010101001 D&
+b110100110100100000111011011110 D&
+b11011000100010110101100101101101 D&
+b11011000100010110101100110000010 D&
+b110100110100100000111011110011 D&
+b10011110011110001010010010111110 D&
+b11010100001100100011100001001 D&
+b10110100001011010010011001101 D&
+b110001100101000001111101110000 D&
+b11101010111101011110111101001110 D&
+b11100011110110001100000111100110 D&
+b101100011011101111100011010110 D&
+b10101000011111011010000011101111 D&
+b1100001000010010000000011100011 D&
+b10010100111011110111101010001101 D&
+b10000011010101101101111001001 D&
+b10101000101010110010011011010010 D&
+b11011010001110100000110000111011 D&
+b10100001111001111100101101001101 D&
+b10010100111001101001010001000 D&
+b1001110101101001000011000001100 D&
+b101111000000000010100101101110 D&
+b11101111001101011000000001100010 D&
+b100110110000110100100111100011 D&
+b101000011110000011100010100110 D&
+b10100011011100000011100110100100 D&
+b100010001101001001110100101001 D&
+b11110101101010110010111110100100 D&
+b10101010010110100001010001010110 D&
+b11010110000011111000110111100 D&
+b10001111101111010011011111001 D&
