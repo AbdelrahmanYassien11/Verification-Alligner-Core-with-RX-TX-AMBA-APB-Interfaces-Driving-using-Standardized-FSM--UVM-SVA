@@ -87,9 +87,9 @@
                 IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen")
                 SETUP:  begin
                     for(int i = 0; i < req.pre_send_delay; i++) begin
-                        @(posedge vif.clk);
+                        @(vif.driver_cb);
                     end
-                    $display("Time: %0t SETUP", $time());
+                    $display("Time: %0t SETUP", $realtime());
                     vif.driver_cb.pwrite    <= int'(req.dir);
                     vif.driver_cb.paddr     <= req.addr;
                     vif.driver_cb.psel      <= 1;
@@ -98,20 +98,19 @@
                         vif.driver_cb.pwdata <= req.data;
                     end
                     @(vif.driver_cb);
-                    @(posedge vif.clk);                      
                 end
                 ACCESS: begin
-                    $display("Time: %0t ACCESS", $time());
+                    $display("Time: %0t ACCESS", $realtime());
                     vif.driver_cb.penable <= 1'b1;
                 end
                 RESPONSE: begin
-                    $display("Time: %0t RESPONSE", $time());
+                    $display("Time: %0t RESPONSE", $realtime());
                     while (vif.monitor_cb.pready != 1'b1) begin 
-                        @(posedge vif.clk); 
+                        @(vif.driver_cb); 
                     end
                     rsp.data = vif.monitor_cb.prdata;
                     rsp.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
-                    //`uvm_info(get_type_name(), rsp.convert2string(), UVM_LOW)
+                    `uvm_info(get_type_name(), rsp.convert2string(), UVM_HIGH)
 
                     state                    = IDLE;
                     vif.driver_cb.psel      <= 0;
@@ -121,7 +120,7 @@
                     vif.driver_cb.pwdata    <= 0;
 
                     for(int i = 0; i < req.post_send_delay; i++) begin
-                        @(posedge vif.clk);
+                        @(vif.driver_cb);
                     end
                     drive_done.trigger();                    
                 end

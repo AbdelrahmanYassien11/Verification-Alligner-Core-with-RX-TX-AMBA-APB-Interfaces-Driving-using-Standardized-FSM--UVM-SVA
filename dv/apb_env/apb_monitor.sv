@@ -69,7 +69,7 @@
                 @(vif.monitor_cb);
                 item.cycles_b4_item++;
             end
-            // $display("Time :%0t registering address..etc", $time());
+            // $display("Time: %0t registering address..etc", $time());
             item.addr = vif.monitor_cb.paddr;
             item.dir  = apb_dir'(vif.monitor_cb.pwrite);
             if(apb_dir'(vif.monitor_cb.pwrite) == WRITE) begin
@@ -82,12 +82,14 @@
             item.transaction_length++;
             // $display("Time: %0t 1 cycle passed", $time());
 
-            while(vif.monitor_cb.pready != READY) begin
+            while(apb_pready'(vif.monitor_cb.pready) != READY) begin
                 @(vif.monitor_cb);
                 item.transaction_length++;
+            $display("MONITOR RESPONSE: %0d", vif.monitor_cb.pslverr);
             end
             
             item.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
+            // $display("MONITOR RESPONSE: %0d", vif.monitor_cb.pslverr);
             if(apb_dir'(vif.monitor_cb.pwrite) == READ) begin
                 item.data = vif.monitor_cb.prdata;
             end
