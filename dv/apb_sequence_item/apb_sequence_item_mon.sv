@@ -44,7 +44,7 @@
     //------------------------------------------
         virtual function string convert2string();
             string s = super.convert2string();
-            s = $sformatf("%0s, RESPONSE: %0s, READY: %0s, PRE-D: %0d, LEN: %0d", 
+            s = $sformatf("%0s, RESPONSE: %0s, STATE: %0s, PRE-D: %0d, LEN: %0d", 
                 s, pslverr.name(), pready.name(), cycles_b4_item, transaction_length);
             return s;
         endfunction

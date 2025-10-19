@@ -82,6 +82,7 @@
 
         task drive_transaction(apb_sequence_item_drv req);
             apb_sequence_item_mon rsp = apb_sequence_item_mon::type_id::create("rsp");
+            @(vif.driver_cb);
             state_ctrl(req);
             case (state)
                 IDLE:   `uvm_warning(get_type_name(), "Shouldn't happen")
@@ -89,7 +90,7 @@
                     for(int i = 0; i < req.pre_send_delay; i++) begin
                         @(vif.driver_cb);
                     end
-                    $display("Time: %0t SETUP", $realtime());
+                    `uvm_info(get_type_name(), "SETUP" , UVM_HIGH)
                     vif.driver_cb.pwrite    <= int'(req.dir);
                     vif.driver_cb.paddr     <= req.addr;
                     vif.driver_cb.psel      <= 1;
@@ -97,14 +98,13 @@
                     if(req.dir == WRITE) begin
                         vif.driver_cb.pwdata <= req.data;
                     end
-                    @(vif.driver_cb);
                 end
                 ACCESS: begin
-                    $display("Time: %0t ACCESS", $realtime());
+                    `uvm_info(get_type_name(), "ACCESS" , UVM_HIGH)
                     vif.driver_cb.penable <= 1'b1;
                 end
                 RESPONSE: begin
-                    $display("Time: %0t RESPONSE", $realtime());
+                    `uvm_info(get_type_name(), "RESPONSE" , UVM_HIGH)
                     while (vif.monitor_cb.pready != 1'b1) begin 
                         @(vif.driver_cb); 
                     end
@@ -138,10 +138,10 @@
                     state = ACCESS;
                 end
                 ACCESS: begin
-                    if(vif.monitor_cb.pready == NREADY) begin 
+                    if(vif.monitor_cb.pready == NREADY && vif.monitor_cb.penable) begin 
                         state = ACCESS;
                     end
-                    else if (vif.monitor_cb.pready == READY && ~vif.monitor_cb.penable) begin
+                    else if (vif.monitor_cb.pready == READY && vif.monitor_cb.penable) begin
                         state = RESPONSE;
                     end
                     else begin

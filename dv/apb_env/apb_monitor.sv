@@ -69,33 +69,32 @@
                 @(vif.monitor_cb);
                 item.cycles_b4_item++;
             end
-            // $display("Time: %0t registering address..etc", $time());
+            `uvm_info(get_type_name(), "SETUP PHASE", UVM_HIGH)
             item.addr = vif.monitor_cb.paddr;
             item.dir  = apb_dir'(vif.monitor_cb.pwrite);
             if(apb_dir'(vif.monitor_cb.pwrite) == WRITE) begin
-                item.data = vif.monitor_cb.pwdata; //obselete unless input data needs to be monitored
+                item.data = vif.monitor_cb.pwdata; 
             end
             item.transaction_length++;
 
             //because each transfer takes at least 1 clk cycle
             @(vif.monitor_cb);
             item.transaction_length++;
-            // $display("Time: %0t 1 cycle passed", $time());
+            `uvm_info(get_type_name(), "ACCESS PHASE", UVM_HIGH)
 
             while(apb_pready'(vif.monitor_cb.pready) != READY) begin
                 @(vif.monitor_cb);
                 item.transaction_length++;
-            $display("MONITOR RESPONSE: %0d", vif.monitor_cb.pslverr);
             end
-            
             item.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
-            // $display("MONITOR RESPONSE: %0d", vif.monitor_cb.pslverr);
+            item.pready = apb_pready'(vif.monitor_cb.pready);
             if(apb_dir'(vif.monitor_cb.pwrite) == READ) begin
                 item.data = vif.monitor_cb.prdata;
             end
+            `uvm_info(get_type_name(), "RESPONSE PHASE", UVM_HIGH)
 
             mon2agt.write(item);
-            `uvm_info(get_type_name(), $sformatf("MONITORED ITEM: %0s", item.convert2string), UVM_LOW)
+            `uvm_info(get_type_name(), $sformatf("%0s", item.convert2string), UVM_LOW)
 
             @(vif.monitor_cb);
             

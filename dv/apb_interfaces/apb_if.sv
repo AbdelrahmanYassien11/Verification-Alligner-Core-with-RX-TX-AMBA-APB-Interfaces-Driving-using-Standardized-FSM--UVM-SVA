@@ -12,8 +12,10 @@
 `ifndef AY_APB_IF
 `define AY_APB_IF
 
+    `include "uvm_macros.svh"
     `include "apb_defines.svh"
-
+    `include "apb_types.sv"
+    import uvm_pkg::*;
     interface apb_if(input clk);
 
         logic preset_n;
@@ -34,6 +36,66 @@
 
         logic pslverr;
 
+
+        // ENUMS To VIEW VALUES
+        apb_dir         pwrite_view;
+        apb_penable     penable_view;
+        apb_pready      pready_view;
+        apb_pslverr     pslverr_view;
+
+        assign  pwrite_view     = apb_dir'(pwrite);
+        assign  penable_view    = apb_penable'(penable);
+        assign  pready_view     = apb_pready'(pready);
+        assign  pslverr_view    = apb_pslverr'(pslverr);
+
+        // SVA for APB Interface Protocol Checks
+        property en_assert;
+            disable iff (~preset_n)
+            @(posedge clk) 
+            $rose(psel) |=> $rose(penable);
+        endproperty : en_assert
+
+        penable_assert_assert: assert property(en_assert)
+        $display("y");
+        else $display("x");
+
+        penable_assert_cover: cover property(en_assert);
+
+        property en_deassert1;
+            disable iff (~preset_n)
+            @(posedge clk)
+            $rose(psel) |=> $rose(penable) ##[0:$] $rose(pready) ##1 $fell(penable);
+        endproperty : en_deassert1
+
+        penable_deassert1_assert: assert property(en_deassert1)
+        `uvm_info(get_type_name(), "Penable Deassertion SVA Hit", UVM_HIGH);
+        else `uvm_info(get_type_name(), "Penable Deassertion SVA Miss/Fail", UVM_HIGH);
+
+        penable_deassert1_cov: cover property(en_deassert1);
+
+        property stable_input2;
+            disable iff (~preset_n)
+            @(posedge clk)
+            $rose(psel) |=> 
+            ($stable(psel) && $stable(paddr) && $stable(pwrite) && $stable(pwdata)) ##[1:$] ($fell(pready));
+        endproperty : stable_input2
+
+        valid_inputs2_assert: assert property(stable_input2)
+        `uvm_info(get_type_name(), "Stable Inputs SVA Hit", UVM_HIGH);
+        else `uvm_info(get_type_name(), "Stable Inputs SVA Miss/Fail", UVM_HIGH);
+
+        valid_inputs2_cov: cover property (stable_input2);
+
+        property x_propagation;
+            disable iff (~preset_n)
+            $isunknown(psel && paddr && pwrite && pwdata && pready && pslverr && prdata && penable);
+        endproperty : x_propagation
+
+        x_propagation_assert: assert property(x_propagation)
+        `uvm_info(get_type_name(), "x_propagation SVA Hit = X Propagation Happened", UVM_HIGH);
+        else `uvm_info(get_type_name(), "x_propagation SVA Miss/Fail = X Propagation did not happen", UVM_HIGH);
+
+        x_propagation_cov: cover property (x_propagation);
 
         // ============================================
         // CLOCKING BLOCKS
@@ -130,3 +192,23 @@
     endinterface : apb_if
     
 `endif
+
+
+        // property en_deassert2;
+        //     disable iff (~preset_n)
+        //     @(posedge clk)
+        //     $rose(penable) ##[1:$] $fell(psel) |-> $fell(penable);
+        // endproperty : en_deassert2
+        // penable_deassert2_assert: assert property(en_deassert2);
+        // penable_deassert2_cov: cover property(en_deassert2);
+
+        // property stable_input1;
+        //     disable iff (~preset_n)
+        //     @(posedge clk)
+        //     $rose(psel) |=> 
+        //     (($stable(psel) && $stable(paddr) && $stable(pwrite) && $stable(pwdata)) throughout (/*(pready == 0) ##[0:$] $rose(pready)*/ /*##1 */$fell(pready)));
+        // endproperty : stable_input1
+        // valid_inputs1_assert: assert property(stable_input1)
+        // $display("%0t Valiiiiiiiiid", $time());
+        // else $display("%0t Invaliiiiiiiiiiiiiiiiiiiid", $time());
+        // valid_inputs1_cov: cover property (stable_input1);
