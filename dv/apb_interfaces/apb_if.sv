@@ -12,10 +12,8 @@
 `ifndef AY_APB_IF
 `define AY_APB_IF
 
-    `include "uvm_macros.svh"
     `include "apb_defines.svh"
     `include "apb_types.sv"
-    import uvm_pkg::*;
     interface apb_if(input clk);
 
         logic preset_n;
@@ -37,7 +35,9 @@
         logic pslverr;
 
 
-        // ENUMS To VIEW VALUES
+    // ============================================
+    // ENUMS TO VIEW VALUES IN WAVEFORM
+    // ============================================
         apb_dir         pwrite_view;
         apb_penable     penable_view;
         apb_pready      pready_view;
@@ -48,58 +48,111 @@
         assign  pready_view     = apb_pready'(pready);
         assign  pslverr_view    = apb_pslverr'(pslverr);
 
+        //  if its set to 1, the assertions work, otherwise they're turned off.
+        bit has_checks;
+        int hang_threshold;
+        initial begin
+            has_checks = 1;
+        end
+
+    // ====================================================================
+    // SVA for APB Interface Protocol Checks - Assertions & Sequences
+    // ====================================================================
+        sequence setup_phase_s;
+            $rose(psel) || (psel == 1 & $fell(pready));
+        endsequence : setup_phase_s
+
+        sequence access_phase_s;
+            (psel == 1) && $rose(penable);
+        endsequence : access_phase_s
+
+        sequence transaction_end_s;
+            $fell(pready) || ($stable(pready) && ($changed(paddr) || $changed(psel) || $changed(pwdata) || $changed(pwrite))); 
+        endsequence : transaction_end_s
+
         // SVA for APB Interface Protocol Checks
-        property en_assert;
-            disable iff (~preset_n)
+        /*----------------------------------------------Penable Assertions-------------------------------------------------*/
+        property penable_assert;
+            disable iff (!preset_n || !has_checks)
             @(posedge clk) 
-            $rose(psel) |=> $rose(penable);
-        endproperty : en_assert
+            setup_phase_s |=> $rose(penable);
+        endproperty : penable_assert
 
-        penable_assert_assert: assert property(en_assert)
-        $display("y");
-        else $display("x");
+        penable_assert_assert: assert property(penable_assert)
+        //$info("Penable Assertion SVA Hit");
+        else $error("Penable Assertion SVA Miss/Fail");
 
-        penable_assert_cover: cover property(en_assert);
+        penable_assert_cov: cover property(penable_assert);
 
-        property en_deassert1;
-            disable iff (~preset_n)
+        property penable_deassert;
+            disable iff (!preset_n || !has_checks)
             @(posedge clk)
-            $rose(psel) |=> $rose(penable) ##[0:$] $rose(pready) ##1 $fell(penable);
-        endproperty : en_deassert1
+            setup_phase_s |=> $rose(penable) ##[0:$] $rose(pready) ##1 $fell(penable);
+        endproperty : penable_deassert
 
-        penable_deassert1_assert: assert property(en_deassert1)
-        `uvm_info(get_type_name(), "Penable Deassertion SVA Hit", UVM_HIGH);
-        else `uvm_info(get_type_name(), "Penable Deassertion SVA Miss/Fail", UVM_HIGH);
+        penable_deassert_assert: assert property(penable_deassert)
+        //$info("Penable Deassertion SVA Hit");
+        else $error("Penable Deassertion SVA Miss/Fail");
 
-        penable_deassert1_cov: cover property(en_deassert1);
+        penable_deassert_cov: cover property(penable_deassert);
 
-        property stable_input2;
-            disable iff (~preset_n)
+        property penable_stable;
+            disable iff (!preset_n || !has_checks)
+            @(posedge clk)
+            setup_phase_s |=> $rose(penable) ##1 $stable(penable) ##[0:$] $rose(pready);
+        endproperty : penable_stable
+
+        penable_stable_assert: assert property(penable_stable)
+        //$info("Penable Stable SVA Hit");
+        else $error("Penable Stable SVA Miss/Fail");
+
+        penable_stable_cov: cover property(penable_stable);
+
+        /*----------------------------------------------Paddr Assertions-------------------------------------------------*/
+        property paddr_valid_write_ranges;
+            disable iff (!preset_n || !has_checks)
+            @(posedge clk)
+            setup_phase_s ##0 (pwrite == 1) |-> (paddr == 'h0000 || paddr == 'h00F0 || paddr == 'h00F4);
+        endproperty : paddr_valid_write_ranges
+
+        paddr_valid_write_ranges_assert: assert property(paddr_valid_write_ranges)
+        //$info("Penable Assertion SVA Hi");
+        else $error("Paddr Assertion SVA Miss/Fail");
+
+        paddr_valid_write_ranges_cov: cover property(paddr_valid_write_ranges);
+
+        //More can be added...very specific, for assertion for certain thresholds of data not to be used when certian addresses are being used...
+        /*-------------------------------------------------Protocol Assertions----------------------------------------------*/
+        
+        property stable_inputs;
+            disable iff (!preset_n || !has_checks)
             @(posedge clk)
             $rose(psel) |=> 
-            ($stable(psel) && $stable(paddr) && $stable(pwrite) && $stable(pwdata)) ##[1:$] ($fell(pready));
-        endproperty : stable_input2
+            ($stable(psel) && $stable(paddr) && $stable(pwrite) && ((pwrite == 1 && $stable(pwdata)) || (pwrite == 0))) ##[1:$] transaction_end_s;
+        endproperty : stable_inputs
 
-        valid_inputs2_assert: assert property(stable_input2)
-        `uvm_info(get_type_name(), "Stable Inputs SVA Hit", UVM_HIGH);
-        else `uvm_info(get_type_name(), "Stable Inputs SVA Miss/Fail", UVM_HIGH);
+        stable_inputs_assert: assert property(stable_inputs)
+        // $info("Stable Inputs SVA Hit");
+        else $error("Stable Inputs SVA Miss/Fail");
 
-        valid_inputs2_cov: cover property (stable_input2);
+        stable_inputs_cov: cover property (stable_inputs);
 
         property x_propagation;
-            disable iff (~preset_n)
-            $isunknown(psel && paddr && pwrite && pwdata && pready && pslverr && prdata && penable);
+            disable iff (!preset_n || !has_checks)
+            @(posedge clk)
+            ($isunknown(psel) || $isunknown(penable) || $isunknown(paddr) || $isunknown(pwrite) || $isunknown(pwdata) || 
+            $isunknown(pready) || $isunknown(pslverr) || $isunknown(prdata)) == 0;
         endproperty : x_propagation
 
         x_propagation_assert: assert property(x_propagation)
-        `uvm_info(get_type_name(), "x_propagation SVA Hit = X Propagation Happened", UVM_HIGH);
-        else `uvm_info(get_type_name(), "x_propagation SVA Miss/Fail = X Propagation did not happen", UVM_HIGH);
+        //$info("x_propagation SVA Miss/Fail = X Propagation did not happen");
+        else $error("x_propagation SVA Hit = X Propagation Happened");
 
         x_propagation_cov: cover property (x_propagation);
 
-        // ============================================
-        // CLOCKING BLOCKS
-        // ============================================
+    // ============================================
+    // CLOCKING BLOCKS
+    // ============================================
         
         // Driver Clocking Block (Master side)
         // Used by driver to drive inputs to DUT
@@ -149,9 +202,9 @@
 
         // endclocking
 
-        // ============================================
-        // MODPORTS
-        // ============================================
+    // ============================================
+    // MODPORTS
+    // ============================================
         
         // Driver modport - connects to UVM driver
         modport driver_mp (

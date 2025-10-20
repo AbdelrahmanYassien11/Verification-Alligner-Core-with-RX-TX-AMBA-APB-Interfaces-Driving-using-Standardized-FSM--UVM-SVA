@@ -86,6 +86,9 @@
                 @(vif.monitor_cb);
                 item.transaction_length++;
             end
+
+            if(item.transaction_length > vif.hang_threshold) begin $display("%0d, %0d", vif.hang_threshold, item.transaction_length); `uvm_fatal(get_type_name(), "TB is hanging")
+            end
             item.pslverr = apb_pslverr'(vif.monitor_cb.pslverr);
             item.pready = apb_pready'(vif.monitor_cb.pready);
             if(apb_dir'(vif.monitor_cb.pwrite) == READ) begin

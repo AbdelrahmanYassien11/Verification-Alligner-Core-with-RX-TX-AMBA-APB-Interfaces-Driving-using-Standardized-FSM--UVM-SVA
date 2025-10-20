@@ -17,12 +17,18 @@
     `uvm_component_utils(apb_agent_config)
 
     local apb_vif vif;
+    local bit has_checks;
+    local int hang_threshold;
+    local uvm_active_passive_enum is_active;
 
     //------------------------------------------
     // Constructor for the monironment component
     //------------------------------------------
         function new(string name = "", uvm_component parent);
             super.new(name, parent);
+            this.has_checks = 1;
+            is_active = UVM_ACTIVE;
+            hang_threshold = 200;
         endfunction : new
 
     //-------------------------------------------------------------
@@ -52,12 +58,36 @@
         virtual function void set_vif(apb_vif value);
             if(vif == null) begin
                 vif = value;
+                set_has_checks(get_has_checks());
+                set_hang_threshold(get_hang_threshold());
             end
             else begin
                 `uvm_fatal(get_type_name(), "Trying to set the APB virtual interface more than once")
             end
         endfunction
-    
+
+    //Getter for the checks enable flag
+        virtual function int get_hang_threshold();
+            return this.hang_threshold;
+        endfunction : get_hang_threshold
+
+    //Setter for the checks enable flag
+        virtual function set_hang_threshold(int value);
+            this.hang_threshold = value;
+            if(vif != null) vif.hang_threshold = value;
+        endfunction : set_hang_threshold
+
+    //Getter for the checks enable flag
+        virtual function get_has_checks();
+            return this.has_checks;
+        endfunction : get_has_checks
+
+    //Setter for the checks enable flag
+        virtual function set_has_checks(bit value);
+            this.has_checks = value;
+            if(vif != null) vif.has_checks = value;
+        endfunction : set_has_checks
+
         virtual function void start_of_simulation_phase(uvm_phase phase);
             super.start_of_simulation_phase(phase);
             
