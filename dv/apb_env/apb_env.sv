@@ -16,10 +16,19 @@
     class apb_env extends uvm_env;
     `uvm_component_utils(apb_env)
 
+
+    // Environment Configuration File Instance
+    env_config env_cfg;
+
+    // Enviornment Components
     apb_agent agt;
+    //Subscriber
+    //Scoreboard
 
+    // Environment Analysis Ports
+    // From Agent to Env
     uvm_analysis_port#(apb_sequence_item_mon) agt2env_;
-
+    // From Env to the rest
     uvm_analysis_port#(apb_sequence_item_mon) env2scb_;
     uvm_analysis_port#(apb_sequence_item_mon) env2sub_;
 
@@ -35,6 +44,9 @@
     //-------------------------------------------------------------
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
+            //Env Configuration File Instance Creation
+            env_cfg = env_config::type_id::create("env_cfg");
+
             //Creating environment components
             agt = apb_agent::type_id::create("agt", this);
 

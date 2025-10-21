@@ -17,18 +17,15 @@
     `uvm_component_utils(apb_agent_config)
 
     local apb_vif vif;
-    local bit has_checks;
-    local int hang_threshold;
-    local uvm_active_passive_enum is_active;
+    local bit has_checks = 1;
+    local int hang_threshold = 200;
+    local uvm_active_passive_enum is_active = UVM_ACTIVE;
 
     //------------------------------------------
     // Constructor for the monironment component
     //------------------------------------------
         function new(string name = "", uvm_component parent);
             super.new(name, parent);
-            this.has_checks = 1;
-            is_active = UVM_ACTIVE;
-            hang_threshold = 200;
         endfunction : new
 
     //-------------------------------------------------------------
@@ -42,52 +39,43 @@
             //     `uvm_fatal(get_type_name(), "FAILED TO GET VIRTUAL INTERFACE INSTANCE")
         endfunction : build_phase
 
-    //---------------------------------------------------------
-    // Connect Phase to connect the moniornment TLM Components
-    //---------------------------------------------------------
-        function void connect_phase(uvm_phase phase);
-            super.connect_phase(phase);
-        endfunction : connect_phase
-
     //Getter for the APB virtual interface
         virtual function apb_vif get_vif();
-            return vif;
+            return this.vif;
         endfunction
         
     //Setter for the APB virtual interface
-        virtual function void set_vif(apb_vif value);
-            if(vif == null) begin
-                vif = value;
-                set_has_checks(get_has_checks());
-                set_hang_threshold(get_hang_threshold());
+        virtual function void set_config(apb_vif value, bit has_checks, int hang_threshold, uvm_active_passive_enum is_active);
+            if(this.vif == null) begin
+                this.vif = value;
+                this.has_checks = has_checks;
+                this.hang_threshold = hang_threshold;
+                this.is_active = is_active;
             end
             else begin
                 `uvm_fatal(get_type_name(), "Trying to set the APB virtual interface more than once")
             end
-        endfunction
+        endfunction : set_config
+
+    //Getter for the agent type flag
+        virtual function uvm_active_passive_enum get_is_active();
+            return this.is_active;
+        endfunction : get_is_active
 
     //Getter for the checks enable flag
         virtual function int get_hang_threshold();
             return this.hang_threshold;
         endfunction : get_hang_threshold
 
-    //Setter for the checks enable flag
-        virtual function set_hang_threshold(int value);
-            this.hang_threshold = value;
-            if(vif != null) vif.hang_threshold = value;
-        endfunction : set_hang_threshold
-
     //Getter for the checks enable flag
         virtual function get_has_checks();
             return this.has_checks;
         endfunction : get_has_checks
 
-    //Setter for the checks enable flag
-        virtual function set_has_checks(bit value);
-            this.has_checks = value;
-            if(vif != null) vif.has_checks = value;
-        endfunction : set_has_checks
 
+    //-------------------------------------------------------------------------------------------------------------------------
+    // Start of Simulation Phase to check if things that are gonna be used inside the run/main phase are working correctly
+    //-------------------------------------------------------------------------------------------------------------------------
         virtual function void start_of_simulation_phase(uvm_phase phase);
             super.start_of_simulation_phase(phase);
             

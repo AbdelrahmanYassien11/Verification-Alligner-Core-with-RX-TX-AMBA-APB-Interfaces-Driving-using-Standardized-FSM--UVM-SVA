@@ -19,6 +19,7 @@
         import uvm_pkg::*;
         import apb_agt_pkg::*;
 
+        `include "env_config.sv"
         `include "apb_base_sequence.sv"
         `include "one_random_sequence.sv"
         `include "write_read_sequence.sv"
