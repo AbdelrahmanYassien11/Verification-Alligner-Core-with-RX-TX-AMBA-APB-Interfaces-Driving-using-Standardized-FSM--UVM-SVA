@@ -24,7 +24,7 @@
         `include "one_random_sequence.sv"
         `include "write_read_sequence.sv"
 
-        `include "apb_env.sv"
+        `include "env.sv"
     endpackage : apb_env_pkg
 
 `endif

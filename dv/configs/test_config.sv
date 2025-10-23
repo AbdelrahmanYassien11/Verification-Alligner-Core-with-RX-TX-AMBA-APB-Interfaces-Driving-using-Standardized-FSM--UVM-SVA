@@ -20,7 +20,7 @@
     local string test_name;
     local int unsigned num_transactions = 1000;
     local int unsigned timeout_ns = 100000;
-    local uvm_verbosity_level verbosity = UVM_MEDIUM;
+    local uvm_verbosity verbosity;
 
     // Random seed control
     local int unsigned seed;

@@ -21,8 +21,8 @@
         import apb_agt_pkg::*;
         import apb_env_pkg::*;
 
-        `include "apb_config.sv"
-        `include "apb_base_test.sv"
+        `include "test_config.sv"
+        `include "base_test.sv"
         `include "one_random_test.sv"
         `include "write_read_test.sv"
 

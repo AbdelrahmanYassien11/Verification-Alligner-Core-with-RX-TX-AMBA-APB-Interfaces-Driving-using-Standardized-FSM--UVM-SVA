@@ -17,15 +17,19 @@
     `uvm_component_utils(apb_agent_config)
 
     local apb_vif vif;
-    local bit has_checks = 1;
-    local int hang_threshold = 200;
-    local uvm_active_passive_enum is_active = UVM_ACTIVE;
-
+    local bit has_checks;
+    local int unsigned hang_threshold;
+    local uvm_active_passive_enum is_active;
+    local bit has_coverage;
     //------------------------------------------
     // Constructor for the monironment component
     //------------------------------------------
         function new(string name = "", uvm_component parent);
             super.new(name, parent);
+            has_checks = 1;
+            hang_threshold = 200;
+            is_active = UVM_ACTIVE;
+            has_coverage = 1;
         endfunction : new
 
     //-------------------------------------------------------------
@@ -45,12 +49,13 @@
         endfunction
         
     //Setter for the APB virtual interface
-        virtual function void set_config(apb_vif value, bit has_checks, int hang_threshold, uvm_active_passive_enum is_active);
+        virtual function void set_config(apb_vif value);
             if(this.vif == null) begin
                 this.vif = value;
-                this.has_checks = has_checks;
-                this.hang_threshold = hang_threshold;
-                this.is_active = is_active;
+                set_is_active(get_is_active());
+                set_has_checks(get_has_checks());
+                set_hang_threshold(get_hang_threshold());
+                set_has_coverage(get_has_coverage());
             end
             else begin
                 `uvm_fatal(get_type_name(), "Trying to set the APB virtual interface more than once")
@@ -62,16 +67,42 @@
             return this.is_active;
         endfunction : get_is_active
 
-    //Getter for the checks enable flag
+    // Setter for the agent type flag
+        virtual function void set_is_active(uvm_active_passive_enum is_active);
+            this.is_active = is_active;
+        endfunction : set_is_active
+
+    // Getter for the checks enable flag
         virtual function int get_hang_threshold();
             return this.hang_threshold;
         endfunction : get_hang_threshold
 
+    // Getter for the checks enable flag
+        virtual function void set_hang_threshold(int hang_threshold);
+            this.hang_threshold = hang_threshold;
+            if(vif != null) vif.hang_threshold = hang_threshold;
+            else `uvm_fatal(get_type_name(), "Virtual Interface Instance is equal to null!")
+        endfunction : set_hang_threshold
+
     //Getter for the checks enable flag
-        virtual function get_has_checks();
+        virtual function bit get_has_checks();
             return this.has_checks;
         endfunction : get_has_checks
 
+    //Getter for the checks enable flag
+        virtual function void set_has_checks(bit has_checks);
+            this.has_checks = has_checks;
+        endfunction : set_has_checks
+
+    //Getter for the checks enable flag
+        virtual function bit get_has_coverage();
+            return this.has_coverage;
+        endfunction : get_has_coverage
+
+    //Getter for the checks enable flag
+        virtual function void set_has_coverage(bit has_coverage);
+            this.has_coverage = has_coverage;
+        endfunction : set_has_coverage
 
     //-------------------------------------------------------------------------------------------------------------------------
     // Start of Simulation Phase to check if things that are gonna be used inside the run/main phase are working correctly

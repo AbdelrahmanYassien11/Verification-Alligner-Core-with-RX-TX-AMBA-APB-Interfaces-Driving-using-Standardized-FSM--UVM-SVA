@@ -16,8 +16,9 @@
   typedef virtual apb_if apb_vif;
 
   // CONTROL
+  typedef enum logic {RESETING = 0, WORKING = 1}   reset_n;
   typedef enum logic {WRITE = 1, READ = 0}         apb_dir;
-  typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]        apb_addr;
+  typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]       apb_addr;
   typedef enum logic {OK = 0, ERR = 1}             apb_pslverr;
   typedef enum logic {NREADY = 0, READY = 1}       apb_pready;
   typedef enum logic {DISABLED = 0, ENABLED = 1}   apb_penable;

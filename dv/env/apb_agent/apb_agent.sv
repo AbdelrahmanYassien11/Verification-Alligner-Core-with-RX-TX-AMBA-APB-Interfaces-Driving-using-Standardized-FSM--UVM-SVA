@@ -19,10 +19,12 @@
     apb_driver      drv;
     apb_monitor     mon;
     apb_sequencer   seqr;
+    apb_coverage    coverage;
 
     apb_agent_config apb_agt_cfg;
 
-    uvm_analysis_port#(apb_sequence_item_mon) agt2env;
+    uvm_analysis_port#(apb_sequence_item_mon) mon2agt;
+    // uvm_analysis_port
 
     //------------------------------------------
     // Constructor for the agtironment component
@@ -35,6 +37,7 @@
     // Build phase for component creation, initialization & Setters
     //-------------------------------------------------------------
         function void build_phase(uvm_phase phase);
+            apb_vif vif;
             super.build_phase(phase);
             
             //Creating Agent Config File Instance
@@ -45,7 +48,7 @@
                 `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
             end
             else begin
-                apb_agt_cfg.set_config(.value(vif), .has_checks(1), .hang_threshold(200), .is_active(UVM_ACTIVE));
+                apb_agt_cfg.set_config(vif);
             end
 
             //Creating Agent Components
@@ -54,6 +57,8 @@
                 seqr        = apb_sequencer::type_id::create("seqr", this);
             end
             mon         = apb_monitor::type_id::create("mon", this);
+            coverage    = apb_coverage::type_id::create("coverage", this);
+
 
             // Setting vif to agent components
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
@@ -62,7 +67,7 @@
             uvm_config_db#(apb_vif)::set(this,"mon", "vif", apb_agt_cfg.get_vif());
 
             //Creating Agent's TLM Connections
-            agt2env     = new("agt2env", this);
+            mon2agt     = new("mon2agt", this);
         endfunction : build_phase
 
     //---------------------------------------------------------
@@ -78,8 +83,11 @@
                 drv.seq_item_port.connect(seqr.seq_item_export);
             end
 
+            coverage.apb_agt_cfg = apb_agt_cfg;
+
             //connecting the monitor's analysis port to the agent's
-            mon.mon2agt.connect(agt2env);
+            mon.mon2agt.connect(mon2agt);
+            mon2agt.connect(coverage.analysis_export_outputs);
         endfunction : connect_phase
 
     endclass : apb_agent
