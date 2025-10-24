@@ -1,0 +1,214 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /apb_tb_top/apb_inf
+=== Design Unit: work.apb_if
+=================================================================================
+
+Directive Coverage:
+    Directives                       6         6         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/apb_tb_top/apb_inf/penable_assert_cov   apb_if Verilog  SVA  apb_interfaces/apb_if.sv(85)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/penable_deassert_cov apb_if Verilog  SVA  apb_interfaces/apb_if.sv(97)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/penable_stable_cov   apb_if Verilog  SVA  apb_interfaces/apb_if.sv(109)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/paddr_valid_write_ranges_cov 
+                                         apb_if Verilog  SVA  apb_interfaces/apb_if.sv(122)
+                                                                                 1 Covered   
+/apb_tb_top/apb_inf/stable_inputs_cov    apb_if Verilog  SVA  apb_interfaces/apb_if.sv(138)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/x_propagation_cov    apb_if Verilog  SVA  apb_interfaces/apb_if.sv(151)
+                                                                                37 Covered   
+
+=================================================================================
+=== Instance: /apb_agt_pkg
+=== Design Unit: work.apb_agt_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      2        na        na    62.50%
+        Coverpoints/Crosses          2        na        na        na
+            Covergroup Bins          6         3         3    50.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /apb_agt_pkg/pwrite_cg_df                       100.00%        100          -    Covered              
+    covered/total bins:                                     2          2          -                      
+    missing/total bins:                                     0          2          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance READ                             100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[READ]                                       1          1          -    Covered              
+ Covergroup instance WRITE                            100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[WRITE]                                      1          1          -    Covered              
+ TYPE /apb_agt_pkg/pwrite_cg_dt                        25.00%        100          -    Uncovered            
+    covered/total bins:                                     1          4          -                      
+    missing/total bins:                                     3          4          -                      
+    % Hit:                                             25.00%        100          -                      
+    Coverpoint df                                      25.00%        100          -    Uncovered            
+        covered/total bins:                                 1          4          -                      
+        missing/total bins:                                 3          4          -                      
+        % Hit:                                         25.00%        100          -                      
+ Covergroup instance READ  => READ                      0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[READ=>READ]                                 0          1          -    ZERO                 
+ Covergroup instance READ  => WRITE                     0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[READ=>WRITE]                                0          1          -    ZERO                 
+ Covergroup instance WRITE => READ                    100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[WRITE=>READ]                                1          1          -    Covered              
+ Covergroup instance WRITE => WRITE                     0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[WRITE=>WRITE]                               0          1          -    ZERO                 
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /apb_agt_pkg/pwrite_cg_df                       100.00%        100          -    Covered              
+    covered/total bins:                                     2          2          -                      
+    missing/total bins:                                     0          2          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance READ                             100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[READ]                                       1          1          -    Covered              
+ Covergroup instance WRITE                            100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[WRITE]                                      1          1          -    Covered              
+ TYPE /apb_agt_pkg/pwrite_cg_dt                        25.00%        100          -    Uncovered            
+    covered/total bins:                                     1          4          -                      
+    missing/total bins:                                     3          4          -                      
+    % Hit:                                             25.00%        100          -                      
+    Coverpoint df                                      25.00%        100          -    Uncovered            
+        covered/total bins:                                 1          4          -                      
+        missing/total bins:                                 3          4          -                      
+        % Hit:                                         25.00%        100          -                      
+ Covergroup instance READ  => READ                      0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[READ=>READ]                                 0          1          -    ZERO                 
+ Covergroup instance READ  => WRITE                     0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[READ=>WRITE]                                0          1          -    ZERO                 
+ Covergroup instance WRITE => READ                    100.00%        100          -    Covered              
+    covered/total bins:                                     1          1          -                      
+    missing/total bins:                                     0          1          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint df                                     100.00%        100          -    Covered              
+        covered/total bins:                                 1          1          -                      
+        missing/total bins:                                 0          1          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin dir[WRITE=>READ]                                1          1          -    Covered              
+ Covergroup instance WRITE => WRITE                     0.00%        100          -    ZERO                 
+    covered/total bins:                                     0          1          -                      
+    missing/total bins:                                     1          1          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint df                                       0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin dir[WRITE=>WRITE]                               0          1          -    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 62.50%  COVERGROUP TYPES: 2
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/apb_tb_top/apb_inf/penable_assert_cov   apb_if Verilog  SVA  apb_interfaces/apb_if.sv(85)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/penable_deassert_cov apb_if Verilog  SVA  apb_interfaces/apb_if.sv(97)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/penable_stable_cov   apb_if Verilog  SVA  apb_interfaces/apb_if.sv(109)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/paddr_valid_write_ranges_cov 
+                                         apb_if Verilog  SVA  apb_interfaces/apb_if.sv(122)
+                                                                                 1 Covered   
+/apb_tb_top/apb_inf/stable_inputs_cov    apb_if Verilog  SVA  apb_interfaces/apb_if.sv(138)
+                                                                                 2 Covered   
+/apb_tb_top/apb_inf/x_propagation_cov    apb_if Verilog  SVA  apb_interfaces/apb_if.sv(151)
+                                                                                37 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 6
+
+Total Coverage By Instance (filtered view): 81.25%
+

@@ -19,12 +19,15 @@
   typedef enum logic {RESETING = 0, WORKING = 1}   reset_n;
   typedef enum logic {WRITE = 1, READ = 0}         apb_dir;
   typedef bit   [`AY_APB_MAX_ADDR_WIDTH-1:0]       apb_addr;
-  typedef enum logic {OK = 0, ERR = 1}             apb_pslverr;
+  typedef enum logic {OK = 0, ERROR = 1}             apb_pslverr;
   typedef enum logic {NREADY = 0, READY = 1}       apb_pready;
   typedef enum logic {DISABLED = 0, ENABLED = 1}   apb_penable;
   //typedef enum  {S1 = 0, S2 = 1, S3 = 2}      apb_psel;
  
-
+  localparam CTRL_ADDR   = 32'h0000;
+  localparam STATUS_ADDR = 32'h000C;
+  localparam IRQEN_ADDR  = 32'h00F0;
+  localparam IRQ_ADDR    = 32'h00F4;
 
   // APB DATA
   // typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;
