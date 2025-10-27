@@ -31,15 +31,6 @@
     //------------------------------------------
         function new(string name = "apb_agent", uvm_component parent);
             super.new(name, parent);
-        endfunction : new
-
-    //-------------------------------------------------------------
-    // Build phase for component creation, initialization & Setters
-    //-------------------------------------------------------------
-        function void build_phase(uvm_phase phase);
-            apb_vif vif;
-            super.build_phase(phase);
-            
             //Creating Agent Config File Instance
             apb_agt_cfg = apb_agent_config::type_id::create("apb_agt_cfg", this);
             
@@ -51,6 +42,15 @@
                 apb_agt_cfg.set_config(vif);
             end
 
+        endfunction : new
+
+    //-------------------------------------------------------------
+    // Build phase for component creation, initialization & Setters
+    //-------------------------------------------------------------
+        function void build_phase(uvm_phase phase);
+            apb_vif vif;
+            super.build_phase(phase);
+        
             //Creating Agent Components
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
                 drv         = apb_driver::type_id::create("drv", this);
@@ -59,6 +59,7 @@
             mon         = apb_monitor::type_id::create("mon", this);
             coverage    = apb_coverage::type_id::create("coverage", this);
 
+            coverage.apb_agt_cfg = apb_agt_cfg;
 
             // Setting vif to agent components
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
@@ -82,8 +83,6 @@
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
                 drv.seq_item_port.connect(seqr.seq_item_export);
             end
-
-            coverage.apb_agt_cfg = apb_agt_cfg;
 
             //connecting the monitor's analysis port to the agent's
             mon.mon2agt.connect(mon2agt);

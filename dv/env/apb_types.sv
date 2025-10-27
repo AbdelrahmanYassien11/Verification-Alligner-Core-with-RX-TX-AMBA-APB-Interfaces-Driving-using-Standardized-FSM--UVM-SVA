@@ -33,5 +33,7 @@
   // typedef bit   [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data_wr;
   typedef logic [`AY_APB_MAX_DATA_WIDTH-1:0]  apb_data;
 
+  apb_data reg_addrs[] = '{CTRL_ADDR, STATUS_ADDR, IRQEN_ADDR, IRQ_ADDR};
+
 
 `endif

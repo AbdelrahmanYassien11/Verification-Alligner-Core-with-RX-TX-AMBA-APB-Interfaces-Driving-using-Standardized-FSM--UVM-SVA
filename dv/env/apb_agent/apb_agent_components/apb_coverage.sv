@@ -1,79 +1,86 @@
- covergroup pwrite_data_df_tog_cg(input bit [AY_APB_MAX_DATA_WIDTH-1:0] position, input apb_sequence_item_mon cov, ref bit has_coverage);
+ covergroup pwdata_df_tog_cg(input apb_data position, input apb_sequence_item_mon cov);
     option.per_instance = 1;
-    df: coverpoint (cov.pwrite_data & position) != 0 iff(has_coverage);
- endgroup : pwrite_data_df_tog_cg
+    df: coverpoint (cov.data & position) != 0 ;
+ endgroup : pwdata_df_tog_cg
 
- covergroup pwrite_data_dt_tog_cg(input bit [AY_APB_MAX_DATA_WIDTH-1:0] position, input apb_sequence_item_mon cov, ref bit has_coverage);
+ covergroup pwdata_dt_tog_cg(input apb_data position, input apb_sequence_item_mon cov);
     option.per_instance = 1;    
-    dt: coverpoint (cov.pwrite_data & position) != 0  iff(has_coverage){
-          bins tr[] = (0 => 1, 1 => 0);
-      }
- endgroup : pwrite_data_dt_tog_cg
+    dt: coverpoint (cov.data & position) != 0  {
+      bins tr[] = (0 => 1, 1 => 0);
+    }
+ endgroup : pwdata_dt_tog_cg
 
-covergroup pwrite_cg_df(input int i, input apb_sequence_item_mon cov, ref bit has_coverage);
+  covergroup addr_cg_dt (input int i, input int k, input apb_sequence_item_mon cov);
+    option.name = $sformatf("%0h => %0h", reg_addrs[i], reg_addrs[k]);
+    coverpoint cov.addr iff (has_coverage) {
+      // auto-generate all transitions dynamically
+      bins addr_dt[] = (reg_addrs[i] => reg_addrs[k]);
+    }
+  endgroup : addr_cg_dt
+
+covergroup pwrite_cg_df(input int i, input apb_sequence_item_mon cov);
 	option.name = (i == WRITE) ? "WRITE" :
                 (i == READ)  ? "READ" :
                 "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.dir iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.dir {
 		bins dir[] = {i};
 	}
 endgroup : pwrite_cg_df
 
-covergroup pwrite_cg_dt(input int i, input int k, input apb_sequence_item_mon cov, ref bit has_coverage);
+covergroup pwrite_cg_dt(input int i, input int k, input apb_sequence_item_mon cov);
 	option.name = ((i == WRITE) && (k == READ))  ? "WRITE => READ" :
                 ((i == READ)  && (k == WRITE)) ? "READ  => WRITE":
                 ((i == WRITE) && (k == WRITE)) ? "WRITE => WRITE":
                 ((i == READ) && (k == READ))   ? "READ  => READ":
                   "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.dir iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.dir {
 		bins dir[] = (i => k);
 	}
 endgroup : pwrite_cg_dt
 
-
-covergroup pready_cg_df(input int i, input apb_sequence_item_mon cov, ref bit has_coverage);
+covergroup pready_cg_df(input int i, input apb_sequence_item_mon cov);
 	option.name = (i == READY) ?  "READY" :
                 (i == NREADY)? "NOT READY" :
                 "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.pready iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.pready {
 		bins dir[] = {i};
 	}
 endgroup : pready_cg_df
 
-covergroup pready_cg_dt(input int i, input int k, input apb_sequence_item_mon cov, ref bit has_coverage);
+covergroup pready_cg_dt(input int i, input int k, input apb_sequence_item_mon cov);
 	option.name = ((i == READY) && (k == NREADY))  ? "READY => NREADY" :
                 ((i == NREADY)  && (k == READY)) ? "NREADY  => READY":
                 ((i == READY) && (k == READY)) ?   "READY => READY":
                 ((i == NREADY) && (k == NREADY)) ? "NREADY  => NREADY":
                   "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.pready iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.pready iff {
 		bins dir[] = (i => k);
 	}
 endgroup : pready_cg_dt
 
 
-covergroup pslverr_cg_df(input int i, input apb_sequence_item_mon cov, ref bit has_coverage);
+covergroup pslverr_cg_df(input int i, input apb_sequence_item_mon cov);
 	option.name = (i == OK) ?  "OK" :
                 (i == ERROR)? "ERROR" :
                 "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.pslverr iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.pslverr {
 		bins dir[] = {i};
 	}
 endgroup : pslverr_cg_df
 
-covergroup pslverr_cg_dt(input int i, input int k, input apb_sequence_item_mon cov, ref bit has_coverage);
+covergroup pslverr_cg_dt(input int i, input int k, input apb_sequence_item_mon cov);
 	option.name = ((i == OK) && (k == ERROR))  ? "OK => ERROR" :
                 ((i == ERROR)  && (k == OK)) ? "ERROR  => OK":
                 ((i == OK) && (k == OK)) ?   "OK => OK":
                 ((i == ERROR) && (k == ERROR)) ? "ERROR  => ERROR":
                   "Invalid";
 	option.per_instance = 1;
-	df: coverpoint cov.pslverr iff (has_coverage/* reset & Penable & PSEL*/) {
+	df: coverpoint cov.pslverr {
 		bins dir[] = (i => k);
 	}
 endgroup : pslverr_cg_dt
@@ -109,8 +116,8 @@ class apb_coverage extends uvm_component;
   //instance base coverage
 	protected int signed j, z;
 
-  pwrite_df_tog_cg pwrite_df_tog_cg_bits  [AY_APB_MAX_DATA_WIDTH-1:0];
-  pwrite_dt_tog_cg pwrite_df_tog_cg_bits  [AY_APB_MAX_DATA_WIDTH-1:0];
+  pwdata_df_tog_cg pwdata_df_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
+  pwdata_dt_tog_cg pwdata_dt_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
 
 	pwrite_cg_df   pwrite_cg_df_vals   [2**1];
 	pwrite_cg_dt   pwrite_cg_dt_vals   [2**1] [2**1];
@@ -120,6 +127,8 @@ class apb_coverage extends uvm_component;
 
   pready_cg_df   pready_cg_df_vals   [2**1];
 	pready_cg_dt   pready_cg_dt_vals   [2**1] [2**1];
+
+  addr_cg_dt     addr_cg_dt_vals    [4] [4];
 
   // Register with factory
   `uvm_component_utils_begin(apb_coverage)
@@ -131,41 +140,33 @@ class apb_coverage extends uvm_component;
 
  covergroup time_b4_txn_cg with function sample(apb_sequence_item_mon cov);
     // 1: Number Cycles Before Transaction
-    LONG_txn: coverpoint cov.cycles_b4_item iff (apb_agt_cfg.get_has_coverage()) {
+    LONG_txn: coverpoint cov.cycles_b4_item  {
       bins LONG = {[20:$]};
     }
-    SHORT_txn: coverpoint cov.cycles_b4_item iff (apb_agt_cfg.get_has_coverage()) {
+    SHORT_txn: coverpoint cov.cycles_b4_item  {
       bins SHORT = {[1:5]};
     }
-    MEDIUM_txn: coverpoint cov.cycles_b4_item iff (apb_agt_cfg.get_has_coverage()) {
+    MEDIUM_txn: coverpoint cov.cycles_b4_item  {
       bins MEDIUM = {[5:20]};
     }
   endgroup : time_b4_txn_cg
 
  covergroup txn_len_cg with function sample(apb_sequence_item_mon cov);
     // 2: Transaction Length
-    LONG_txn: coverpoint cov.transaction_length iff (apb_agt_cfg.get_has_coverage()) {
+    LONG_txn: coverpoint cov.transaction_length  {
       bins LONG = {[20:$]};
     }
-    SHORT_txn: coverpoint cov.transaction_length iff (apb_agt_cfg.get_has_coverage()) {
+    SHORT_txn: coverpoint cov.transaction_length  {
       bins SHORT = {[1:5]};
     }
-    MEDIUM_txn: coverpoint cov.transaction_length iff (apb_agt_cfg.get_has_coverage()) {
+    MEDIUM_txn: coverpoint cov.transaction_length  {
       bins MEDIUM = {[5:20]};
     }
   endgroup : txn_len_cg
 
-  covergroup addr_dt_cg with function sample(apb_sequence_item_mon cov);
-    dt: coverpoint cov.transaction_length iff (apb_agt_cfg.get_has_coverage()) {
-      bins CTRL_to_STATUS = (CTRL_ADDR    => STATUS_ADDR);
-      bins STATUS_to_CTRL = (STATUS_ADDR  => CTRL_ADDR);
-      bins IRQEN_to_IRQ   = (IRQEN_ADDR   => IRQ_ADDR);
-      bins IRQ_to_IRQEN   = (IRQ_ADDR     => IRQEN_ADDR);
-    }
-  endgroup
 
   covergroup addr_df_cg with function sample(apb_sequence_item_mon cov);
-    df: coverpoint cov.transaction_length iff (apb_agt_cfg.get_has_coverage()) {
+    df: coverpoint cov.addr  {
       bins CTRL    = {CTRL_ADDR};
       bins STATUS  = {STATUS_ADDR};
       bins IRQEN   = {IRQEN_ADDR};
@@ -175,13 +176,13 @@ class apb_coverage extends uvm_component;
 
   covergroup dir_repi_cg with function sample(apb_sequence_item_mon cov);
     // 2: Repeated operations
-    dir_repeat: coverpoint cov.dir iff (apb_agt_cfg.get_has_coverage()) {
-      bins dir_repeats[] = {([READ:WRITE] [* 5])};
+    dir_repeat: coverpoint cov.dir  {
+      bins dir_repeats[] = ([READ:WRITE] [* 5]);
     }
-    ready_repeat: coverpoint cov.dir iff (apb_agt_cfg.get_has_coverage()) {
+    ready_repeat: coverpoint cov.dir  {
       bins READY_repeats[] = ([NREADY:READY] [* 5]);
     }
-    error_repeat: coverpoint cov.dir iff (apb_agt_cfg.get_has_coverage()) {
+    error_repeat: coverpoint cov.dir  {
       bins ERROR_repeats[] = ([OK:ERROR] [* 5]);
     }
   endgroup : dir_repi_cg
@@ -204,63 +205,33 @@ class apb_coverage extends uvm_component;
     // apb_agt_cfg = new("apb_agt_cfg", uvm_component);
     // Create coverage groups 
 
-    foreach(pwrite_cg_df_vals[i])     pwrite_cg_df_vals[i] 	  = new(i, output_cov_copied, has_coverage);
-    foreach(pwrite_cg_dt_vals[i,k])   pwrite_cg_dt_vals[i][k] = new(i, k, output_cov_copied, has_coverage);
+    if(has_coverage) begin
+      `uvm_info(get_type_name(), "Coverage for APB Agent is Turned On", UVM_LOW)
+      foreach(pwdata_df_tog_cg_bits[i]) pwdata_df_tog_cg_bits[i] = new(1<<i,output_cov_copied);
+      foreach(pwdata_dt_tog_cg_bits[i]) pwdata_dt_tog_cg_bits[i] = new(1<<i,output_cov_copied);
 
-    foreach(pslverr_cg_df_vals[i])     pslverr_cg_df_vals[i] 	  = new(i, output_cov_copied, has_coverage);
-    foreach(pslverr_cg_dt_vals[i,k])   pslverr_cg_dt_vals[i][k] = new(i, k, output_cov_copied, has_coverage);
+      foreach(addr_cg_dt_vals[i,j]) addr_cg_dt_vals[i][j] = new(i, j, output_cov_copied);
 
-    foreach(pready_cg_df_vals[i])     pready_cg_df_vals[i] 	  = new(i, output_cov_copied, has_coverage);
-    foreach(pready_cg_dt_vals[i,k])   pready_cg_dt_vals[i][k] = new(i, k, output_cov_copied, has_coverage);
+      foreach(pwrite_cg_df_vals[i])     pwrite_cg_df_vals[i] 	  = new(i, output_cov_copied);
+      foreach(pwrite_cg_dt_vals[i,k])   pwrite_cg_dt_vals[i][k] = new(i, k, output_cov_copied);
 
+      foreach(pslverr_cg_df_vals[i])     pslverr_cg_df_vals[i] 	  = new(i, output_cov_copied);
+      foreach(pslverr_cg_dt_vals[i,k])   pslverr_cg_dt_vals[i][k] = new(i, k, output_cov_copied);
 
-    dir_repi_cg     = new();
-    txn_len_cg      = new();
-    time_b4_txn_cg  = new();
-    addr_df_cg      = new();
-    addr_dt_cg      = new();
-            // foreach(A_op_cg_dt_vals[i,j])   A_op_cg_dt_vals[i][j] 	= new(i, j, input_cov_copied);
+      foreach(pready_cg_df_vals[i])     pready_cg_df_vals[i] 	  = new(i, output_cov_copied);
+      foreach(pready_cg_dt_vals[i,k])   pready_cg_dt_vals[i][k] = new(i, k, output_cov_copied);
 
-
+      dir_repi_cg     = new();
+      txn_len_cg      = new();
+      time_b4_txn_cg  = new();
+      addr_df_cg      = new();
+    end
+    else begin
+      `uvm_info(get_type_name(), "Coverage for APB Agent is Turned Off", UVM_LOW)
+    end
 
     // case(test_name)
     //   "random_test": begin 
-
-        // j = -(2**(INPUT_WIDTH-1));//-16
-        // for (int i = 0; i < (2**(INPUT_WIDTH)) ; i++) begin //0 to 31
-        //   pwrite_df_vals[i] = new(j, input_cov_copied);
-        //   j = j + 1;
-        // end
-
-        // j = -(2**(OUTPUT_WIDTH-1));//-32
-        // for (int i = 0; i < (2**(OUTPUT_WIDTH)) ; i++) begin
-        //   C_cg_df_vals[i] = new(j, output_cov_copied);
-        //   j = j + 1;
-        // end
-
-        // z = -(2**(OUTPUT_WIDTH-1));//-32
-        // for (int i = 0; i < (2**(OUTPUT_WIDTH)) ; i++) begin
-        //   j = -(2**(OUTPUT_WIDTH-1));
-        //   for (int k = 0; k < (2**(OUTPUT_WIDTH)); k++) begin
-        //     C_cg_dt_vals[i][k] = new(z, j, output_cov_copied);
-        //     j = j + 1;
-        //   end
-        //   z = z + 1;
-        // end
-
-        // foreach(A_op_cg_df_vals[i])   A_op_cg_df_vals[i] 	   = new(i, input_cov_copied);
-        // foreach(B_op01_cg_df_vals[i]) B_op01_cg_df_vals[i] = new(i, input_cov_copied);
-        // foreach(B_op11_cg_df_vals[i]) B_op11_cg_df_vals[i] = new(i, input_cov_copied);
-
-        // foreach(A_op_cg_dt_vals[i,j])   A_op_cg_dt_vals[i][j] 	= new(i, j, input_cov_copied);
-        // foreach(B_op01_cg_dt_vals[i,j]) B_op01_cg_dt_vals[i][j] = new(i, j, input_cov_copied);
-        // foreach(B_op11_cg_dt_vals[i,j]) B_op11_cg_dt_vals[i][j] = new(i, j, input_cov_copied);
-
-        // foreach(A_B_en_cg_df_vals[i])   A_B_en_cg_df_vals[i] = new(i, input_cov_copied);
-        // foreach(A_B_en_cg_dt_vals[i,j]) A_B_en_cg_dt_vals[i][j] = new(i, j, input_cov_copied);
-
-        // foreach(ALU_en_cg_df_vals[i])   ALU_en_cg_df_vals[i] = new(i,input_cov_copied);
-        // foreach(ALU_en_cg_dt_vals[i,j]) ALU_en_cg_dt_vals[i][j] = new(i,j,input_cov_copied);
       
     // end
 
@@ -282,7 +253,6 @@ class apb_coverage extends uvm_component;
   //---------------------------------------
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    // output_item = apb_sequence_item_mon::type_id::create("output_item");
     // Create analysis exports
     // reset_collected_export = new ("reset_collected_export",this);  
     analysis_export_inputs = new("analysis_export_inputs", this);
@@ -342,7 +312,13 @@ class apb_coverage extends uvm_component;
 
       // Increment transaction counter
       count_trans++;
+
+    if(has_coverage) begin
+      foreach(pwdata_df_tog_cg_bits[i]) pwdata_df_tog_cg_bits[i].sample();
+      foreach(pwdata_dt_tog_cg_bits[i]) pwdata_dt_tog_cg_bits[i].sample();
       
+      foreach(addr_cg_dt_vals[i,j]) addr_cg_dt_vals[i][j].sample();
+
       foreach(pwrite_cg_df_vals[i]) pwrite_cg_df_vals[i].sample();
       foreach(pwrite_cg_dt_vals[i,j]) pwrite_cg_dt_vals[i][j].sample();
 
@@ -356,43 +332,15 @@ class apb_coverage extends uvm_component;
       time_b4_txn_cg.sample(output_cov_copied);
       txn_len_cg.sample(output_cov_copied);
       addr_df_cg.sample(output_cov_copied);
-      addr_dt_cg.sample(output_cov_copied);
+    end
+      // addr_dt_cg.sample(output_cov_copied);
       // case(test_name)
       //   "random_test": begin 
       //     control_cg.sample(input_item);
-      //     a_operations_cg.sample(input_item);
-      //     b_operations01_cg.sample(input_item);
-      //     b_operations11_cg.sample(input_item);
-      //     input_values_cg.sample(input_item);
-      //     output_values_cg.sample(output_item);
-      //     data_ranges_cg.sample(input_item, output_item);
-      //     stability_cg.sample(input_item, output_item);
-      //     special_cases_cg.sample(input_item); 
-      //     foreach(A_cg_df_vals[i]) A_cg_df_vals[i].sample();
-      //     foreach(B_cg_df_vals[i]) B_cg_df_vals[i].sample();
-
-          // foreach(A_op_cg_dt_vals[i,j])   A_op_cg_dt_vals[i][j].sample();
-          // foreach(B_op01_cg_dt_vals[i,j]) B_op01_cg_dt_vals[i][j].sample();
-          // foreach(B_op11_cg_dt_vals[i,j]) B_op11_cg_dt_vals[i][j].sample();
-
-          // foreach(A_op_cg_df_vals[i])   A_op_cg_df_vals[i].sample();
-          // foreach(B_op01_cg_df_vals[i]) B_op01_cg_df_vals[i].sample();
-          // foreach(B_op11_cg_df_vals[i]) B_op11_cg_df_vals[i].sample();			
-
-          // foreach(A_B_en_cg_df_vals[i]) A_B_en_cg_df_vals[i].sample();
-
-          // foreach(A_B_en_cg_dt_vals[i,j]) A_B_en_cg_dt_vals[i][j].sample();
-
-          // foreach(ALU_en_cg_df_vals[i]) ALU_en_cg_df_vals[i].sample();
-          // foreach(ALU_en_cg_dt_vals[i,j]) ALU_en_cg_dt_vals[i][j].sample();
-
-          // foreach(C_cg_df_vals[i]) C_cg_df_vals[i].sample();
       //   end
 
       //   "repitition_test": begin
       //     a_op_repi_cg.sample(input_item);
-      //     b_op01_repi_cg.sample(input_item);
-      //     b_op11_repi_cg.sample(input_item);
       //   end
 
       //   "error_test": begin

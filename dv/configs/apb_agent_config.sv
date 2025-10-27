@@ -17,10 +17,10 @@
     `uvm_component_utils(apb_agent_config)
 
     local apb_vif vif;
-    local bit has_checks;
-    local int unsigned hang_threshold;
-    local uvm_active_passive_enum is_active;
-    local bit has_coverage;
+    local bit has_checks = 1;
+    local int unsigned hang_threshold = 200;
+    local uvm_active_passive_enum is_active = UVM_ACTIVE;
+    local bit has_coverage = 1;
     //------------------------------------------
     // Constructor for the monironment component
     //------------------------------------------
