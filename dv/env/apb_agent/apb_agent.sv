@@ -31,17 +31,6 @@
     //------------------------------------------
         function new(string name = "apb_agent", uvm_component parent);
             super.new(name, parent);
-            //Creating Agent Config File Instance
-            apb_agt_cfg = apb_agent_config::type_id::create("apb_agt_cfg", this);
-            
-            //Getting Virtual Interface Instance
-            if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif)) begin
-                `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
-            end
-            else begin
-                apb_agt_cfg.set_config(vif);
-            end
-
         endfunction : new
 
     //-------------------------------------------------------------
@@ -50,6 +39,17 @@
         function void build_phase(uvm_phase phase);
             apb_vif vif;
             super.build_phase(phase);
+
+             //Creating Agent Config File Instance
+            apb_agt_cfg = apb_agent_config::type_id::create("apb_agt_cfg", this);
+            
+            //Getting Virtual Interface Instance
+            if(!uvm_config_db#(virtual apb_if)::get(this, "", "vif", vif)) begin
+                `uvm_fatal(get_type_name(), $sformatf("Could not get from the database the APB virtual interface using name"))
+            end
+            else begin
+                apb_agt_cfg.set_config(vif);
+            end           
         
             //Creating Agent Components
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
@@ -57,9 +57,11 @@
                 seqr        = apb_sequencer::type_id::create("seqr", this);
             end
             mon         = apb_monitor::type_id::create("mon", this);
-            coverage    = apb_coverage::type_id::create("coverage", this);
-
-            coverage.apb_agt_cfg = apb_agt_cfg;
+            
+            if(apb_agt_cfg.get_has_coverage()) begin
+                coverage    = apb_coverage::type_id::create("coverage", this);
+                coverage.apb_agt_cfg = apb_agt_cfg;
+            end
 
             // Setting vif to agent components
             if(apb_agt_cfg.get_is_active() == UVM_ACTIVE) begin
@@ -86,7 +88,9 @@
 
             //connecting the monitor's analysis port to the agent's
             mon.mon2agt.connect(mon2agt);
-            mon2agt.connect(coverage.analysis_export_outputs);
+            if(apb_agt_cfg.get_has_coverage()) begin
+                mon2agt.connect(coverage.analysis_export_outputs);
+            end
         endfunction : connect_phase
 
     endclass : apb_agent
