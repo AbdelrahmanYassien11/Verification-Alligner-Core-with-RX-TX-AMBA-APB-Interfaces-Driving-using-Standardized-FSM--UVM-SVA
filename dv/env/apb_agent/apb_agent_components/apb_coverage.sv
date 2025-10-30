@@ -62,7 +62,6 @@ covergroup pready_cg_dt(input int i, input int k, input apb_sequence_item_mon co
 	}
 endgroup : pready_cg_dt
 
-
 covergroup pslverr_cg_df(input int i, input apb_sequence_item_mon cov);
 	option.name = (i == OK) ?  "OK" :
                 (i == ERROR)? "ERROR" :
@@ -85,8 +84,47 @@ covergroup pslverr_cg_dt(input int i, input int k, input apb_sequence_item_mon c
 	}
 endgroup : pslverr_cg_dt
 
+class apb_coverage_comp_wrapper#(type T = int, int unsigned IDX = 4 ) extends uvm_component;
+  `uvm_component_param_utils(apb_coverage_comp_wrapper#(int, IDX))
+
+  covergroup cov_idx with function sample(int unsigned val);
+    option.per_instance = 1;
+    index: coverpoint val{
+      option.comment = "index";
+      bins vals[IDX] = {[0:IDX]};
+    }
+  endgroup
+    
+    function new(string name = "", uvm_component parent);
+      super.new(name, parent);
+      
+      cov_idx = new();
+	    cov_idx.set_inst_name($sformatf("%s_%s", get_full_name(), "cov_idx"));
+    endfunction
+    
+    //Function to print the coverage information.
+    //This is only to be able to visualize some basic coverage information
+    //in EDA Playground.
+    //DON'T DO THIS IN A REAL PROJECT!!!
+    virtual function string coverage2string();
+      return {
+        $sformatf("\n   cover_index:              %03.2f%%", cov_idx.get_inst_coverage()),
+        $sformatf("\n      index:                 %03.2f%%", cov_idx.index.get_inst_coverage())
+      };
+    endfunction
+    
+    //Function used to sample the information
+    virtual function void sample(int unsigned value);
+      cov_idx.sample(value);
+    endfunction
+
+endclass : apb_coverage_comp_wrapper
 
 class apb_coverage extends uvm_component;
+
+    //Wrapper over the coverage group covering the indices in the PADDR signal
+    //at which the bit of the PADDR was 0
+    apb_coverage_comp_wrapper#(int, `AY_APB_MAX_ADDR_WIDTH) wrap_cover_addr_0;
 
   //uvm_component test_name;
   string test_name;
@@ -111,9 +149,11 @@ class apb_coverage extends uvm_component;
   uvm_tlm_analysis_fifo #(apb_sequence_item_mon) outputs_fifo;
 
   // Transaction counter
-  local int unsigned count_trans;
+  int count_trans;
 
-  //instance based coverage groups
+  //instance base coverage
+	protected int signed j, z;
+
   pwdata_df_tog_cg pwdata_df_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
   pwdata_dt_tog_cg pwdata_dt_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
 
@@ -126,7 +166,7 @@ class apb_coverage extends uvm_component;
   pready_cg_df   pready_cg_df_vals   [2**1];
 	pready_cg_dt   pready_cg_dt_vals   [2**1] [2**1];
 
-  addr_cg_dt     addr_cg_dt_vals    [$clog2(`AY_APB_MAX_ADDR_WIDTH)] [$clog2(`AY_APB_MAX_ADDR_WIDTH)];
+  addr_cg_dt     addr_cg_dt_vals    [4] [4];
 
   // Register with factory
   `uvm_component_utils_begin(apb_coverage)
@@ -172,7 +212,7 @@ class apb_coverage extends uvm_component;
     }
   endgroup
 
-  covergroup dir_repe_cg with function sample(apb_sequence_item_mon cov);
+  covergroup dir_repi_cg with function sample(apb_sequence_item_mon cov);
     // 2: Repeated operations
     dir_repeat: coverpoint cov.dir  {
       bins dir_repeats[] = ([READ:WRITE] [* 5]);
@@ -183,7 +223,7 @@ class apb_coverage extends uvm_component;
     error_repeat: coverpoint cov.dir  {
       bins ERROR_repeats[] = ([OK:ERROR] [* 5]);
     }
-  endgroup : dir_repe_cg
+  endgroup : dir_repi_cg
 
   //---------------------------------------
   // Constructor
@@ -203,6 +243,7 @@ class apb_coverage extends uvm_component;
     // apb_agt_cfg = new("apb_agt_cfg", uvm_component);
     // Create coverage groups 
 
+    if(has_coverage) begin
       `uvm_info(get_type_name(), "Coverage for APB Agent is Turned On", UVM_LOW)
       foreach(pwdata_df_tog_cg_bits[i]) pwdata_df_tog_cg_bits[i] = new(1<<i,output_cov_copied);
       foreach(pwdata_dt_tog_cg_bits[i]) pwdata_dt_tog_cg_bits[i] = new(1<<i,output_cov_copied);
@@ -218,11 +259,31 @@ class apb_coverage extends uvm_component;
       foreach(pready_cg_df_vals[i])     pready_cg_df_vals[i] 	  = new(i, output_cov_copied);
       foreach(pready_cg_dt_vals[i,k])   pready_cg_dt_vals[i][k] = new(i, k, output_cov_copied);
 
-      dir_repe_cg     = new();
+      dir_repi_cg     = new();
       txn_len_cg      = new();
       time_b4_txn_cg  = new();
       addr_df_cg      = new();
+    end
+    else begin
+      `uvm_info(get_type_name(), "Coverage for APB Agent is Turned Off", UVM_LOW)
+    end
 
+    // case(test_name)
+    //   "random_test": begin 
+      
+    // end
+
+    //   "repitition_test": begin 
+    //     a_op_repi_cg = new();
+    //     b_op01_repi_cg = new();
+    //     b_op11_repi_cg = new(); 
+    //   end
+
+    //   "error_test": begin
+    //     error_cg = new();
+    //   end
+    // endcase
+   
   endfunction : new
 
   //---------------------------------------
@@ -240,6 +301,9 @@ class apb_coverage extends uvm_component;
     // reset_fifo = new("reset_fifo", this);
     inputs_fifo = new("inputs_fifo", this);
     outputs_fifo = new("outputs_fifo", this);
+
+
+    wrap_cover_addr_0    = apb_coverage_comp_wrapper#(int, `AY_APB_MAX_ADDR_WIDTH)::type_id::create("wrap_cover_addr_0",    this);
     
   endfunction: build_phase
 
@@ -290,7 +354,16 @@ class apb_coverage extends uvm_component;
       // Increment transaction counter
       count_trans++;
 
+      for(int i = 0; i < `AY_APB_MAX_ADDR_WIDTH; i++) begin
+        if(output_cov_copied.addr[i]) begin
+          // wrap_cover_addr_1.sample(i);
+        end
+        else begin
+          wrap_cover_addr_0.sample(i);
+        end
+      end
 
+    if(has_coverage) begin
       foreach(pwdata_df_tog_cg_bits[i]) pwdata_df_tog_cg_bits[i].sample();
       foreach(pwdata_dt_tog_cg_bits[i]) pwdata_dt_tog_cg_bits[i].sample();
       
@@ -305,10 +378,26 @@ class apb_coverage extends uvm_component;
       foreach(pready_cg_df_vals[i]) pready_cg_df_vals[i].sample();
       foreach(pready_cg_dt_vals[i,j]) pready_cg_dt_vals[i][j].sample();
 
-      dir_repe_cg.sample(output_cov_copied);
+      dir_repi_cg.sample(output_cov_copied);
       time_b4_txn_cg.sample(output_cov_copied);
       txn_len_cg.sample(output_cov_copied);
       addr_df_cg.sample(output_cov_copied);
+    end
+      // addr_dt_cg.sample(output_cov_copied);
+      // case(test_name)
+      //   "random_test": begin 
+      //     control_cg.sample(input_item);
+      //   end
+
+      //   "repitition_test": begin
+      //     a_op_repi_cg.sample(input_item);
+      //   end
+
+      //   "error_test": begin
+      //     error_cg.sample(input_item, output_item);
+      //   end
+      // endcase
+      
 
       // You could add output value checking here if needed
 
@@ -318,36 +407,97 @@ class apb_coverage extends uvm_component;
 
   // task coverage_target();
 
+  //   case(test_name)
+  //     "random_test": begin 
+  //       if(control_cg.get_coverage()==100 && a_operations_cg.get_coverage()==100
+  //          && b_operations01_cg.get_coverage()==100 && b_operations11_cg.get_coverage()==100 
+  //          && input_values_cg.get_coverage() == 100 && output_values_cg.get_coverage() == 100
+  //          && data_ranges_cg.get_coverage() == 100 && stability_cg.get_coverage() == 100
+  //          && special_cases_cg.get_coverage() == 100
+  //          && A_cg_df_vals[0].get_coverage() == 100  && B_cg_df_vals[0].get_coverage() == 100
+  //         //  && A_op_cg_df_vals[0].get_coverage() == 100 && A_op_cg_dt_vals[0].get_coverage() == 100
+  //         //  && B_op01_cg_df_vals[0].get_coverage() == 100 && B_op01_cg_dt_vals[0].get_coverage() == 100
+  //         //  && B_op11_cg_df_vals[0].get_coverage() == 100 && B_op11_cg_dt_vals[0].get_coverage() == 100
+  //         //  && A_B_en_cg_df_vals[0].get_coverage() == 100 && A_B_en_cg_dt_vals[0].get_coverage() == 100
+  //         //  && ALU_en_cg_df_vals[0].get_coverage() == 100 && ALU_en_cg_dt_vals[0].get_coverage() == 100
+  //         //  && C_cg_df_vals[0].get_coverage() == 100        
+  //          ) 
+  //         apb_sequence_item_mon::cov_target = 1;
+  //     end
+
+  //     "repitition_test": begin
+  //       if(a_op_repi_cg.get_coverage()==100)  apb_sequence_item_mon::a_op_cov_repi_trgt = 1;
+  //       if(b_op01_repi_cg.get_coverage()==100)  apb_sequence_item_mon::b_op01_cov_repi_trgt = 1;
+  //       if(b_op11_repi_cg.get_coverage()==100)  apb_sequence_item_mon::b_op11_cov_repi_trgt = 1; 
+  //       if(a_op_repi_cg.get_coverage()==100 && b_op01_repi_cg.get_coverage()==100
+  //          && b_op11_repi_cg.get_coverage()==100) 
+  //         apb_sequence_item_mon::cov_target = 1;      
+  //     end
+
+  //     "error_test": begin
+  //       if(error_cg.get_coverage()==100)
+  //         apb_sequence_item_mon::cov_target = 1;  
+  //     end
+  //   endcase
   // endtask
   
   //---------------------------------------
   // Report phase
   //---------------------------------------
-  function void report_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), $sformatf("Received transactions: %0d", count_trans), UVM_LOW)
+  // function void report_phase(uvm_phase phase);
+  //   `uvm_info(get_type_name(), $sformatf("Received transactions: %0d", count_trans), UVM_LOW)
 
-    `uvm_info(get_type_name(), "\nCoverage Report:", UVM_LOW)
+  //   `uvm_info(get_type_name(), "\nCoverage Report:", UVM_LOW)
   //   `uvm_info(get_type_name(), $sformatf("TEST_NAME = %s", test_name), UVM_LOW)
     
-        `uvm_info(get_type_name(), $sformatf("pwrite Repetition         Coverage: %.2f%%", dir_repe_cg.get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("Time Before Transactions  Coverage: %.2f%%", time_b4_txn_cg.get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("Transaction Length        Coverage: %.2f%%", txn_len_cg.get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("paddr df:                 Coverage: %.2f%%", addr_df_cg.get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("pwdata df:  Coverage: %.2f%%", pwdata_df_tog_cg_bits[0].get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("pwdata dt:  Coverage: %.2f%%", pwdata_dt_tog_cg_bits[0].get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("paddr dt:   Coverage: %.2f%%", addr_cg_dt_vals[0][0].get_coverage()), UVM_LOW)
-
-        `uvm_info(get_type_name(), $sformatf("pwrite df:  Coverage: %.2f%%", pwrite_cg_df_vals[0].get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("pwrite dt:  Coverage: %.2f%%", pwrite_cg_dt_vals[0][0].get_coverage()), UVM_LOW)
-
-        `uvm_info(get_type_name(), $sformatf("pslverr df:  Coverage: %.2f%%", pslverr_cg_df_vals[0].get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("pslverr dt:  Coverage: %.2f%%", pslverr_cg_dt_vals[0][0].get_coverage()), UVM_LOW)
-
-        `uvm_info(get_type_name(), $sformatf("pready df:  Coverage: %.2f%%", pready_cg_df_vals[0].get_coverage()), UVM_LOW)
-        `uvm_info(get_type_name(), $sformatf("pready dt:  Coverage: %.2f%%", pready_cg_dt_vals[0][0].get_coverage()), UVM_LOW) 
-      
-    `uvm_info(get_type_name(), $sformatf("Total Coverage: %.2f%%", $get_coverage()), UVM_LOW)  
     
-  endfunction : report_phase
+  //   case(test_name)
+  //     "random_test": begin 
+  //       `uvm_info(get_type_name(), $sformatf("Control        Coverage: %.2f%%", control_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("Input Values   Coverage: %.2f%%", input_values_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("A Operations   Coverage: %.2f%%", a_operations_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("B Operations01 Coverage: %.2f%%", b_operations01_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("B Operations11 Coverage: %.2f%%", b_operations11_cg.get_coverage()), UVM_LOW)    
+  //       `uvm_info(get_type_name(), $sformatf("Output Values  Coverage: %.2f%%", output_values_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("Data Ranges    Coverage: %.2f%%", data_ranges_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("Stability      Coverage: %.2f%%", stability_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("Special Cases  Coverage: %.2f%%", special_cases_cg.get_coverage()), UVM_LOW)
+
+  //       `uvm_info(get_type_name(), $sformatf("A_cg_df  Coverage: %.2f%%", A_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("B_cg_df  Coverage: %.2f%%", B_cg_df_vals[0].get_coverage()), UVM_LOW)
+
+  //       // `uvm_info(get_type_name(), $sformatf("A_op_cg_df  Coverage: %.2f%%", A_op_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       // `uvm_info(get_type_name(), $sformatf("A_op_cg_dt  Coverage: %.2f%%", A_op_cg_dt_vals[0].get_coverage()), UVM_LOW)
+
+  //       // `uvm_info(get_type_name(), $sformatf("B_op01_cg_df  Coverage: %.2f%%", B_op01_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       // `uvm_info(get_type_name(), $sformatf("B_op01_cg_dt  Coverage: %.2f%%", B_op01_cg_dt_vals[0].get_coverage()), UVM_LOW)
+
+  //       // `uvm_info(get_type_name(), $sformatf("B_op11_cg_df  Coverage: %.2f%%", B_op11_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       // `uvm_info(get_type_name(), $sformatf("B_op11_cg_dt  Coverage: %.2f%%", B_op11_cg_dt_vals[0].get_coverage()), UVM_LOW)
+
+  //       // `uvm_info(get_type_name(), $sformatf("A_B_en_cg_df  Coverage: %.2f%%", A_B_en_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       // `uvm_info(get_type_name(), $sformatf("A_B_en_cg_dt  Coverage: %.2f%%", A_B_en_cg_dt_vals[0].get_coverage()), UVM_LOW) 
+
+  //       // `uvm_info(get_type_name(), $sformatf("ALU_en_cg_df  Coverage: %.2f%%", ALU_en_cg_df_vals[0].get_coverage()), UVM_LOW)
+  //       // `uvm_info(get_type_name(), $sformatf("ALU_en_cg_dt  Coverage: %.2f%%", ALU_en_cg_dt_vals[0].get_coverage()), UVM_LOW)
+
+  //       // `uvm_info(get_type_name(), $sformatf("C_cg_df  Coverage: %.2f%%", C_cg_df_vals[0].get_coverage()), UVM_LOW)                      
+  //     end
+      
+  //     "repitition_test": begin 
+  //       `uvm_info(get_type_name(), $sformatf("repitition cg for op_A Coverage: %.2f%%", a_op_repi_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("repitition cg for op_B1 Coverage: %.2f%%", b_op01_repi_cg.get_coverage()), UVM_LOW)
+  //       `uvm_info(get_type_name(), $sformatf("repitition cg for op_B2 Coverage: %.2f%%", b_op11_repi_cg.get_coverage()), UVM_LOW)   
+  //     end
+
+  //     "error_test": begin
+  //       `uvm_info(get_type_name(), $sformatf("Error Cases Coverage: %.2f%%", error_cg.get_coverage()), UVM_LOW)
+  //     end
+  //   endcase
+  //   `uvm_info(get_type_name(), $sformatf("Total Coverage: %.2f%%", $get_coverage()), UVM_LOW)  
+    
+
+
+  // endfunction : report_phase
 
 endclass : apb_coverage
