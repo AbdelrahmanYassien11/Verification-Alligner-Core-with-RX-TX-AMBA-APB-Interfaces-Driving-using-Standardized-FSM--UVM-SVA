@@ -84,48 +84,31 @@ covergroup pslverr_cg_dt(input int i, input int k, input apb_sequence_item_mon c
 	}
 endgroup : pslverr_cg_dt
 
-class apb_coverage_comp_wrapper#(type T = int, int unsigned IDX = 4 ) extends uvm_component;
-  `uvm_component_param_utils(apb_coverage_comp_wrapper#(int, IDX))
+class apb_tog_df_cov_cg#(type T = int, int unsigned IDX, string a) extends uvm_component;
+  `uvm_component_param_utils(apb_tog_df_cov_cg#(T, IDX, a))
 
-  covergroup cov_idx with function sample(int unsigned val);
-    option.per_instance = 1;
-    index: coverpoint val{
-      option.comment = "index";
-      bins vals[IDX] = {[0:IDX]};
-    }
-  endgroup
+    covergroup tog_cov with function sample(input T val, input int unsigned position);
+      option.per_instance = 1;
+      tog: coverpoint (val & position) != 0;
+    endgroup
     
-    function new(string name = "", uvm_component parent);
+    function new(string name, uvm_component parent);
       super.new(name, parent);
-      
-      cov_idx = new();
-	    cov_idx.set_inst_name($sformatf("%s_%s", get_full_name(), "cov_idx"));
+      tog_cov = new();
     endfunction
-    
-    //Function to print the coverage information.
-    //This is only to be able to visualize some basic coverage information
-    //in EDA Playground.
-    //DON'T DO THIS IN A REAL PROJECT!!!
-    virtual function string coverage2string();
-      return {
-        $sformatf("\n   cover_index:              %03.2f%%", cov_idx.get_inst_coverage()),
-        $sformatf("\n      index:                 %03.2f%%", cov_idx.index.get_inst_coverage())
-      };
-    endfunction
-    
+  
     //Function used to sample the information
-    virtual function void sample(int unsigned value);
-      cov_idx.sample(value);
-    endfunction
+    virtual function void sample(T val, int unsigned i);
+    	tog_cov.set_inst_name($sformatf("%0s[%0d]", a, i));
+      tog_cov.sample(val, 16'b1 << i);
+    endfunction : sample
 
-endclass : apb_coverage_comp_wrapper
+endclass : apb_tog_df_cov_cg
 
 class apb_coverage extends uvm_component;
 
-    //Wrapper over the coverage group covering the indices in the PADDR signal
-    //at which the bit of the PADDR was 0
-    apb_coverage_comp_wrapper#(int, `AY_APB_MAX_ADDR_WIDTH) wrap_cover_addr_0;
-
+    //Wrapper over the toggle coverage of different busses
+    apb_tog_df_cov_cg#(apb_addr, `AY_APB_MAX_ADDR_WIDTH, "paddr_tog_df") paddr_tog_df[`AY_APB_MAX_ADDR_WIDTH];
   //uvm_component test_name;
   string test_name;
 
@@ -150,9 +133,6 @@ class apb_coverage extends uvm_component;
 
   // Transaction counter
   int count_trans;
-
-  //instance base coverage
-	protected int signed j, z;
 
   pwdata_df_tog_cg pwdata_df_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
   pwdata_dt_tog_cg pwdata_dt_tog_cg_bits  [`AY_APB_MAX_DATA_WIDTH-1:0];
@@ -212,7 +192,7 @@ class apb_coverage extends uvm_component;
     }
   endgroup
 
-  covergroup dir_repi_cg with function sample(apb_sequence_item_mon cov);
+  covergroup dir_repe_cg with function sample(apb_sequence_item_mon cov);
     // 2: Repeated operations
     dir_repeat: coverpoint cov.dir  {
       bins dir_repeats[] = ([READ:WRITE] [* 5]);
@@ -223,7 +203,7 @@ class apb_coverage extends uvm_component;
     error_repeat: coverpoint cov.dir  {
       bins ERROR_repeats[] = ([OK:ERROR] [* 5]);
     }
-  endgroup : dir_repi_cg
+  endgroup : dir_repe_cg
 
   //---------------------------------------
   // Constructor
@@ -239,8 +219,6 @@ class apb_coverage extends uvm_component;
     //   `uvm_fatal(get_full_name, "Couldn't get TEST_NAME")
       
       // `uvm_info(get_full_name(),$sformatf("TEST_NAME %s",test_name),UVM_LOW)
-    // apb_agt_cfg = apb_agent_config::type_id::create("apb_agt_cfg", this);
-    // apb_agt_cfg = new("apb_agt_cfg", uvm_component);
     // Create coverage groups 
 
       `uvm_info(get_type_name(), "Coverage for APB Agent is Turned On", UVM_LOW)
@@ -258,7 +236,7 @@ class apb_coverage extends uvm_component;
       foreach(pready_cg_df_vals[i])     pready_cg_df_vals[i] 	  = new(i, output_cov_copied);
       foreach(pready_cg_dt_vals[i,k])   pready_cg_dt_vals[i][k] = new(i, k, output_cov_copied);
 
-      dir_repi_cg     = new();
+      dir_repe_cg     = new();
       txn_len_cg      = new();
       time_b4_txn_cg  = new();
       addr_df_cg      = new();
@@ -282,9 +260,9 @@ class apb_coverage extends uvm_component;
     inputs_fifo = new("inputs_fifo", this);
     outputs_fifo = new("outputs_fifo", this);
 
+    // Class/Instance Based Covgrps Creation
+    foreach(paddr_tog_df[i]) paddr_tog_df[i] = apb_tog_df_cov_cg#(apb_addr, `AY_APB_MAX_ADDR_WIDTH, "paddr_tog_df")::type_id::create($sformatf("padd_tog_df[%0d]", i-1), this);
 
-    wrap_cover_addr_0    = apb_coverage_comp_wrapper#(int, `AY_APB_MAX_ADDR_WIDTH)::type_id::create("wrap_cover_addr_0",    this);
-    
   endfunction: build_phase
 
   //---------------------------------------
@@ -334,16 +312,8 @@ class apb_coverage extends uvm_component;
       // Increment transaction counter
       count_trans++;
 
-      for(int i = 0; i < `AY_APB_MAX_ADDR_WIDTH; i++) begin
-        if(output_cov_copied.addr[i]) begin
-          // wrap_cover_addr_1.sample(i);
-        end
-        else begin
-          wrap_cover_addr_0.sample(i);
-        end
-      end
-
-    if(has_coverage) begin
+      foreach(paddr_tog_df[i]) paddr_tog_df[i].sample(output_cov_copied.addr, i);
+      
       foreach(pwdata_df_tog_cg_bits[i]) pwdata_df_tog_cg_bits[i].sample();
       foreach(pwdata_dt_tog_cg_bits[i]) pwdata_dt_tog_cg_bits[i].sample();
       
@@ -358,11 +328,10 @@ class apb_coverage extends uvm_component;
       foreach(pready_cg_df_vals[i]) pready_cg_df_vals[i].sample();
       foreach(pready_cg_dt_vals[i,j]) pready_cg_dt_vals[i][j].sample();
 
-      dir_repi_cg.sample(output_cov_copied);
+      dir_repe_cg.sample(output_cov_copied);
       time_b4_txn_cg.sample(output_cov_copied);
       txn_len_cg.sample(output_cov_copied);
       addr_df_cg.sample(output_cov_copied);
-    end
 
       // You could add output value checking here if needed
 
@@ -374,9 +343,9 @@ class apb_coverage extends uvm_component;
 
   // endtask
   
-  ---------------------------------------
-  Report phase
-  ---------------------------------------
+  // ---------------------------------------
+  // Report phase
+  // ---------------------------------------
   function void report_phase(uvm_phase phase);
     `uvm_info(get_type_name(), $sformatf("Received transactions: %0d", count_trans), UVM_LOW)
 
